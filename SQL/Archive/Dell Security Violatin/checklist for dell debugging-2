@@ -1,0 +1,5 @@
+checklist for dell debugging:
+1) pl/sql body  -> add in 95b to lookup (x) 
+				-> retest
+2) wm lookup --> wm parameter one  x
+3)chagne dev back to push

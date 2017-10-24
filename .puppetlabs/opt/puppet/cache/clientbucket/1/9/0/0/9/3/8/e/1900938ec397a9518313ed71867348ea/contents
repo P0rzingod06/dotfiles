@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LogicalPhysicalServerMap xmlns="http://www.webmethods.com/bpm/2006/">
+  <LogicalServer addToNavigator="true" connectAtStartup="true"
+    isDefault="true" isOffline="false" logicalServerName="Default"
+    physicalHost="localhost" physicalPort="5555" useHTTPS="false"/>
+</LogicalPhysicalServerMap>

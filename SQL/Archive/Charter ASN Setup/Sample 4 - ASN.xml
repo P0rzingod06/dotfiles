@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE cXML SYSTEM "http://xml.cxml.org/schemas/cXML/1.2.025/Fulfill.dtd">
+<cXML payloadID = "1420493129844-259569313663477803@216.109.111.142" timestamp = "2015-01-05T13:25:30-08:00" xml:lang = "en-US">
+    <Header>
+        <From>
+            <Credential domain = "NetworkID">
+                <Identity>AN0000000000-T</Identity>
+            </Credential>
+            <Credential domain = "VendorID">
+                <Identity>27272727</Identity>
+            </Credential>
+            <Credential domain = "VendorSiteID">
+                <Identity>
+                    <IdReference domain = "SiteID" identifier = "272727272"/>
+                </Identity>
+            </Credential>
+            <Credential domain = "PrivateID">
+                <Identity>2727272727</Identity>
+            </Credential>
+        </From>
+        <To>
+            <Credential domain = "NetworkID">
+                <Identity>AN01009902651-T</Identity>
+            </Credential>
+        </To>
+        <Sender>
+            <Credential domain = "NetworkID">
+                <Identity>AN0000000000-T</Identity>
+                <SharedSecret>Shared 001</SharedSecret>
+            </Credential>
+            <UserAgent>Supplier</UserAgent>
+        </Sender>
+    </Header>
+    <Request deploymentMode = "test">
+        <ShipNoticeRequest>
+            <ShipNoticeHeader shipmentType = "actual" deliveryDate = "2015-01-08T10:00:00-08:00" shipmentDate = "2015-01-05T10:00:00-08:00" noticeDate = "2015-01-05T13:25:30-08:00" operation = "new" shipmentID = "08698/09">
+                <Contact role = "shipFrom">
+                    <Name xml:lang = "en">Supplier.</Name>
+                    <PostalAddress>
+                        <Street>1234 Street</Street>
+                        <City>City name</City>
+                        <State>CA</State>
+                        <PostalCode>12321</PostalCode>
+                        <Country isoCountryCode = "US">United States</Country>
+                    </PostalAddress>
+                </Contact>
+                <Contact role = "shipTo">
+                    <Name xml:lang = "en">WIWSU03-Wausau</Name>
+                    <PostalAddress>
+                        <Street>853 McIntosh St</Street>
+                        <City>Wausau</City>
+                        <State>WI</State>
+                        <PostalCode>54403</PostalCode>
+                        <Country isoCountryCode = "US">United States</Country>
+                    </PostalAddress>
+                </Contact>
+            </ShipNoticeHeader>
+            <ShipControl>
+                <CarrierIdentifier domain = "companyName">FedEx</CarrierIdentifier>
+                <ShipmentIdentifier trackingNumberDate = "2015-01-05T10:00:00-08:00">0000000000001</ShipmentIdentifier>
+            </ShipControl>
+            <ShipNoticePortion>
+                <OrderReference orderDate = "2014-11-17T11:00:24-08:00" orderID = "PO12345">
+                    <DocumentReference payloadID = "1416250830930"></DocumentReference>
+                </OrderReference>
+                <ShipNoticeItem lineNumber = "8" quantity = "2">
+                    <ItemID>
+                        <SupplierPartID>XY1</SupplierPartID>
+                    </ItemID>
+                    <ShipNoticeItemDetail>
+                        <UnitPrice>
+                            <Money currency = "USD">88</Money>
+                        </UnitPrice>
+                        <Description xml:lang = "en-US">Item description</Description>
+                        <UnitOfMeasure>EA</UnitOfMeasure>
+                    </ShipNoticeItemDetail>
+                    <UnitOfMeasure>EA</UnitOfMeasure>
+                </ShipNoticeItem>
+            </ShipNoticePortion>
+        </ShipNoticeRequest>
+    </Request>
+</cXML>

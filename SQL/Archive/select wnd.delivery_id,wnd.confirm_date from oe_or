@@ -1,0 +1,40 @@
+select wnd.delivery_id,wnd.confirm_date from oe_order_headers_all oha,oe_order_lines_all ola,wsh_delivery_details wdd,wsh_delivery_assignments wda,wsh_new_deliveries wnd
+where 1=1
+and oha.cust_po_number IN ('5706420')--,'5706484')
+and oha.header_id = ola.header_id
+and wdd.source_line_id = ola.line_id
+and wdd.delivery_detail_id = wda.delivery_detail_id
+and wda.delivery_id = wnd.delivery_id
+
+select * from wsh_new_deliveries
+where 1=1
+and delivery_id = 865508661
+
+update wsh_new_deliveries
+set confirm_date = sysdate
+where 1=1
+and delivery_id = 865508661
+
+wwt_asn_outbound_extract
+
+select * from dba_directories
+where 1=1
+and directory_name = 'WWT_DR_PD_NASA_ITEM_LOAD'
+
+DROP DIRECTORY WWT_DR_PD_NASA_ITEM_LOAD
+
+select * from wwt_asn_outbound_shipments
+where 1=1
+--and creation_Date > sysdate - 1
+--and partner_id = 'SOCALEDISON'
+and delivery_id = 865508661
+order by creation_Date desc
+
+delete from wwt_asn_outbound_shipments
+where 1=1
+and delivery_id = 865508661
+
+select * from wwt_lookups
+where 1=1
+and lookup_type = 'WWT_ASN_OUTBOUND_EXTRACT'
+and description LIKE '%SoC%'

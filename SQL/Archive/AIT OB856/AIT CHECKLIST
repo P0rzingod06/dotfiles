@@ -1,0 +1,15 @@
+AIT CHECKLIST
+
+1.Lookups
+	a.DUPLICATE_CHECKING - where Description = 'AIT'
+	b.EDIINT - where Description = 'AIT'
+	c.FA_PROCESSING - where Description = 'AIT'
+	d.GS_ENVELOPE - where Description = 'AIT'
+	e.ISA_ENVELOPE - where Description = 'AIT'
+	f.TRANSACTION - where Description = 'AIT'
+	g.WWT_WM95_EDI_PARTNERS - attribute1 = 'AIIHT'
+	h.WWT_ASN_OUTBOUND_EXTRACT - description = 'Sprint Nextel Systems Corp'
+
+2.EDI Rules
+
+3.MyWebMethods Setup

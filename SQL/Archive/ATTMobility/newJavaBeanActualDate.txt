@@ -1,0 +1,34 @@
+	import java.text.*;
+	  import java.util.regex.*;
+	  String inputDate = %ACTUAL_DEPLOYMENT_DATE%;
+	  String = %SUBMIT_RMA%
+	  SimpleDateFormat newFormat = new SimpleDateFormat("dd-MMM-yyyy");
+	  SimpleDateFormat oldFormat;
+	  	    if(inputDate == "-"){
+		 inputDate = null;
+	    }
+	  if  (inputDate != null && !inputDate.equals("")) {
+	    if (Pattern.matches("\\d{1,2}/\\d{1,2}/\\d{4}", inputDate)) {
+	         oldFormat= new SimpleDateFormat("MM/dd/yyyy");
+	    }
+	    else if (Pattern.matches("\\d{1,2}-[a-zA-Z]*-\\d{2}", inputDate)) {
+	         oldFormat= new SimpleDateFormat("dd-MMM-yy");
+	    }
+	    else {
+	         oldFormat = new SimpleDateFormat("dd-MMM-yyyy");
+	    }
+	    Date oldDate = oldFormat.parse(inputDate);
+	    return newFormat.format(oldDate);
+	  }	
+
+SELECT NVL(%ATT_ITEM%,'skipLine') query_result FROM dual	
+
+
+select DECODE(%SUBMIT_RMA%,
+                       'N', 'NULL',
+                       'No','NULL',
+                       'NO','NULL',
+                       null,null,
+                       'Y','Yes',
+                       'YES','Yes',
+                            'Yes')query_result from dual

@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<FileIDs>
+	<FileID UniqueID="1690483946">
+		<TransmitDate>08012014</TransmitDate>
+		<TransmitTime>0807</TransmitTime>
+		<DistributionCenterIDs>
+			<DistributionCenterID UniqueID="37">
+				<ShipTo_AddressLn1>20602 87TH AVE SOUTH</ShipTo_AddressLn1>
+				<ShipTo_AddressLn2>Boeing</ShipTo_AddressLn2>
+				<ShipTo_AddressLn3></ShipTo_AddressLn3>
+				<ShipTo_City>KENT</ShipTo_City>
+				<ShipTo_State>WA</ShipTo_State>
+				<ShipTo_ZIP>98032</ShipTo_ZIP>
+				<Partner_OrderNumbers>
+					<Partner_OrderNumber UniqueID="PO2538711">
+						<Partner_Line_Items>
+							<Partner_Line_Item UniqueID="9360451">
+								<LineItemType>PD</LineItemType>
+								<PartNumber>332-2366</PartNumber>
+								<DellOrderNumber>665273666</DellOrderNumber>
+								<OrdQty>1</OrdQty>
+							</Partner_Line_Item>
+						</Partner_Line_Items>
+					</Partner_OrderNumber>
+				</Partner_OrderNumbers>
+			</DistributionCenterID>
+		</DistributionCenterIDs>
+	</FileID>
+</FileIDs>
+

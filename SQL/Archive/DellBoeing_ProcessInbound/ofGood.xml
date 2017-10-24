@@ -1,0 +1,49 @@
+<?xml version="1.0" ?>
+<FileIDs>
+        <FileID UniqueID="20140801183621">
+                <AMC_LogID>1690653858</AMC_LogID>
+                <PartnerID>3</PartnerID>
+                <File_Status>COMPLETE</File_Status>
+                <File_StatusMessage>FILE PROCESSED SUCCESSFULLY</File_StatusMessage>
+                <AckDate>08012014</AckDate>
+                <AckTime>1855</AckTime>
+                <Partner_OrderNumbers>
+                        <Partner_OrderNumber UniqueID="SO5303077">
+                                <OrderNumber_Status>COMPLETE</OrderNumber_Status>
+                                <OrderNumber_StatusMessage></OrderNumber_StatusMessage>
+                                <Partner_Line_Items>
+                                        <Partner_Line_Item UniqueID="30564320">
+                                                <Part_Number>MOUSE</Part_Number>
+                                                <Line_Item_ErrorDescription></Line_Item_ErrorDescription>
+                                                <Partner_BoxIDs>
+                                                        <Partner_BoxID UniqueID="17956394">
+                                                                <BoxID_ErrorDescription></BoxID_ErrorDescription>
+                                                                <Serial_Tag></Serial_Tag>
+                                                                <Asset_Tag></Asset_Tag>
+                                                                <AssetTagRequired>False</AssetTagRequired>
+                                                                <AssetTagLength>8</AssetTagLength>
+                                                                <SerialTagRequired>False</SerialTagRequired>
+                                                                <SerialTagLength>99</SerialTagLength>
+                                                        </Partner_BoxID>
+                                                </Partner_BoxIDs>
+                                        </Partner_Line_Item>
+                                        <Partner_Line_Item UniqueID="30564323">
+                                                <Part_Number>DAAS-E5440</Part_Number>
+                                                <Line_Item_ErrorDescription></Line_Item_ErrorDescription>
+                                                <Partner_BoxIDs>
+                                                        <Partner_BoxID UniqueID="17956395">
+                                                                <BoxID_ErrorDescription></BoxID_ErrorDescription>
+                                                                <Serial_Tag>91VQH12</Serial_Tag>
+                                                                <Asset_Tag>A5529125</Asset_Tag>
+                                                                <AssetTagRequired>True</AssetTagRequired>
+                                                                <AssetTagLength>8</AssetTagLength>
+                                                                <SerialTagRequired>True</SerialTagRequired>
+                                                                <SerialTagLength>7</SerialTagLength>
+                                                        </Partner_BoxID>
+                                                </Partner_BoxIDs>
+                                        </Partner_Line_Item>
+                                </Partner_Line_Items>
+                        </Partner_OrderNumber>
+                </Partner_OrderNumbers>
+        </FileID>
+</FileIDs>

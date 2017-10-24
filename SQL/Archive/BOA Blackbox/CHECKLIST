@@ -1,0 +1,27 @@
+CHECKLIST
+1)GUC LOOKUPS -- source_id = 235
+	a)WWT_UPLOAD_GENERIC_SOURCE
+	b)WWT_UPLOAD_GENERIC_EML_DIST
+	c)WWT_UPLOAD_GENERIC_EXTERNAL_TABLE_SETUP
+	d)WWT_UPLOAD_GENERIC_EXTERNAL_TABLE_COLUMNS
+	e)WWT_UPLOAD_GENERIC_WORKFLOW
+2)PL/SQL body and spec -> wwt_boa_blackbox_upload.pls, wwt_boa_blackbox_upload.plb
+3)Tables -- Don't forget comments on table
+	a)WWT_BOA_BLACKBOX_INVENTORY
+		0)Inventory_Id
+		i)Item
+		ii)Manufacturer
+		iii)Description
+		iv)Quantity
+		v)SerialNumber
+
+	b)WWT_BOA_BLACKBOX_SERIAL
+	c)WWT_BOA_ARCHIVE_SERIAL
+	d)WWT_BOA_ARCHIVE_INVENTORY
+4) External table create
+5)2 sequences  ->WWT_BOA_BLACKBOX_BATCH_S,WWT_BOA_BLACKBOX_SERIAL_S,WWT_BOA_BLACKBOX_INVENTORY_S
+	a)inventory table id
+	b)serial table id
+	c)inventory archive id
+	d)serial archive id
+6)Constnt Lookup - wwt_boa_blackbox_upload_const

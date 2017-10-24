@@ -1,0 +1,33 @@
+CLIN	PROVIDER	PARTNUMBER	ITEMDESCRIPTION	DISCOUNTCLASS	DISCOUNTSUBCLASS	BMAFLAG	EOLDATE	GSAPRICE	DISCOUNTPCT	LISTPRICE	SEWPPRICE	CLINTYPE	BACKUPDATA	TAAFLAG
+P502UI-B1E	VIZIO	P502UI-B1E	"Vizio P502ui-B1E 50"" 2160p LED-LCD TV - 16:9 - 4K UHDTV - 120 Hz - 176— / 176— - 3840 x 2160 - DTS Studio Sound, DTS T"	System Accessory	Miscellaneous System Accessory	A			0	800.00	800.00	P	N	NC
+FS4K-5.4-K9	CISCO SYSTEMS (CISCOPRO)	FS4K-5.4-K9	Cisco FireSIGHT Management Center Software v5.4	System Accessory	Miscellaneous System Accessory	A			0	0.00	0.00	P	N	NC
+E0X95AA	HEWLETT PACKARD	E0X95AA	HP Intel Ethernet I210-T1 GbE NIC - PCI Express - 1 Port(s) - 1 x Network (RJ-45) - Twisted Pair - Low-profile	System Accessory	Miscellaneous System Accessory	A			0	39.00	39.00	P	N	NC
+MH2U2LL/A	APPLE COMPUTER	MH2U2LL/A	"Apple iPad Air 2 MH2U2LL/A 16 GB Tablet - 9.7"" - Retina Display, In-plane Switching (IPS) Technology - Wireless LAN - Ap"	System Accessory	Miscellaneous System Accessory	A			0	635.00	635.00	P	N	NC
+MH2W2LL/A	APPLE COMPUTER	MH2W2LL/A	"Apple iPad Air 2 MH2W2LL/A 16 GB Tablet - 9.7"" - Retina Display, In-plane Switching (IPS) Technology - Wireless LAN - Ap"	System Accessory	Miscellaneous System Accessory	A			0	635.00	635.00	P	N	NC
+SMX120BP	AMERICAN POWER CONVERSION	SMX120BP	"APC Smart-UPS X 120V External Battery Pack Rack/Tower - 120 - Spill-proof, Maintenance-free Sealed Lead Acid Hot-swappab"	System Accessory	Miscellaneous System Accessory	A			5	659.00	626.05	P	N	NC
+SMX2000LVNC	AMERICAN POWER CONVERSION CORP.	SMX2000LVNC	APC Smart-UPS X 2000VA Rack/Tower LCD 100-127V with Network Card - 1920 VA/1800 W - 120 V AC - 11 Minute - 4U Tower/Rack	System Accessory	Miscellaneous System Accessory	A			5	1525.00	1448.75	P	N	NC
+6324	SOLARWINDS	6324	Upgrade of SolarWinds User Device Tracker UT2500 to UTX - License Upgrade (Maintenance expires on same day as existing l	System Accessory	Miscellaneous System Accessory	A			6	15200.00	14288.00	P	N	NC
+CUSTOM 2095078	DELL	FR5301	"PowerEdge R530 Server, TPM"	System Accessory	Miscellaneous System Accessory	A			6	10542.00	9909.48	P	197403	NC
+M/E-PSW-FX-02(SC)	TRANSITION NETWORKS	M/E-PSW-FX-02(SC)	"TRANSITOIN M/E-PSW-FX-02(SM/E-PSW-FX-02(SC)-NA  INI 10/100BASETX TO 100BASEFX SWITCH, SC MM 2KM W/NA"	System Accessory	Miscellaneous System Accessory	A			10	110.00	99.00	P	N	NC
+PSPT-125-1-WT	BRADY USA INC.	PSPT-125-1-WT	Brady PermaSleeve Wire Marker Sleeves B-342 - Matte self-extinguishing heat shrink polyolefin sleeves - white - 0.235 in	System Accessory	Miscellaneous System Accessory	A			10	56.00	50.40	P	N	NC
+F1M60UT#ABA	HEWLETT PACKARD	F1M60UT#ABA	HP Z640 Convertible Mini-tower Workstation - 1 x Intel Xeon E5-2620 v3 2.40 GHz - 16 GB RAM - 1 TB HDD - DVD-Writer - Wi	System Accessory	Miscellaneous System Accessory	A			10	2999.00	2699.10	P	N	NC
+CON-SNT-C4503E-5YR	CISCO SYSTEMS (CISCOPRO)	CON-SNT-C4503E	Cisco SMARTnet - 5 Year - 8 x 5 Next Business Day - Maintenance - Parts - Electronic and Physical Service	Maintenance / Warranty	Miscellaneous Maintenance / Warranty	A			10	8820.00	7938.00	M	N	NA
+CUSTOM 2095730	CISCO SYSTEMS (CISCOPRO)	CISCO MNT 1YR	Cisco Support Renewal for 1 Year	Maintenance / Warranty	Miscellaneous Maintenance / Warranty	A			10	6141.55	5527.40	M	197622	NA
+CUSTOM 1905395	WORLD WIDE TECHNOLOGY	WWT  PROFESSIONAL SERVICES	 Professional Services	Installation	Miscellaneous Installation	A			10	67250.00	60525.00	S	197442	NA
+H7L38A1	HEWLETT PACKARD	H7L38A1	HP IMC Startup SVC	System Accessory	Miscellaneous System Accessory	A			12	2600.00	2288.00	P	N	NC
+26949	QUIKTRON	26949	2M DVI-I to DVI-I Male to Male (Single Link)	System Accessory	Miscellaneous System Accessory	A			12	8.00	7.04	P	N	NC
+U4BC4E	HEWLETT PACKARD	U4BC4E	HP Foundation Care Software Support - 5 Year - 24 x 7 x 2 Hour - Technical	Maintenance / Warranty	Miscellaneous Maintenance / Warranty	A			12	3115.00	2741.20	M	N	NA
+23-36-19	AVAYA COMMUNICATIONS	233619	SA PREF CCCM R7 SP ED SRVR HA 3YPP	System Accessory	Miscellaneous System Accessory	A			15	8292.24	7048.40	P	N	NC
+ESAS-H680-000	ATTO TECHNOLOGY	ESAS-H680-000	ATTO ExpressSAS H680 8-channel SAS Controller - 600MBps Per Port - 2 x 4-pin SFF-8088 mini SAS 300 - Serial Attached SCS	System Accessory	Miscellaneous System Accessory	A			15	395.00	335.75	P	N	NC
+F9D160-04	BELKIN COMPONENTS	F9D160-04	Belkin 6-Outlets Power Strip - NEMA 5-15P - 6 NEMA 5-15R - 4ft	System Accessory	Miscellaneous System Accessory	A			20	9.00	7.20	P	N	NC
+DB32D	SAMSUNG INFORMATION SYSTEMS	DB32D	"Samsung DB32D - DB-D Series 32"" Slim Direct-Lit LED Display - 32"" LCD - ARM Cortex A9 1 GHz - 1.50 GB DDR3 SDRAMEthernet"	System Accessory	Miscellaneous System Accessory	A			25	752.00	564.00	P	N	NC
+JG752AAE	HEWLETT PACKARD	JG752AAE	HP Intelligent Management Center Access Manager - 50 User - Network Connectivity/Management - Standard - Electronic - PC	System Accessory	Miscellaneous System Accessory	A			25	3000.00	2250.00	P	N	NC
+JG754AAE	HEWLETT PACKARD	JG754AAE	HP IMC EAD SW MOD W/ 50-USER E-LTU	System Accessory	Miscellaneous System Accessory	A			25	3000.00	2250.00	P	N	NC
+JG747AAE	HEWLETT PACKARD	JG747AAE	HP Intelligent Management Center Standard Edition - 50 Node - Network Connectivity/Management - PC	System Accessory	Miscellaneous System Accessory	A			25	4000.00	3000.00	P	N	NC
+JG764AAE	HEWLETT PACKARD	JG764AAE	HP IMC TAM SW MOD W/ 50-NODE E-LTU	System Accessory	Miscellaneous System Accessory	A			25	1500.00	1125.00	P	N	NC
+C6800-16P10G=	CISCO SYSTEMS (CISCOPRO)	C6800-16P10G=	Catalyst 6800 16 port 10GE with integrated DFC4	System Accessory	Miscellaneous System Accessory	A			33	25000.00	16750.00	P	N	NC
+C6807-XL=	CISCO SYSTEMS (CISCOPRO)	C6807-XL=	"Catalyst 6807-XL 7-slot chassis, 10RU (spare)"	System Accessory	Miscellaneous System Accessory	A			33	15000.00	10050.00	P	N	C
+DWF3270X	TRIPP LITE	DWT3270X	"Tripp Lite Display TV LCD Wall Mount Tilt Flat Screen / Panel - 32"" to 70"" Screen Support - 165 lb Load Capacity - Metal"	System Accessory	Miscellaneous System Accessory	A			35	84.80	55.12	P	N	NC
+A7F64A#B1H	HEWLETT PACKARD	A7F64A#B1H	HP Officejet Pro 8600 8610 Inkjet Multifunction Printer - Color - Plain Paper Print - Desktop - Copier/Fax/Printer/Scann	System Accessory	Miscellaneous System Accessory	A			40	246.00	147.60	P	N	NC
+27258	CABLES TO GO	27258	10ft Cat5e Molded Shielded (STP) Network Patch Cable - Yellow - Category 5e for Network Device - RJ-45 Male - RJ-45 Male	System Accessory	Miscellaneous System Accessory	A			60	17.00	6.80	P	N	NC
+														

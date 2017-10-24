@@ -1,0 +1,341 @@
+<?xml version="1.0"?>
+<ProcessingGroup 
+	name="OB856_AIT_AIIHT" 
+	parent="OB856_Standard"
+	priority="1"
+	errorAlertThreshold = "1"
+	ruleApplicationSource = "EDI"
+	transactionType = "OB856">
+	
+ <!-- ************************************* -->
+ <!-- ****** BEGIN PRE-PROCESS ************ -->
+ <!-- ************************************* -->
+ 
+ <!-- PRE-PROCESS DEFAULTS -->
+ <Rule name="Pre-Process Defaults" class="PRE-PROCESS" executeOnReprocess="N">
+	<ConditionSet name="Set Shipment Level Defaults" exitOnSuccess="Y">			
+		<Action name="Set ST02" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="STATIC"></Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ST:ST02</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+	</ConditionSet>
+ </Rule>
+
+<!-- ********************************** -->
+<!-- ****** BEGIN SHIPMENT ************ -->
+<!-- ********************************** -->
+
+<!-- SHIPMENT DEFAULTS -->
+<Rule name="Shipment Defaults" class="SHIPMENT" executeOnReprocess="N">
+	<ConditionSet name="Set Shipment Level Defaults" exitOnSuccess="Y">		
+		<Action name="Set TD106 Weight Qualifier" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="STATIC">G</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/TD1[1]:TD106:code</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Set TD107 Weight" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">WEIGHT</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/TD1[1]:TD107</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Set TD108 Unit for Measurement Code" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="STATIC">LB</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/TD1[1]:TD108:code</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Set TD502 Identification Code Qualifier" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="STATIC">2</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/TD5[1]:TD502:code</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Set TD503 Identification Code" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">SCAC_CODE</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/TD5[1]:TD503</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Set REF01 Reference Identification Qualifier" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="STATIC">BM</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/REF[1]:REF01:code</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Set REF02 Reference Identification" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">BILL_OF_LADING</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/REF[1]:REF02</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>	
+		</Action>
+		<Action name="Set DTM01 Date/Time Qualifier" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="STATIC">011</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/DTM[1]:DTM01:code</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>	
+		</Action>
+		<Action name="Set DTM02 Date" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">SHIPMENT_DATE</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/DTM[1]:DTM02</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Set N101 Entity Identifier Code" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="STATIC">ST</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/N1[1]:N101:code</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>	
+		</Action>		
+		<Action name="Set N102 Name" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">Order[0]/Package[0]/CUSTOMER_NAME</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/N1[1]:N102</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>	
+		</Action>
+		<Action name="Set N30101 Address Information" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">Order[0]/Package[0]/DELIVER_TO_ADDRESS1</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/N1[1]:N3[1]:N301</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Set N30102 Address Information" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">Order[0]/Package[0]/DELIVER_TO_ADDRESS2</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/N1[1]:N3[1]:N302</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Set N401 City Name" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">Order[0]/Package[0]/DELIVER_TO_CITY</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/N1[1]:N4[1]:N401</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Set N402 State Code" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">Order[0]/Package[0]/DELIVER_TO_STATE</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/N1[1]:N4[1]:N402:code</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>	
+		</Action>
+		<Action name="Set N403 Postal Code" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">Order[0]/Package[0]/DELIVER_TO_POSTAL_CODE</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/N1[1]:N4[1]:N403:code</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+ 		<Action name="Set Entity Identifier Code" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="STATIC">SF</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/N1[2]:N101:code</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Find Ship From Content" class="dbQuery">
+			<Parameter name="packageName" valueType="STATIC">EDIWWT_OB856</Parameter>
+			<Parameter name="sqlConstantName" valueType="STATIC">aitShipFromSQL</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>	
+		</Action>
+		<Action name="ADD Package HL TO LINES ARRAY" class="addToLines">
+			<Parameter name="docName" valueType="STATIC">ASN_VALUES</Parameter>			
+			<ExceptionHandler type="NONE"></ExceptionHandler>	
+		</Action>
+ 	</ConditionSet>
+</Rule>
+
+<!-- ********************************* -->
+<!-- ****** BEGIN ORDERS  ************ -->
+<!-- ********************************* -->
+
+<Rule name="Order Defaults" class="ORDER" executeOnReprocess="N">
+	<ConditionSet name="Set Order Level Defaults" exitOnSuccess="Y">
+		<Action name="Set Order PRF01 Purchase Order Number" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">Order/CUSTOMER_PO_NUM</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/PRF:PRF01</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>	
+		</Action>
+		<Action name="Set Order PRF04 Date" class="genericDateFormat">
+			<Parameter name="sourceElement" valueType="REFERENCE">ORDER/ORDERED_DATE</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/PRF:PRF04</Parameter>
+			<Parameter name="currentDateIfNull" valueType="STATIC">Y</Parameter>
+			<Parameter name="currentPattern" valueType="STATIC">MM/dd/yyyy HH:mm:ss a</Parameter>
+			<Parameter name="newPattern" valueType="STATIC">yyyyMMdd</Parameter>
+			<ExceptionHandler type="NONE"/>
+		</Action>
+		<Action name="Set Order REF01 Reference Identification Qualifier" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="STATIC">IV</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/REF[2]:REF01:code</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>	
+		</Action>
+		<Action name="Set Order REF02 Reference Identification" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">Order/SALES_ORDER_NUM</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/REF[2]:REF02</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="ADD Order HL TO LINES ARRAY" class="addToLines">
+			<Parameter name="docName" valueType="STATIC">ASN_VALUES</Parameter>			
+			<ExceptionHandler type="NONE"></ExceptionHandler>	
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<!-- ********************************** -->
+<!-- ****** BEGIN TARE **************** -->
+<!-- ********************************** -->
+
+<!--<Rule name="Tare Defaults" class="TARE" executeOnReprocess="N">
+	<ConditionSet name="Set Order Level Defaults" exitOnSuccess="Y">
+		<Action name="Increment HL_COUNTER" class="genericArithmetic">
+			<Parameter name="LHS" valueType="REFERENCE">temp/HL_COUNTER</Parameter>
+			<Parameter name="operator" valueType="STATIC">+</Parameter>
+			<Parameter name="RHS" valueType="STATIC">1</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">temp/HL_COUNTER</Parameter>	
+			<Parameter name="numericType" valueType="STATIC">Integer</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>	
+		</Action>
+		<Action name="Set Tare HL01" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">temp/HL_COUNTER</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/HL:HL01</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>	
+		</Action>		
+		<Action name="Set Order HL02" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">temp/SHIPMENT_HL</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/HL:HL02</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>	
+		</Action>		
+		<Action name="Set Order HL03" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="STATIC">T</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/HL:HL03:code</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>	
+		</Action>
+		<Action name="Set Order HL04" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="STATIC">1</Parameter> <!--Heirarchical Child Code ???? used one from example 
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/HL:HL04:code</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action> 
+	</ConditionSet>
+</Rule> -->
+
+<!-- ********************************** -->
+<!-- ****** BEGIN PACKAGE  ************ -->
+<!-- ********************************** -->
+
+<Rule name="Package Defaults" class="PACKAGE" executeOnReprocess="N">
+	<ConditionSet name="Set Package Level Defaults" exitOnSuccess="Y">
+		<Action name="Set Package HL01" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">temp/HL_COUNTER</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/HL:HL01</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>	
+		</Action>		
+		<Action name="Set Package HL02" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">temp/SHIPMENT_HL</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/HL:HL02</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>	
+		</Action>		
+ 		<Action name="Set Package HL03" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="STATIC">P</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/HL:HL03:code</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>	
+		</Action>
+  		<Action name="Increment HL_COUNTER" class="genericArithmetic">
+			<Parameter name="LHS" valueType="REFERENCE">temp/HL_COUNTER</Parameter>
+			<Parameter name="operator" valueType="STATIC">+</Parameter>
+			<Parameter name="RHS" valueType="STATIC">1</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">temp/HL_COUNTER</Parameter>	
+			<Parameter name="numericType" valueType="STATIC">Integer</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>	
+		</Action>
+		<Action name="Set Order MAN01 Marks and Numbers Qualifier" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="STATIC">GM</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/MAN:MAN01:code</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>	
+		</Action>
+		<Action name="Set Order MAN02 Marks and Numbers" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">Order/Package/TRACKING_NUMBER</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/MAN:MAN02</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>	
+		</Action>
+		<Action name="ADD Order HL TO LINES ARRAY" class="addToLines">
+			<Parameter name="docName" valueType="STATIC">ASN_VALUES</Parameter>			
+			<ExceptionHandler type="NONE"></ExceptionHandler>	
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<!-- ******************************** -->
+<!-- ****** BEGIN ITEMS  ************ -->
+<!-- ******************************** -->
+
+ <Rule name="Item Defaults" class="ITEM" executeOnReprocess="N">
+	<ConditionSet name="Set Item Level Defaults" exitOnSuccess="Y">
+		<Action name="Set LIN01 Assigned Identification" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">Order/Package/Item/ORDER_LINE_NUM</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/LIN:LIN01</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>	
+		</Action>
+		<Action name="Set LIN02 Product/Service ID Qualifier" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="STATIC">ND</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/LIN:LIN02:code</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>	
+		</Action>
+		<Action name="Set LIN03 Product/Service ID" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">Order/Package/Item/INVENTORY_ITEM_SEGMENT2</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/LIN:LIN03</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>	
+		</Action>
+		<Action name="Set LIN04 Product/Service ID Qualifier" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="STATIC">UI</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/LIN:LIN04:code</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>	
+		</Action>
+		 <Action name="Set LIN05 Product/Service ID" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">Order/Package/Item/INVENTORY_ITEM_SEGMENT2</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/LIN:LIN05</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>	
+		</Action>
+<!-- 		<Action name="Set LIN06 Product/Service ID Qualifier" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="STATIC">LT</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/LIN:LIN06:code</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>	
+		</Action>
+		<Action name="Set LIN07 Product/Service ID" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="REFERENCE"></Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/LIN:LIN07</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>	
+		</Action> -->
+		<Action name="Set PID Descriptions" class="setMultipleElementSegment">
+			<Parameter name="sourceElement" valueType="REFERENCE">Order/Package/Item/ITEM_DESCRIPTION</Parameter>
+			<Parameter name="targetElementMask" valueType="STATIC">ASN_VALUES/PID[#]:PID05</Parameter>
+			<Parameter name="charactersPerLine" valueType="STATIC">80</Parameter>
+			<Parameter name="allowWordSplitting" valueType="STATIC">true</Parameter>
+			<Parameter name="trimString" valueType="STATIC">true</Parameter>
+			<Parameter name="qualifierElement" valueType="STATIC">PID01:code</Parameter>
+			<Parameter name="qualifierValue" valueType="STATIC">F</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+<!--	<Action name="Set DTM101 Date/Time Qualifier" class="genericAssignment">
+			<Parameter name="sourceElement" valueType="REFERENCE"></Parameter>
+			<Parameter name="targetElement" valueType="TARGET">ASN_VALUES/DTM1:DTM101</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>-->
+		<Action name="ADD Package HL TO LINES ARRAY" class="addToLines">
+			<Parameter name="docName" valueType="STATIC">ASN_VALUES</Parameter>			
+			<ExceptionHandler type="NONE"></ExceptionHandler>	
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<!-- ********************************* -->
+<!-- ****** BEGIN SERIAL  ************ -->
+<!-- ********************************* -->
+
+<!-- ************************************ -->
+<!-- ****** BEGIN COMPONENT  ************ -->
+<!-- ************************************ -->
+
+
+<!-- ******************************************* -->
+<!-- ****** BEGIN POST-PROCESS  ************ -->
+<!-- ******************************************* -->
+
+<Rule name="Post-Process Defaults" class="POST-PROCESS" executeOnReprocess="N">
+	<ConditionSet name="Set CTT" exitOnSuccess="Y">	
+		<Action name="ADD HL TO LINES ARRAY" class="addToLines">
+			<Parameter name="docName" valueType="STATIC">ASN_VALUES</Parameter>			
+			<ExceptionHandler type="NONE"></ExceptionHandler>	
+		</Action>
+		<Action name="Set CTT01" class="genericArithmetic">
+			<Parameter name="LHS" valueType="REFERENCE">temp/HL_COUNTER</Parameter>
+			<Parameter name="operator" valueType="STATIC">-</Parameter>
+			<Parameter name="RHS" valueType="STATIC">1</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">CTT:CTT01</Parameter>
+			<Parameter name="numericType" valueType="STATIC">Integer</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>	
+		</Action>
+	</ConditionSet>
+ </Rule>
+
+</ProcessingGroup>

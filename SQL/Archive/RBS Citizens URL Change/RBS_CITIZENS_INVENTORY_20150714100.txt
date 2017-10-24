@@ -1,0 +1,35 @@
+Stock_Room_Name	Serial_Number	Manufacturer_Name	Model_Name	Equipment_Type	Vendor_Supplier_Name	Model_Reference_Number	Purchase_Order_Number	Purchase_Date	Purchase_Price	Purchase_or_Lease	Cost_Center_Number	Ship_Date	Warranty_Condition	Warranty_Contract_Number	Maintenance_Contract_Number
+Lakeview Technology Center	FXS1846Q3WK	Cisco Systems (CISCOPRO)	WS-C4507RE+96V+	Switches											
+Lakeview Technology Center	FCH1837JDXX	Cisco Systems (CISCOPRO)	UCSB-B200-M3-U	Wintel Servers											
+Lakeview Technology Center	FOX1843GCPH	Cisco Systems (CISCOPRO)	UCSB-5108-AC2	Wintel Servers											
+Lakeview Technology Center	FCH18447MLB	Cisco Systems (CISCOPRO)	UCSB-B200-M3	Wintel Servers											
+Lakeview Technology Center	FCH18437836	Cisco Systems (CISCOPRO)	UCSB-B200-M3	Wintel Servers											
+Lakeview Technology Center	FCH18447M0B	Cisco Systems (CISCOPRO)	UCSB-B200-M3	Wintel Servers											
+Lakeview Technology Center	FCH18447MPN	Cisco Systems (CISCOPRO)	UCSB-B200-M3	Wintel Servers											
+Lakeview Technology Center	FOX1839GN5Y	Cisco Systems (CISCOPRO)	UCSB-5108-AC2	Wintel Servers											
+Lakeview Technology Center	FCH18447LXW	Cisco Systems (CISCOPRO)	UCSB-B200-M3	Wintel Servers											
+Lakeview Technology Center	FCH18447M4E	Cisco Systems (CISCOPRO)	UCSB-B200-M3	Wintel Servers											
+Lakeview Technology Center	FCH184377JE	Cisco Systems (CISCOPRO)	UCSB-B200-M3	Wintel Servers											
+Lakeview Technology Center	FCH1843767B	Cisco Systems (CISCOPRO)	UCSB-B200-M3	Wintel Servers											
+Lakeview Technology Center	SSI182500N7	Cisco Systems (CISCOPRO)	UCS-FI-6248UP	Network Device											
+Lakeview Technology Center	FOX1843G64Z	Cisco Systems (CISCOPRO)	UCSB-5108-AC2	Wintel Servers											
+Lakeview Technology Center	FCH18447M2P	Cisco Systems (CISCOPRO)	UCSB-B200-M3	Wintel Servers											
+Lakeview Technology Center	FCH18447LLQ	Cisco Systems (CISCOPRO)	UCSB-B200-M3	Wintel Servers											
+Lakeview Technology Center	FCH18447LPV	Cisco Systems (CISCOPRO)	UCSB-B200-M3	Wintel Servers											
+Lakeview Technology Center	FCH18447LGE	Cisco Systems (CISCOPRO)	UCSB-B200-M3	Wintel Servers											
+Lakeview Technology Center	FOX1842GHVT	Cisco Systems (CISCOPRO)	UCSB-5108-AC2	Wintel Servers											
+Lakeview Technology Center	FCH18447MEP	Cisco Systems (CISCOPRO)	UCSB-B200-M3	Wintel Servers											
+Lakeview Technology Center	FCH18447MRU	Cisco Systems (CISCOPRO)	UCSB-B200-M3	Wintel Servers											
+Lakeview Technology Center	FCH18447LPK	Cisco Systems (CISCOPRO)	UCSB-B200-M3	Wintel Servers											
+Lakeview Technology Center	FCH18447LF8	Cisco Systems (CISCOPRO)	UCSB-B200-M3	Wintel Servers											
+Lakeview Technology Center	SSI182508LL	Cisco Systems (CISCOPRO)	UCS-FI-6248UP	Network Device											
+Lakeview Technology Center	FOX1842GJ1C	Cisco Systems (CISCOPRO)	UCSB-5108-AC2	Wintel Servers											
+Lakeview Technology Center	FCH18447LWV	Cisco Systems (CISCOPRO)	UCSB-B200-M3	Wintel Servers											
+Lakeview Technology Center	FCH18447L1F	Cisco Systems (CISCOPRO)	UCSB-B200-M3	Wintel Servers											
+Lakeview Technology Center	FCH18447LQA	Cisco Systems (CISCOPRO)	UCSB-B200-M3	Wintel Servers											
+Lakeview Technology Center	FCH18447LFM	Cisco Systems (CISCOPRO)	UCSB-B200-M3	Wintel Servers											
+Lakeview Technology Center	FOX1843GDD7	Cisco Systems (CISCOPRO)	UCSB-5108-AC2	Wintel Servers											
+Lakeview Technology Center	FCH18447MJX	Cisco Systems (CISCOPRO)	UCSB-B200-M3	Wintel Servers											
+Lakeview Technology Center	FCH18447LT0	Cisco Systems (CISCOPRO)	UCSB-B200-M3	Wintel Servers											
+Lakeview Technology Center	FCH18447KXH	Cisco Systems (CISCOPRO)	UCSB-B200-M3	Wintel Servers											
+Lakeview Technology Center	FCH18447LUE	Cisco Systems (CISCOPRO)	UCSB-B200-M3	Wintel Servers											

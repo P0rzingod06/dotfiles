@@ -1,0 +1,6077 @@
+--- !ruby/object:Puppet::Transaction::Report
+metrics:
+  resources: !ruby/object:Puppet::Util::Metric
+    name: resources
+    label: Resources
+    values:
+    - - total
+      - Total
+      - 103
+    - - skipped
+      - Skipped
+      - 24
+    - - failed
+      - Failed
+      - 1
+    - - failed_to_restart
+      - Failed to restart
+      - 0
+    - - restarted
+      - Restarted
+      - 0
+    - - changed
+      - Changed
+      - 70
+    - - out_of_sync
+      - Out of sync
+      - 71
+    - - scheduled
+      - Scheduled
+      - 0
+    - - corrective_change
+      - Corrective change
+      - 71
+  time: !ruby/object:Puppet::Util::Metric
+    name: time
+    label: Time
+    values:
+    - - file
+      - File
+      - 0.4636589999999999
+    - - exec
+      - Exec
+      - 113.42478599999998
+    - - schedule
+      - Schedule
+      - 0.000643
+    - - filebucket
+      - Filebucket
+      - 0.000155
+    - - config_retrieval
+      - Config retrieval
+      - 1.053232
+    - - total
+      - Total
+      - 114.94247499999999
+  changes: !ruby/object:Puppet::Util::Metric
+    name: changes
+    label: Changes
+    values:
+    - - total
+      - Total
+      - 70
+  events: !ruby/object:Puppet::Util::Metric
+    name: events
+    label: Events
+    values:
+    - - total
+      - Total
+      - 71
+    - - failure
+      - Failure
+      - 1
+    - - success
+      - Success
+      - 70
+logs:
+- !ruby/object:Puppet::Util::Log
+  level: :info
+  message: Applying configuration version '1484758062'
+  source: Puppet
+  tags:
+  - info
+  time: '2017-01-18T10:47:43.842747000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: created
+  source: "/Stage[main]/Webmethods/File[copy_files_locally]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.199040000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 36
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: created
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/95Licenses]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.200859000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}ba906563db7ff79f08eeb01a4a30114a'
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/95Licenses/wwtAi_WmPipelineCapture.txt]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.295852000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}e71903c7bf52feffd6a6a85857d26333'
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/95Licenses/wwtAi_WmProfiler.txt]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.299111000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}ebef3380ef85d0c63a9fc0a37574ec95'
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/95Licenses/wwtAi_WmServiceMock.txt]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.302174000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}401d85d15f7c1f4278be81c217e474ec'
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/95Licenses/wwtAi_localdev.txt]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.305436000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}d3001e8585bfdd2dd1dd41c798f95ff3'
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/95Licenses/wwtAi_wmisprofiler.txt]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.308467000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}e171d7c6be94285b723ff55dec9dd1bc'
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/95Licenses/wwtAi_wmtestsuite.txt]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.311336000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}f0762b741a3d5afc1ec6a028c62d052b'
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/PIE90.xml]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.314459000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: created
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/designer]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.316209000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}023c6ce152b9a2e70f37f30aa2e281fb'
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/designer/logicalServer.properties]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.319261000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: created
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/designer/settings]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.320846000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}59d1793381c2818fe08b3603a0279143'
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/designer/settings/com.sag.gcs.localdev.prefs]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.323590000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}2ccde5da54768e5456316859645af8a9'
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/designer/settings/com.sag.gcs.wmtestsuite.prefs]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.326559000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: created
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/localdev]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.328157000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}cdb0d3ee16d3b83fb753f7dc8646bd15'
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/localdev/com.sag.gcs.common.lm_1.0.5.201407211752.jar]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.331737000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}ee6b1e77e2a87f41b616e7af77bc842b'
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/localdev/com.sag.gcs.localdev_1.5.6.201509011745.jar]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.399373000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}58625c22cf3a41eda5334c13a98b2d2b'
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/localdev/com.sag.gcs.wmtestsuite_2.1.5.201306301542.jar]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.534808000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}76852c42c44401f44d26319a74e55f5b'
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/ojdbc6.jar]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.566153000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: created
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.568032000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: created
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/config]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.569915000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}6ca9a281e51374cd711b94882c9e329c'
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/config/invokemanager.cnf]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.573699000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: created
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/lib]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.575872000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: created
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/lib/jars]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.578253000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}275747fb76c0aceb6986bfc2b3e29cdf'
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/lib/jars/serviceInterceptor.jar]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.584849000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: created
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/packages]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.587736000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: created
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/packages/WmServiceMock]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.589529000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}70c7b805d9e95b3760c5d1bb588722d1'
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/packages/WmServiceMock.zip]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.592971000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: created
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/code]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.594714000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: created
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/code/classes]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.596261000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: created
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/code/classes/wm]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.597914000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: created
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/code/classes/wm/ps]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.600259000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}6a36912061083e76c64f16c92bd50eb5'
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/code/classes/wm/ps/serviceMock.class]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.603286000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: created
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/config]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.604805000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}fa12c86a49d6ec05daa9c153e591216f'
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/config/license.txt]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.607457000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}2958a272b07eac42cc5ad4c9fb82a09e'
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/manifest.v3]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.610282000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: created
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.611814000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: created
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.613298000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}b6fb8de8e44eb9727cad772922daa38a'
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/node.idf]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.616637000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: created
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.618404000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}f4cb56e319a75ebe9583fdba4f0b0887'
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/node.idf]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.621888000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: created
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.624871000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: created
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/clearAllMocks]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.626733000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}c5373ac4c6521c34d4ca0800b1a7382f'
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/clearAllMocks/java.frag]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.631554000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}6be8cc39bd063ae52adfb1eeb4102be7'
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/clearAllMocks/node.ndf]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.635883000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: created
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/clearMock]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.637482000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}06fa75342b472a403a9c70e41494167d'
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/clearMock/java.frag]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.640327000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}239af8558375d246d8c3a3fe9c5a9b33'
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/clearMock/node.ndf]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.643221000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: created
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/getMockedServices]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.644950000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}c180e11abf0bdef7705fe388407a3a7c'
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/getMockedServices/java.frag]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.648314000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}82fcd85e7e1f2fc4565d83058d48bdd4'
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/getMockedServices/node.ndf]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.651479000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: created
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/loadMock]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.653202000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}24a59aae8d08545ac576fad19f61fbad'
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/loadMock/java.frag]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.656522000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}54347edad610d8760fafcc0a26fd7feb'
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/loadMock/node.ndf]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.659935000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}8d0412d1dc132706cbf30cee0c876c04'
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/node.idf]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.664232000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: created
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/resumeMocks]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.666679000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}4b508e1f1e7c8b57d3e5faa347f8e76e'
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/resumeMocks/java.frag]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.671651000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}f7ad4079099e2c31a2f78cc620077b97'
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/resumeMocks/node.ndf]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.674714000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: created
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/suspendMocks]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.676457000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}921baec659de8122cf50fd9f3a61eba3'
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/suspendMocks/java.frag]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.682612000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}f7ad4079099e2c31a2f78cc620077b97'
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/suspendMocks/node.ndf]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.686844000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}8f1cad4e6990536726b855493254c234'
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/service_interceptor/packages/WmServiceMockSamples.zip]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.693055000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}fde64e54f15024810cd19a7bf542ea7e'
+  source: "/Stage[main]/Webmethods/File[/tmp/webMethods/wwt_server.properties]/ensure"
+  tags:
+  - notice
+  - file
+  - copy_files_locally
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.695934000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}879e4c1248e9870e8616b92fc97b1a22'
+  source: "/Stage[main]/Webmethods/File[build_installScript]/ensure"
+  tags:
+  - notice
+  - file
+  - build_installscript
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.700187000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 45
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: defined content as '{md5}44ebfab098a498412aeac1525a366639'
+  source: "/Stage[main]/Webmethods/File[build_upgradeScript]/ensure"
+  tags:
+  - notice
+  - file
+  - build_upgradescript
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.703389000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 53
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: executed successfully
+  source: "/Stage[main]/Webmethods/Wget::Fetch[download_installer]/Exec[wget-download_installer]/returns"
+  tags:
+  - notice
+  - exec
+  - wget-download_installer
+  - wget::fetch
+  - wget
+  - fetch
+  - download_installer
+  - class
+  - webmethods
+  time: '2017-01-18T10:47:44.885798000-06:00'
+  file: "/Users/gassertm/.puppetlabs/etc/code/modules/wget/manifests/fetch.pp"
+  line: 129
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: executed successfully
+  source: "/Stage[main]/Webmethods/Wget::Fetch[download_image]/Exec[wget-download_image]/returns"
+  tags:
+  - notice
+  - exec
+  - wget-download_image
+  - wget::fetch
+  - wget
+  - fetch
+  - download_image
+  - class
+  - webmethods
+  time: '2017-01-18T10:49:05.472206000-06:00'
+  file: "/Users/gassertm/.puppetlabs/etc/code/modules/wget/manifests/fetch.pp"
+  line: 129
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: executed successfully
+  source: "/Stage[main]/Webmethods/Exec[validate_image]/returns"
+  tags:
+  - notice
+  - exec
+  - validate_image
+  - class
+  - webmethods
+  time: '2017-01-18T10:49:09.937070000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 79
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: Installation image /private/tmp/webMethods/webMethodsInstallationImage-9.7.zip
+    is not missing any files and all checksums match.
+  source: "/Stage[main]/Webmethods/Exec[check_image_valid]/returns"
+  tags:
+  - notice
+  - exec
+  - check_image_valid
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:09.965820000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 88
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: executed successfully
+  source: "/Stage[main]/Webmethods/Exec[check_image_valid]/returns"
+  tags:
+  - notice
+  - exec
+  - check_image_valid
+  - class
+  - webmethods
+  time: '2017-01-18T10:49:09.966377000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 88
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: "/Applications/SoftwareAG/jvm/jvm/jre/bin/java -classpath /Applications/SoftwareAG/UpdateManager/profile/plugins/org.eclipse.osgi_3.6.0.v20100517.jar:/Applications/SoftwareAG/UpdateManager/bootstrap/classes
+    -Xmx1024m -DSUM.HOME=/Applications/SoftwareAG/UpdateManager -Dosgi.install.area=/Applications/SoftwareAG/UpdateManager/profile
+    -Dosgi.instance.area=/Applications/SoftwareAG/UpdateManager/profile -Dorg.eclipse.ecf.provider.filetransfer.excludeContributors=org.eclipse.ecf.provider.filetransfer.httpclient
+    com.softwareag.fixinstall.bootstrap.BootstrapClass -debug -configuration /Applications/SoftwareAG/UpdateManager/profile/configuration
+    -application com.softwareag.fixinstall.cmdlineinstaller.application -readScript
+    /tmp/webMethods//updateScript"
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.525564000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Debug options:'
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.525997000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: "    file:/Applications/SoftwareAG/UpdateManager/bin/.options not found"
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.526350000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Time to load bundles: 23'
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.526701000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: Jan 18, 2017 10:49:11 AM Log InfoDeviceManager started
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.527038000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: Starting bundle:com.softwareag.fixinstall.bpms_8.2.1.0069-2287
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.527391000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: Starting bundle:com.softwareag.fixinstall.cmdlineinstaller_8.2.1.0069-2287
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.527813000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: Starting bundle:com.softwareag.fixinstall.common_8.2.1.0069-2287
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.528187000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: Starting bundle:com.softwareag.fixinstall.core_8.2.1.0069-2287
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.528542000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: Starting bundle:com.softwareag.fixinstall.externaljars_8.2.1.0069-2287
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.528883000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: Starting bundle:com.softwareag.fixinstall.gdm_8.2.1.0069-2287
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.529231000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: Starting bundle:com.softwareag.fixinstall.guiinstaller_8.2.1.0069-2287
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.529577000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: Starting bundle:com.softwareag.fixinstall.ic_8.2.1.0069-2287
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.529903000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: Starting bundle:com.softwareag.fixinstall.sagjars_8.2.1.0069-2287
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.530429000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: Starting bundle:com.softwareag.fixinstall.shared_8.2.1.0069-2287
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.530789000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Starting application: 1484758152007'
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.531130000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: Update Manager Version:8.2.1.0069-2287
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.531420000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: ''
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.531687000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: Welcome to Software AG Update Manager 2015-04 (build 8.2.1.0069-2287)
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.532194000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: JVM version:1.7.0_65-b17
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.532640000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Copyright ? 2001 - 2015 Software AG, Darmstadt, Germany and/or Software
+    AG USA, Inc., Reston, VA, USA, and/or its subsidiaries and/or its affiliates and/or
+    their licensors. '
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.532932000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: The name Software AG and all Software AG product names are either trademarks
+    or registered trademarks of Software AG and/or Software AG USA Inc. and/or its
+    subsidiaries and/or its affiliates and/or their licensors. Other company and product
+    names mentioned herein may be trademarks of their respective owners.
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.533273000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Detailed information on trademarks and patents owned by Software AG and/or
+    its  subsidiaries is located at http://softwareag.com/licenses. '
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.533564000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'This software may include portions of third-party products. For third-party
+    copyright notices, license terms, additional rights or restrictions, please refer
+    to "License Texts, Copyright Notices and Disclaimers of Third Party Products".
+    For certain specific third-party license restrictions, please refer to section
+    E of the Legal Notices available under "License Terms and Conditions for Use of
+    Software AG Products / Copyright and Trademark Notices of Software AG Products". '
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.533899000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'These documents are part of the product documentation, located at http://softwareag.com/licenses
+    and/or in the root installation directory of the licensed product(s). '
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.534210000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: ''
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.534502000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: N) Next X) Exit
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.534799000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: ''
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.535110000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Enter: [ N ]?'
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.535398000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: ''
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.535734000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: Select the action to perform.
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.536081000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: ''
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.536377000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Fix Management:'
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.536658000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 1) Install fixes from Empower
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.536987000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 2) Install fixes from image
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.537294000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 3) Create or add fixes to fix image
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.537598000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 4) View installed fixes
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.537907000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 5) Uninstall fixes
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.538198000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: ''
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.538539000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Test patch and Diagnostics collector:'
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.538855000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 6) Install test patch and diagnostics collector from Empower
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.539183000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 7) Install test patch and diagnostics collector from image
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.539500000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 8) Create or add to test patch and diagnostics collector image
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.539843000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 9) View installed test patch and diagnostics collector
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.540134000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 10) Uninstall test patch and diagnostics collector
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.540486000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: ''
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.540794000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Password Encryption for Fix Scripts:'
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.541119000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 11) Utility for password encryption
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.541405000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: ''
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.541761000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: X) Exit
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.542095000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: ''
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.542392000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Enter option:  [2]?'
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.542711000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Product directory (full path): [/Applications/SoftwareAG] ?'
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.543006000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Image file name (full path): [/tmp/webMethods/updateManagerImage-9.7.zip]
+    ?'
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.543342000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Create script (Y or N): [N]?N) Next B) Back X) Exit'
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.543648000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: ''
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.543977000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Enter: [ N ]?2017-01-18 10:49:17.913 CST: Specified image file doesn''t
+    exist'
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - notice
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  - returns
+  time: '2017-01-18T10:49:18.544322000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :err
+  message: "/Applications/SoftwareAG/UpdateManager/bin/UpdateManagerCMD.sh -readScript
+    /tmp/webMethods//updateScript returned 255 instead of one of [0]"
+  source: Puppet
+  tags:
+  - err
+  time: '2017-01-18T10:49:18.544866000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :err
+  message: 'change from notrun to 0 failed: /Applications/SoftwareAG/UpdateManager/bin/UpdateManagerCMD.sh
+    -readScript /tmp/webMethods//updateScript returned 255 instead of one of [0]'
+  source: "/Stage[main]/Webmethods/Exec[upgrade_webmethods]/returns"
+  tags:
+  - err
+  - exec
+  - upgrade_webmethods
+  - class
+  - webmethods
+  time: '2017-01-18T10:49:18.545465000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+  line: 109
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Dependency Exec[upgrade_webmethods] has failures: true'
+  source: "/Stage[main]/Webmethods::Designer/File[copy_localdev_jars]"
+  tags:
+  - notice
+  - file
+  - copy_localdev_jars
+  - class
+  - webmethods::designer
+  - webmethods
+  - designer
+  time: '2017-01-18T10:49:18.735319000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/designer.pp"
+  line: 15
+- !ruby/object:Puppet::Util::Log
+  level: :warning
+  message: Skipping because of failed dependencies
+  source: "/Stage[main]/Webmethods::Designer/File[copy_localdev_jars]"
+  tags:
+  - warning
+  - file
+  - copy_localdev_jars
+  - class
+  - webmethods::designer
+  - webmethods
+  - designer
+  time: '2017-01-18T10:49:18.735531000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/designer.pp"
+  line: 15
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Dependency Exec[upgrade_webmethods] has failures: true'
+  source: "/Stage[main]/Webmethods::Designer/File[/Applications/SoftwareAG/Designer/eclipse/dropins/plugins/com.sag.gcs.common.lm_1.0.5.201407211752.jar]"
+  tags:
+  - notice
+  - file
+  - copy_localdev_jars
+  - class
+  - webmethods::designer
+  - webmethods
+  - designer
+  time: '2017-01-18T10:49:18.736234000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :warning
+  message: Skipping because of failed dependencies
+  source: "/Stage[main]/Webmethods::Designer/File[/Applications/SoftwareAG/Designer/eclipse/dropins/plugins/com.sag.gcs.common.lm_1.0.5.201407211752.jar]"
+  tags:
+  - warning
+  - file
+  - copy_localdev_jars
+  - class
+  - webmethods::designer
+  - webmethods
+  - designer
+  time: '2017-01-18T10:49:18.736470000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Dependency Exec[upgrade_webmethods] has failures: true'
+  source: "/Stage[main]/Webmethods::Designer/File[/Applications/SoftwareAG/Designer/eclipse/dropins/plugins/com.sag.gcs.localdev_1.5.6.201509011745.jar]"
+  tags:
+  - notice
+  - file
+  - copy_localdev_jars
+  - class
+  - webmethods::designer
+  - webmethods
+  - designer
+  time: '2017-01-18T10:49:18.736984000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :warning
+  message: Skipping because of failed dependencies
+  source: "/Stage[main]/Webmethods::Designer/File[/Applications/SoftwareAG/Designer/eclipse/dropins/plugins/com.sag.gcs.localdev_1.5.6.201509011745.jar]"
+  tags:
+  - warning
+  - file
+  - copy_localdev_jars
+  - class
+  - webmethods::designer
+  - webmethods
+  - designer
+  time: '2017-01-18T10:49:18.737218000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Dependency Exec[upgrade_webmethods] has failures: true'
+  source: "/Stage[main]/Webmethods::Designer/File[/Applications/SoftwareAG/Designer/eclipse/dropins/plugins/com.sag.gcs.wmtestsuite_2.1.5.201306301542.jar]"
+  tags:
+  - notice
+  - file
+  - copy_localdev_jars
+  - class
+  - webmethods::designer
+  - webmethods
+  - designer
+  time: '2017-01-18T10:49:18.737745000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :warning
+  message: Skipping because of failed dependencies
+  source: "/Stage[main]/Webmethods::Designer/File[/Applications/SoftwareAG/Designer/eclipse/dropins/plugins/com.sag.gcs.wmtestsuite_2.1.5.201306301542.jar]"
+  tags:
+  - warning
+  - file
+  - copy_localdev_jars
+  - class
+  - webmethods::designer
+  - webmethods
+  - designer
+  time: '2017-01-18T10:49:18.737978000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Dependency Exec[upgrade_webmethods] has failures: true'
+  source: "/Stage[main]/Webmethods::Designer/File_line[set workspace]"
+  tags:
+  - notice
+  - file_line
+  - class
+  - webmethods::designer
+  - webmethods
+  - designer
+  time: '2017-01-18T10:49:18.738785000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/designer.pp"
+  line: 22
+- !ruby/object:Puppet::Util::Log
+  level: :warning
+  message: Skipping because of failed dependencies
+  source: "/Stage[main]/Webmethods::Designer/File_line[set workspace]"
+  tags:
+  - warning
+  - file_line
+  - class
+  - webmethods::designer
+  - webmethods
+  - designer
+  time: '2017-01-18T10:49:18.739016000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/designer.pp"
+  line: 22
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Dependency Exec[upgrade_webmethods] has failures: true'
+  source: "/Stage[main]/Webmethods::Designer/File[/Users/gassertm/workspace97]"
+  tags:
+  - notice
+  - file
+  - class
+  - webmethods::designer
+  - webmethods
+  - designer
+  time: '2017-01-18T10:49:18.739550000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/designer.pp"
+  line: 29
+- !ruby/object:Puppet::Util::Log
+  level: :warning
+  message: Skipping because of failed dependencies
+  source: "/Stage[main]/Webmethods::Designer/File[/Users/gassertm/workspace97]"
+  tags:
+  - warning
+  - file
+  - class
+  - webmethods::designer
+  - webmethods
+  - designer
+  time: '2017-01-18T10:49:18.739780000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/designer.pp"
+  line: 29
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Dependency Exec[upgrade_webmethods] has failures: true'
+  source: "/Stage[main]/Webmethods::Designer/File[/Users/gassertm/workspace97/.metadata]"
+  tags:
+  - notice
+  - file
+  - class
+  - webmethods::designer
+  - webmethods
+  - designer
+  time: '2017-01-18T10:49:18.740340000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/designer.pp"
+  line: 29
+- !ruby/object:Puppet::Util::Log
+  level: :warning
+  message: Skipping because of failed dependencies
+  source: "/Stage[main]/Webmethods::Designer/File[/Users/gassertm/workspace97/.metadata]"
+  tags:
+  - warning
+  - file
+  - class
+  - webmethods::designer
+  - webmethods
+  - designer
+  time: '2017-01-18T10:49:18.740570000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/designer.pp"
+  line: 29
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Dependency Exec[upgrade_webmethods] has failures: true'
+  source: "/Stage[main]/Webmethods::Designer/File[/Users/gassertm/workspace97/.metadata/.plugins]"
+  tags:
+  - notice
+  - file
+  - class
+  - webmethods::designer
+  - webmethods
+  - designer
+  time: '2017-01-18T10:49:18.741162000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/designer.pp"
+  line: 29
+- !ruby/object:Puppet::Util::Log
+  level: :warning
+  message: Skipping because of failed dependencies
+  source: "/Stage[main]/Webmethods::Designer/File[/Users/gassertm/workspace97/.metadata/.plugins]"
+  tags:
+  - warning
+  - file
+  - class
+  - webmethods::designer
+  - webmethods
+  - designer
+  time: '2017-01-18T10:49:18.741402000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/designer.pp"
+  line: 29
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Dependency Exec[upgrade_webmethods] has failures: true'
+  source: "/Stage[main]/Webmethods::Designer/File[/Users/gassertm/workspace97/.metadata/.plugins/com.softwareag.is.core]"
+  tags:
+  - notice
+  - file
+  - class
+  - webmethods::designer
+  - webmethods
+  - designer
+  time: '2017-01-18T10:49:18.742036000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/designer.pp"
+  line: 29
+- !ruby/object:Puppet::Util::Log
+  level: :warning
+  message: Skipping because of failed dependencies
+  source: "/Stage[main]/Webmethods::Designer/File[/Users/gassertm/workspace97/.metadata/.plugins/com.softwareag.is.core]"
+  tags:
+  - warning
+  - file
+  - class
+  - webmethods::designer
+  - webmethods
+  - designer
+  time: '2017-01-18T10:49:18.742271000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/designer.pp"
+  line: 29
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Dependency Exec[upgrade_webmethods] has failures: true'
+  source: "/Stage[main]/Webmethods::Designer/File[/Users/gassertm/workspace97/.metadata/.plugins/org.eclipse.core.runtime]"
+  tags:
+  - notice
+  - file
+  - class
+  - webmethods::designer
+  - webmethods
+  - designer
+  time: '2017-01-18T10:49:18.742860000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/designer.pp"
+  line: 29
+- !ruby/object:Puppet::Util::Log
+  level: :warning
+  message: Skipping because of failed dependencies
+  source: "/Stage[main]/Webmethods::Designer/File[/Users/gassertm/workspace97/.metadata/.plugins/org.eclipse.core.runtime]"
+  tags:
+  - warning
+  - file
+  - class
+  - webmethods::designer
+  - webmethods
+  - designer
+  time: '2017-01-18T10:49:18.743096000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/designer.pp"
+  line: 29
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Dependency Exec[upgrade_webmethods] has failures: true'
+  source: "/Stage[main]/Webmethods::Designer/File[server_connections]"
+  tags:
+  - notice
+  - file
+  - server_connections
+  - class
+  - webmethods::designer
+  - webmethods
+  - designer
+  time: '2017-01-18T10:49:18.743718000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/designer.pp"
+  line: 37
+- !ruby/object:Puppet::Util::Log
+  level: :warning
+  message: Skipping because of failed dependencies
+  source: "/Stage[main]/Webmethods::Designer/File[server_connections]"
+  tags:
+  - warning
+  - file
+  - server_connections
+  - class
+  - webmethods::designer
+  - webmethods
+  - designer
+  time: '2017-01-18T10:49:18.743960000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/designer.pp"
+  line: 37
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Dependency Exec[upgrade_webmethods] has failures: true'
+  source: "/Stage[main]/Webmethods::Designer/File[plugin_configurations]"
+  tags:
+  - notice
+  - file
+  - plugin_configurations
+  - class
+  - webmethods::designer
+  - webmethods
+  - designer
+  time: '2017-01-18T10:49:18.751801000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/designer.pp"
+  line: 43
+- !ruby/object:Puppet::Util::Log
+  level: :warning
+  message: Skipping because of failed dependencies
+  source: "/Stage[main]/Webmethods::Designer/File[plugin_configurations]"
+  tags:
+  - warning
+  - file
+  - plugin_configurations
+  - class
+  - webmethods::designer
+  - webmethods
+  - designer
+  time: '2017-01-18T10:49:18.752028000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/designer.pp"
+  line: 43
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Dependency Exec[upgrade_webmethods] has failures: true'
+  source: "/Stage[main]/Webmethods::Designer/File[/Users/gassertm/workspace97/.metadata/.plugins/org.eclipse.core.runtime/.settings/com.sag.gcs.localdev.prefs]"
+  tags:
+  - notice
+  - file
+  - plugin_configurations
+  - class
+  - webmethods::designer
+  - webmethods
+  - designer
+  time: '2017-01-18T10:49:18.752710000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :warning
+  message: Skipping because of failed dependencies
+  source: "/Stage[main]/Webmethods::Designer/File[/Users/gassertm/workspace97/.metadata/.plugins/org.eclipse.core.runtime/.settings/com.sag.gcs.localdev.prefs]"
+  tags:
+  - warning
+  - file
+  - plugin_configurations
+  - class
+  - webmethods::designer
+  - webmethods
+  - designer
+  time: '2017-01-18T10:49:18.752947000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Dependency Exec[upgrade_webmethods] has failures: true'
+  source: "/Stage[main]/Webmethods::Designer/File[/Users/gassertm/workspace97/.metadata/.plugins/org.eclipse.core.runtime/.settings/com.sag.gcs.wmtestsuite.prefs]"
+  tags:
+  - notice
+  - file
+  - plugin_configurations
+  - class
+  - webmethods::designer
+  - webmethods
+  - designer
+  time: '2017-01-18T10:49:18.753464000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :warning
+  message: Skipping because of failed dependencies
+  source: "/Stage[main]/Webmethods::Designer/File[/Users/gassertm/workspace97/.metadata/.plugins/org.eclipse.core.runtime/.settings/com.sag.gcs.wmtestsuite.prefs]"
+  tags:
+  - warning
+  - file
+  - plugin_configurations
+  - class
+  - webmethods::designer
+  - webmethods
+  - designer
+  time: '2017-01-18T10:49:18.753703000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Dependency Exec[upgrade_webmethods] has failures: true'
+  source: "/Stage[main]/Webmethods::Designer/File[webmethods_home]"
+  tags:
+  - notice
+  - file
+  - webmethods_home
+  - class
+  - webmethods::designer
+  - webmethods
+  - designer
+  time: '2017-01-18T10:49:18.754558000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/designer.pp"
+  line: 50
+- !ruby/object:Puppet::Util::Log
+  level: :warning
+  message: Skipping because of failed dependencies
+  source: "/Stage[main]/Webmethods::Designer/File[webmethods_home]"
+  tags:
+  - warning
+  - file
+  - webmethods_home
+  - class
+  - webmethods::designer
+  - webmethods
+  - designer
+  time: '2017-01-18T10:49:18.754794000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/designer.pp"
+  line: 50
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Dependency Exec[upgrade_webmethods] has failures: true'
+  source: "/Stage[main]/Webmethods::Integration_server/File[copy_jdbc_jar]"
+  tags:
+  - notice
+  - file
+  - copy_jdbc_jar
+  - class
+  - webmethods::integration_server
+  - webmethods
+  - integration_server
+  time: '2017-01-18T10:49:18.756226000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/integration_server.pp"
+  line: 19
+- !ruby/object:Puppet::Util::Log
+  level: :warning
+  message: Skipping because of failed dependencies
+  source: "/Stage[main]/Webmethods::Integration_server/File[copy_jdbc_jar]"
+  tags:
+  - warning
+  - file
+  - copy_jdbc_jar
+  - class
+  - webmethods::integration_server
+  - webmethods
+  - integration_server
+  time: '2017-01-18T10:49:18.756478000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/integration_server.pp"
+  line: 19
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Dependency Exec[upgrade_webmethods] has failures: true'
+  source: "/Stage[main]/Webmethods::Integration_server/File[service_interceptor_jar]"
+  tags:
+  - notice
+  - file
+  - service_interceptor_jar
+  - class
+  - webmethods::integration_server
+  - webmethods
+  - integration_server
+  time: '2017-01-18T10:49:18.757064000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/integration_server.pp"
+  line: 26
+- !ruby/object:Puppet::Util::Log
+  level: :warning
+  message: Skipping because of failed dependencies
+  source: "/Stage[main]/Webmethods::Integration_server/File[service_interceptor_jar]"
+  tags:
+  - warning
+  - file
+  - service_interceptor_jar
+  - class
+  - webmethods::integration_server
+  - webmethods
+  - integration_server
+  time: '2017-01-18T10:49:18.757309000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/integration_server.pp"
+  line: 26
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Dependency Exec[upgrade_webmethods] has failures: true'
+  source: "/Stage[main]/Webmethods::Integration_server/File[service_interceptor_config]"
+  tags:
+  - notice
+  - file
+  - service_interceptor_config
+  - class
+  - webmethods::integration_server
+  - webmethods
+  - integration_server
+  time: '2017-01-18T10:49:18.757866000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/integration_server.pp"
+  line: 31
+- !ruby/object:Puppet::Util::Log
+  level: :warning
+  message: Skipping because of failed dependencies
+  source: "/Stage[main]/Webmethods::Integration_server/File[service_interceptor_config]"
+  tags:
+  - warning
+  - file
+  - service_interceptor_config
+  - class
+  - webmethods::integration_server
+  - webmethods
+  - integration_server
+  time: '2017-01-18T10:49:18.758110000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/integration_server.pp"
+  line: 31
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Dependency Exec[upgrade_webmethods] has failures: true'
+  source: "/Stage[main]/Webmethods::Integration_server/File[server_constants]"
+  tags:
+  - notice
+  - file
+  - server_constants
+  - class
+  - webmethods::integration_server
+  - webmethods
+  - integration_server
+  time: '2017-01-18T10:49:18.758654000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/integration_server.pp"
+  line: 36
+- !ruby/object:Puppet::Util::Log
+  level: :warning
+  message: Skipping because of failed dependencies
+  source: "/Stage[main]/Webmethods::Integration_server/File[server_constants]"
+  tags:
+  - warning
+  - file
+  - server_constants
+  - class
+  - webmethods::integration_server
+  - webmethods
+  - integration_server
+  time: '2017-01-18T10:49:18.758896000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/integration_server.pp"
+  line: 36
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Dependency Exec[upgrade_webmethods] has failures: true'
+  source: "/Stage[main]/Webmethods::Integration_server/Exec[unzip_packages]"
+  tags:
+  - notice
+  - exec
+  - unzip_packages
+  - class
+  - webmethods::integration_server
+  - webmethods
+  - integration_server
+  time: '2017-01-18T10:49:18.759476000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/integration_server.pp"
+  line: 41
+- !ruby/object:Puppet::Util::Log
+  level: :warning
+  message: Skipping because of failed dependencies
+  source: "/Stage[main]/Webmethods::Integration_server/Exec[unzip_packages]"
+  tags:
+  - warning
+  - exec
+  - unzip_packages
+  - class
+  - webmethods::integration_server
+  - webmethods
+  - integration_server
+  time: '2017-01-18T10:49:18.759737000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/integration_server.pp"
+  line: 41
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Dependency Exec[upgrade_webmethods] has failures: true'
+  source: "/Stage[main]/Webmethods::Integration_server/File[service_mock_license]"
+  tags:
+  - notice
+  - file
+  - service_mock_license
+  - class
+  - webmethods::integration_server
+  - webmethods
+  - integration_server
+  time: '2017-01-18T10:49:18.760376000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/integration_server.pp"
+  line: 50
+- !ruby/object:Puppet::Util::Log
+  level: :warning
+  message: Skipping because of failed dependencies
+  source: "/Stage[main]/Webmethods::Integration_server/File[service_mock_license]"
+  tags:
+  - warning
+  - file
+  - service_mock_license
+  - class
+  - webmethods::integration_server
+  - webmethods
+  - integration_server
+  time: '2017-01-18T10:49:18.760617000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/integration_server.pp"
+  line: 50
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Dependency Exec[upgrade_webmethods] has failures: true'
+  source: "/Stage[main]/Webmethods::Integration_server/File[/Applications/SoftwareAG/IntegrationServer/instances/default/packages/__MACOSX/]"
+  tags:
+  - notice
+  - file
+  - class
+  - webmethods::integration_server
+  - webmethods
+  - integration_server
+  time: '2017-01-18T10:49:18.796623000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/integration_server.pp"
+  line: 59
+- !ruby/object:Puppet::Util::Log
+  level: :warning
+  message: Skipping because of failed dependencies
+  source: "/Stage[main]/Webmethods::Integration_server/File[/Applications/SoftwareAG/IntegrationServer/instances/default/packages/__MACOSX/]"
+  tags:
+  - warning
+  - file
+  - class
+  - webmethods::integration_server
+  - webmethods
+  - integration_server
+  time: '2017-01-18T10:49:18.796934000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/integration_server.pp"
+  line: 59
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Dependency Exec[upgrade_webmethods] has failures: true'
+  source: "/Stage[main]/Webmethods::Integration_server_startup/File[/Users/gassertm/Library/LaunchAgents/com.wwt.softwareag.integrationserver.plist]"
+  tags:
+  - notice
+  - file
+  - class
+  - webmethods::integration_server_startup
+  - webmethods
+  - integration_server_startup
+  - webmethods::integration_server
+  - integration_server
+  time: '2017-01-18T10:49:18.798854000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/integration_server_startup.pp"
+  line: 15
+- !ruby/object:Puppet::Util::Log
+  level: :warning
+  message: Skipping because of failed dependencies
+  source: "/Stage[main]/Webmethods::Integration_server_startup/File[/Users/gassertm/Library/LaunchAgents/com.wwt.softwareag.integrationserver.plist]"
+  tags:
+  - warning
+  - file
+  - class
+  - webmethods::integration_server_startup
+  - webmethods
+  - integration_server_startup
+  - webmethods::integration_server
+  - integration_server
+  time: '2017-01-18T10:49:18.799114000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/integration_server_startup.pp"
+  line: 15
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: 'Dependency Exec[upgrade_webmethods] has failures: true'
+  source: "/Stage[main]/Webmethods::Integration_server_startup/Exec[launchd_load]"
+  tags:
+  - notice
+  - exec
+  - launchd_load
+  - class
+  - webmethods::integration_server_startup
+  - webmethods
+  - integration_server_startup
+  - webmethods::integration_server
+  - integration_server
+  time: '2017-01-18T10:49:18.799876000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/integration_server_startup.pp"
+  line: 22
+- !ruby/object:Puppet::Util::Log
+  level: :warning
+  message: Skipping because of failed dependencies
+  source: "/Stage[main]/Webmethods::Integration_server_startup/Exec[launchd_load]"
+  tags:
+  - warning
+  - exec
+  - launchd_load
+  - class
+  - webmethods::integration_server_startup
+  - webmethods
+  - integration_server_startup
+  - webmethods::integration_server
+  - integration_server
+  time: '2017-01-18T10:49:18.800159000-06:00'
+  file: "/Users/gassertm/src/puppetry/webmethods/manifests/integration_server_startup.pp"
+  line: 22
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: executed successfully
+  source: "/Stage[main]/Webmethods/Wget::Fetch[download_upgrade_image]/Exec[wget-download_upgrade_image]/returns"
+  tags:
+  - notice
+  - exec
+  - wget-download_upgrade_image
+  - wget::fetch
+  - wget
+  - fetch
+  - download_upgrade_image
+  - class
+  - webmethods
+  time: '2017-01-18T10:49:38.391910000-06:00'
+  file: "/Users/gassertm/.puppetlabs/etc/code/modules/wget/manifests/fetch.pp"
+  line: 129
+- !ruby/object:Puppet::Util::Log
+  level: :info
+  message: Unscheduling all events on Class[Webmethods]
+  source: Class[Webmethods]
+  tags:
+  - info
+  - completed_class
+  - webmethods
+  time: '2017-01-18T10:49:38.394136000-06:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: Applied catalog in 114.63 seconds
+  source: Puppet
+  tags:
+  - notice
+  time: '2017-01-18T10:49:38.443918000-06:00'
+  file: 
+  line: 
+resource_statuses:
+  File[copy_files_locally]: !ruby/object:Puppet::Resource::Status
+    title: copy_files_locally
+    file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+    line: 36
+    resource: File[copy_files_locally]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[copy_files_locally]
+    evaluation_time: 0.001288
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.197989000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :directory
+      historical_value: 
+      message: created
+      name: :directory_created
+      status: success
+      time: 2017-01-18 10:47:44.198708000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/95Licenses]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/95Licenses"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/95Licenses]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/95Licenses]
+    evaluation_time: 0.001008
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.200094000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :directory
+      historical_value: 
+      message: created
+      name: :directory_created
+      status: success
+      time: 2017-01-18 10:47:44.200634000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/95Licenses/wwtAi_WmPipelineCapture.txt]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/95Licenses/wwtAi_WmPipelineCapture.txt"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/95Licenses/wwtAi_WmPipelineCapture.txt]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/95Licenses/wwtAi_WmPipelineCapture.txt]
+    evaluation_time: 0.094357
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.201787000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}ba906563db7ff79f08eeb01a4a30114a'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.202457000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/95Licenses/wwtAi_WmProfiler.txt]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/95Licenses/wwtAi_WmProfiler.txt"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/95Licenses/wwtAi_WmProfiler.txt]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/95Licenses/wwtAi_WmProfiler.txt]
+    evaluation_time: 0.002651
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.296724000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}e71903c7bf52feffd6a6a85857d26333'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.297460000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/95Licenses/wwtAi_WmServiceMock.txt]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/95Licenses/wwtAi_WmServiceMock.txt"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/95Licenses/wwtAi_WmServiceMock.txt]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/95Licenses/wwtAi_WmServiceMock.txt]
+    evaluation_time: 0.002543
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.299944000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}ebef3380ef85d0c63a9fc0a37574ec95'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.300652000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/95Licenses/wwtAi_localdev.txt]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/95Licenses/wwtAi_localdev.txt"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/95Licenses/wwtAi_localdev.txt]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/95Licenses/wwtAi_localdev.txt]
+    evaluation_time: 0.002748
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.303051000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}401d85d15f7c1f4278be81c217e474ec'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.303729000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/95Licenses/wwtAi_wmisprofiler.txt]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/95Licenses/wwtAi_wmisprofiler.txt"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/95Licenses/wwtAi_wmisprofiler.txt]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/95Licenses/wwtAi_wmisprofiler.txt]
+    evaluation_time: 0.002332
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.306404000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}d3001e8585bfdd2dd1dd41c798f95ff3'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.307092000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/95Licenses/wwtAi_wmtestsuite.txt]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/95Licenses/wwtAi_wmtestsuite.txt"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/95Licenses/wwtAi_wmtestsuite.txt]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/95Licenses/wwtAi_wmtestsuite.txt]
+    evaluation_time: 0.002372
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.309227000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}e171d7c6be94285b723ff55dec9dd1bc'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.309848000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/PIE90.xml]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/PIE90.xml"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/PIE90.xml]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/PIE90.xml]
+    evaluation_time: 0.002564
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.312173000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}f0762b741a3d5afc1ec6a028c62d052b'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.312809000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/designer]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/designer"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/designer]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/designer]
+    evaluation_time: 0.001166
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.315307000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :directory
+      historical_value: 
+      message: created
+      name: :directory_created
+      status: success
+      time: 2017-01-18 10:47:44.315907000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/designer/logicalServer.properties]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/designer/logicalServer.properties"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/designer/logicalServer.properties]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/designer/logicalServer.properties]
+    evaluation_time: 0.002487
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.317033000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}023c6ce152b9a2e70f37f30aa2e281fb'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.317817000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/designer/settings]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/designer/settings"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/designer/settings]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/designer/settings]
+    evaluation_time: 0.001084
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.320039000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :directory
+      historical_value: 
+      message: created
+      name: :directory_created
+      status: success
+      time: 2017-01-18 10:47:44.320616000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/designer/settings/com.sag.gcs.localdev.prefs]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/designer/settings/com.sag.gcs.localdev.prefs"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/designer/settings/com.sag.gcs.localdev.prefs]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/designer/settings/com.sag.gcs.localdev.prefs]
+    evaluation_time: 0.002274
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.321633000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}59d1793381c2818fe08b3603a0279143'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.322226000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/designer/settings/com.sag.gcs.wmtestsuite.prefs]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/designer/settings/com.sag.gcs.wmtestsuite.prefs"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/designer/settings/com.sag.gcs.wmtestsuite.prefs]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/designer/settings/com.sag.gcs.wmtestsuite.prefs]
+    evaluation_time: 0.002494
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.324336000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}2ccde5da54768e5456316859645af8a9'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.324948000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/localdev]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/localdev"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/localdev]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/localdev]
+    evaluation_time: 0.001103
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.327340000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :directory
+      historical_value: 
+      message: created
+      name: :directory_created
+      status: success
+      time: 2017-01-18 10:47:44.327931000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/localdev/com.sag.gcs.common.lm_1.0.5.201407211752.jar]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/localdev/com.sag.gcs.common.lm_1.0.5.201407211752.jar"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/localdev/com.sag.gcs.common.lm_1.0.5.201407211752.jar]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/localdev/com.sag.gcs.common.lm_1.0.5.201407211752.jar]
+    evaluation_time: 0.00297
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.329134000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}cdb0d3ee16d3b83fb753f7dc8646bd15'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.329869000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/localdev/com.sag.gcs.localdev_1.5.6.201509011745.jar]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/localdev/com.sag.gcs.localdev_1.5.6.201509011745.jar"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/localdev/com.sag.gcs.localdev_1.5.6.201509011745.jar]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/localdev/com.sag.gcs.localdev_1.5.6.201509011745.jar]
+    evaluation_time: 0.066985
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.332743000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}ee6b1e77e2a87f41b616e7af77bc842b'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.333549000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/localdev/com.sag.gcs.wmtestsuite_2.1.5.201306301542.jar]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/localdev/com.sag.gcs.wmtestsuite_2.1.5.201306301542.jar"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/localdev/com.sag.gcs.wmtestsuite_2.1.5.201306301542.jar]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/localdev/com.sag.gcs.wmtestsuite_2.1.5.201306301542.jar]
+    evaluation_time: 0.134907
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.400202000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}58625c22cf3a41eda5334c13a98b2d2b'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.400903000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/ojdbc6.jar]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/ojdbc6.jar"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/ojdbc6.jar]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/ojdbc6.jar]
+    evaluation_time: 0.030872
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.535626000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}76852c42c44401f44d26319a74e55f5b'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.536259000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor]
+    evaluation_time: 0.001221
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.567048000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :directory
+      historical_value: 
+      message: created
+      name: :directory_created
+      status: success
+      time: 2017-01-18 10:47:44.567739000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/config]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/config"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/config]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/config]
+    evaluation_time: 0.001432
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.568906000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :directory
+      historical_value: 
+      message: created
+      name: :directory_created
+      status: success
+      time: 2017-01-18 10:47:44.569487000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/config/invokemanager.cnf]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/config/invokemanager.cnf"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/config/invokemanager.cnf]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/config/invokemanager.cnf]
+    evaluation_time: 0.002936
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.571089000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}6ca9a281e51374cd711b94882c9e329c'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.571926000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/lib]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/lib"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/lib]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/lib]
+    evaluation_time: 0.00149
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.574686000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :directory
+      historical_value: 
+      message: created
+      name: :directory_created
+      status: success
+      time: 2017-01-18 10:47:44.575509000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/lib/jars]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/lib/jars"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/lib/jars]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/lib/jars]
+    evaluation_time: 0.001624
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.576979000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :directory
+      historical_value: 
+      message: created
+      name: :directory_created
+      status: success
+      time: 2017-01-18 10:47:44.577892000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/lib/jars/serviceInterceptor.jar]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/lib/jars/serviceInterceptor.jar"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/lib/jars/serviceInterceptor.jar]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/lib/jars/serviceInterceptor.jar]
+    evaluation_time: 0.005658
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.580133000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}275747fb76c0aceb6986bfc2b3e29cdf'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.580935000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/packages]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/packages"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/packages]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/packages]
+    evaluation_time: 0.001189
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.586778000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :directory
+      historical_value: 
+      message: created
+      name: :directory_created
+      status: success
+      time: 2017-01-18 10:47:44.587449000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/packages/WmServiceMock"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/packages/WmServiceMock]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/packages/WmServiceMock]
+    evaluation_time: 0.001029
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.588706000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :directory
+      historical_value: 
+      message: created
+      name: :directory_created
+      status: success
+      time: 2017-01-18 10:47:44.589276000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock.zip]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/packages/WmServiceMock.zip"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/packages/WmServiceMock.zip]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/packages/WmServiceMock.zip]
+    evaluation_time: 0.002707
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.590565000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}70c7b805d9e95b3760c5d1bb588722d1'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.591255000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/code]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/packages/WmServiceMock/code"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/code]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/code]
+    evaluation_time: 0.001135
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.593846000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :directory
+      historical_value: 
+      message: created
+      name: :directory_created
+      status: success
+      time: 2017-01-18 10:47:44.594462000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/code/classes]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/packages/WmServiceMock/code/classes"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/code/classes]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/code/classes]
+    evaluation_time: 0.001006
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.595485000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :directory
+      historical_value: 
+      message: created
+      name: :directory_created
+      status: success
+      time: 2017-01-18 10:47:44.596026000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/code/classes/wm]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/packages/WmServiceMock/code/classes/wm"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/code/classes/wm]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/code/classes/wm]
+    evaluation_time: 0.00156
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.596943000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :directory
+      historical_value: 
+      message: created
+      name: :directory_created
+      status: success
+      time: 2017-01-18 10:47:44.597547000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/code/classes/wm/ps]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/packages/WmServiceMock/code/classes/wm/ps"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/code/classes/wm/ps]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/code/classes/wm/ps]
+    evaluation_time: 0.001142
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.599393000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :directory
+      historical_value: 
+      message: created
+      name: :directory_created
+      status: success
+      time: 2017-01-18 10:47:44.599997000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/code/classes/wm/ps/serviceMock.class]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/packages/WmServiceMock/code/classes/wm/ps/serviceMock.class"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/code/classes/wm/ps/serviceMock.class]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/code/classes/wm/ps/serviceMock.class]
+    evaluation_time: 0.002368
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.601174000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}6a36912061083e76c64f16c92bd50eb5'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.601789000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/config]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/packages/WmServiceMock/config"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/config]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/config]
+    evaluation_time: 0.001009
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.604044000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :directory
+      historical_value: 
+      message: created
+      name: :directory_created
+      status: success
+      time: 2017-01-18 10:47:44.604579000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/config/license.txt]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/packages/WmServiceMock/config/license.txt"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/config/license.txt]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/config/license.txt]
+    evaluation_time: 0.002218
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.605510000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}fa12c86a49d6ec05daa9c153e591216f'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.606072000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/manifest.v3]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/packages/WmServiceMock/manifest.v3"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/manifest.v3]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/manifest.v3]
+    evaluation_time: 0.002356
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.608183000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}2958a272b07eac42cc5ad4c9fb82a09e'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.608768000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns]
+    evaluation_time: 0.001048
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.611019000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :directory
+      historical_value: 
+      message: created
+      name: :directory_created
+      status: success
+      time: 2017-01-18 10:47:44.611572000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm]
+    evaluation_time: 0.000928
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.612564000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :directory
+      historical_value: 
+      message: created
+      name: :directory_created
+      status: success
+      time: 2017-01-18 10:47:44.613076000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/node.idf]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/node.idf"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/node.idf]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/node.idf]
+    evaluation_time: 0.002874
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.614080000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}b6fb8de8e44eb9727cad772922daa38a'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.614785000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps]
+    evaluation_time: 0.001224
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.617448000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :directory
+      historical_value: 
+      message: created
+      name: :directory_created
+      status: success
+      time: 2017-01-18 10:47:44.618070000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/node.idf]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/node.idf"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/node.idf]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/node.idf]
+    evaluation_time: 0.002735
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.619425000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}f4cb56e319a75ebe9583fdba4f0b0887'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.620255000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock]
+    evaluation_time: 0.00116
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.623953000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :directory
+      historical_value: 
+      message: created
+      name: :directory_created
+      status: success
+      time: 2017-01-18 10:47:44.624618000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/clearAllMocks]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/clearAllMocks"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/clearAllMocks]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/clearAllMocks]
+    evaluation_time: 0.001146
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.625847000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :directory
+      historical_value: 
+      message: created
+      name: :directory_created
+      status: success
+      time: 2017-01-18 10:47:44.626451000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/clearAllMocks/java.frag]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/clearAllMocks/java.frag"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/clearAllMocks/java.frag]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/clearAllMocks/java.frag]
+    evaluation_time: 0.005021
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.627470000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}c5373ac4c6521c34d4ca0800b1a7382f'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.628020000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/clearAllMocks/node.ndf]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/clearAllMocks/node.ndf"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/clearAllMocks/node.ndf]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/clearAllMocks/node.ndf]
+    evaluation_time: 0.002656
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.633505000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}6be8cc39bd063ae52adfb1eeb4102be7'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.634279000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/clearMock]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/clearMock"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/clearMock]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/clearMock]
+    evaluation_time: 0.001099
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.636638000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :directory
+      historical_value: 
+      message: created
+      name: :directory_created
+      status: success
+      time: 2017-01-18 10:47:44.637206000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/clearMock/java.frag]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/clearMock/java.frag"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/clearMock/java.frag]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/clearMock/java.frag]
+    evaluation_time: 0.002321
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.638256000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}06fa75342b472a403a9c70e41494167d'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.638828000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/clearMock/node.ndf]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/clearMock/node.ndf"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/clearMock/node.ndf]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/clearMock/node.ndf]
+    evaluation_time: 0.002453
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.641079000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}239af8558375d246d8c3a3fe9c5a9b33'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.641729000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/getMockedServices]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/getMockedServices"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/getMockedServices]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/getMockedServices]
+    evaluation_time: 0.001186
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.644056000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :directory
+      historical_value: 
+      message: created
+      name: :directory_created
+      status: success
+      time: 2017-01-18 10:47:44.644676000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/getMockedServices/java.frag]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/getMockedServices/java.frag"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/getMockedServices/java.frag]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/getMockedServices/java.frag]
+    evaluation_time: 0.002776
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.645815000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}c180e11abf0bdef7705fe388407a3a7c'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.646675000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/getMockedServices/node.ndf]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/getMockedServices/node.ndf"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/getMockedServices/node.ndf]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/getMockedServices/node.ndf]
+    evaluation_time: 0.002634
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.649137000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}82fcd85e7e1f2fc4565d83058d48bdd4'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.649857000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/loadMock]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/loadMock"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/loadMock]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/loadMock]
+    evaluation_time: 0.001139
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.652321000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :directory
+      historical_value: 
+      message: created
+      name: :directory_created
+      status: success
+      time: 2017-01-18 10:47:44.652925000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/loadMock/java.frag]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/loadMock/java.frag"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/loadMock/java.frag]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/loadMock/java.frag]
+    evaluation_time: 0.002623
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.654163000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}24a59aae8d08545ac576fad19f61fbad'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.654859000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/loadMock/node.ndf]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/loadMock/node.ndf"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/loadMock/node.ndf]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/loadMock/node.ndf]
+    evaluation_time: 0.002964
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.657340000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}54347edad610d8760fafcc0a26fd7feb'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.657969000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/node.idf]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/node.idf"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/node.idf]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/node.idf]
+    evaluation_time: 0.003592
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.660971000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}8d0412d1dc132706cbf30cee0c876c04'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.662562000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/resumeMocks]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/resumeMocks"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/resumeMocks]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/resumeMocks]
+    evaluation_time: 0.001654
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.665362000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :directory
+      historical_value: 
+      message: created
+      name: :directory_created
+      status: success
+      time: 2017-01-18 10:47:44.666283000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/resumeMocks/java.frag]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/resumeMocks/java.frag"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/resumeMocks/java.frag]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/resumeMocks/java.frag]
+    evaluation_time: 0.004142
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.667825000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}4b508e1f1e7c8b57d3e5faa347f8e76e'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.668578000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/resumeMocks/node.ndf]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/resumeMocks/node.ndf"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/resumeMocks/node.ndf]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/resumeMocks/node.ndf]
+    evaluation_time: 0.002545
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.672463000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}f7ad4079099e2c31a2f78cc620077b97'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.673182000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/suspendMocks]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/suspendMocks"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/suspendMocks]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/suspendMocks]
+    evaluation_time: 0.001199
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.675548000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :directory
+      historical_value: 
+      message: created
+      name: :directory_created
+      status: success
+      time: 2017-01-18 10:47:44.676173000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/suspendMocks/java.frag]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/suspendMocks/java.frag"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/suspendMocks/java.frag]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/suspendMocks/java.frag]
+    evaluation_time: 0.006026
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.677292000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}921baec659de8122cf50fd9f3a61eba3'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.678011000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/suspendMocks/node.ndf]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/suspendMocks/node.ndf"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/suspendMocks/node.ndf]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/suspendMocks/node.ndf]
+    evaluation_time: 0.003281
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.683956000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}f7ad4079099e2c31a2f78cc620077b97'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.684954000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMockSamples.zip]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/service_interceptor/packages/WmServiceMockSamples.zip"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/service_interceptor/packages/WmServiceMockSamples.zip]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/service_interceptor/packages/WmServiceMockSamples.zip]
+    evaluation_time: 0.005553
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.687822000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}8f1cad4e6990536726b855493254c234'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.688860000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[/tmp/webMethods/wwt_server.properties]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/webMethods/wwt_server.properties"
+    file: 
+    line: 
+    resource: File[/tmp/webMethods/wwt_server.properties]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[/tmp/webMethods/wwt_server.properties]
+    evaluation_time: 0.002344
+    tags:
+    - file
+    - copy_files_locally
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.693880000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}fde64e54f15024810cd19a7bf542ea7e'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.694549000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[build_installScript]: !ruby/object:Puppet::Resource::Status
+    title: build_installScript
+    file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+    line: 45
+    resource: File[build_installScript]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[build_installScript]
+    evaluation_time: 0.002588
+    tags:
+    - file
+    - build_installscript
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.697994000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}879e4c1248e9870e8616b92fc97b1a22'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.698818000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[build_upgradeScript]: !ruby/object:Puppet::Resource::Status
+    title: build_upgradeScript
+    file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+    line: 53
+    resource: File[build_upgradeScript]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - File[build_upgradeScript]
+    evaluation_time: 0.002463
+    tags:
+    - file
+    - build_upgradescript
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.701289000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: ensure
+      previous_value: :absent
+      desired_value: :file
+      historical_value: 
+      message: defined content as '{md5}44ebfab098a498412aeac1525a366639'
+      name: :file_created
+      status: success
+      time: 2017-01-18 10:47:44.702059000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  Exec[wget-download_installer]: !ruby/object:Puppet::Resource::Status
+    title: wget-download_installer
+    file: "/Users/gassertm/.puppetlabs/etc/code/modules/wget/manifests/fetch.pp"
+    line: 129
+    resource: Exec[wget-download_installer]
+    resource_type: Exec
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - Wget::Fetch[download_installer]
+    - Exec[wget-download_installer]
+    evaluation_time: 0.180386
+    tags:
+    - exec
+    - wget-download_installer
+    - wget::fetch
+    - wget
+    - fetch
+    - download_installer
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.706482000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: returns
+      previous_value: :notrun
+      desired_value:
+      - '0'
+      historical_value: 
+      message: executed successfully
+      name: :executed_command
+      status: success
+      time: 2017-01-18 10:47:44.726040000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  Exec[wget-download_image]: !ruby/object:Puppet::Resource::Status
+    title: wget-download_image
+    file: "/Users/gassertm/.puppetlabs/etc/code/modules/wget/manifests/fetch.pp"
+    line: 129
+    resource: Exec[wget-download_image]
+    resource_type: Exec
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - Wget::Fetch[download_image]
+    - Exec[wget-download_image]
+    evaluation_time: 80.584217
+    tags:
+    - exec
+    - wget-download_image
+    - wget::fetch
+    - wget
+    - fetch
+    - download_image
+    - class
+    - webmethods
+    time: '2017-01-18T10:47:44.888705000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: returns
+      previous_value: :notrun
+      desired_value:
+      - '0'
+      historical_value: 
+      message: executed successfully
+      name: :executed_command
+      status: success
+      time: 2017-01-18 10:47:44.904868000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  Exec[validate_image]: !ruby/object:Puppet::Resource::Status
+    title: validate_image
+    file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+    line: 79
+    resource: Exec[validate_image]
+    resource_type: Exec
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - Exec[validate_image]
+    evaluation_time: 4.462791
+    tags:
+    - exec
+    - validate_image
+    - class
+    - webmethods
+    time: '2017-01-18T10:49:05.474780000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: returns
+      previous_value: :notrun
+      desired_value:
+      - '0'
+      historical_value: 
+      message: executed successfully
+      name: :executed_command
+      status: success
+      time: 2017-01-18 10:49:05.475447000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  Exec[check_image_valid]: !ruby/object:Puppet::Resource::Status
+    title: check_image_valid
+    file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+    line: 88
+    resource: Exec[check_image_valid]
+    resource_type: Exec
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - Exec[check_image_valid]
+    evaluation_time: 0.0283
+    tags:
+    - exec
+    - check_image_valid
+    - class
+    - webmethods
+    time: '2017-01-18T10:49:09.938420000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: returns
+      previous_value: :notrun
+      desired_value:
+      - '0'
+      historical_value: 
+      message: executed successfully
+      name: :executed_command
+      status: success
+      time: 2017-01-18 10:49:09.939475000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  Exec[install_webmethods]: !ruby/object:Puppet::Resource::Status
+    title: install_webmethods
+    file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+    line: 99
+    resource: Exec[install_webmethods]
+    resource_type: Exec
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - Exec[install_webmethods]
+    evaluation_time: 0.000391
+    tags:
+    - exec
+    - install_webmethods
+    - class
+    - webmethods
+    time: '2017-01-18T10:49:09.967658000-06:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: false
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  Exec[upgrade_webmethods]: !ruby/object:Puppet::Resource::Status
+    title: upgrade_webmethods
+    file: "/Users/gassertm/src/puppetry/webmethods/manifests/init.pp"
+    line: 109
+    resource: Exec[upgrade_webmethods]
+    resource_type: Exec
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - Exec[upgrade_webmethods]
+    evaluation_time: 8.577331
+    tags:
+    - exec
+    - upgrade_webmethods
+    - class
+    - webmethods
+    time: '2017-01-18T10:49:09.968484000-06:00'
+    failed: true
+    changed: false
+    out_of_sync: true
+    skipped: false
+    change_count: 0
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: returns
+      previous_value: :notrun
+      desired_value:
+      - '0'
+      historical_value: 
+      message: 'change from notrun to 0 failed: /Applications/SoftwareAG/UpdateManager/bin/UpdateManagerCMD.sh
+        -readScript /tmp/webMethods//updateScript returned 255 instead of one of [0]'
+      name: :executed_command
+      status: failure
+      time: 2017-01-18 10:49:18.545285000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  File[copy_localdev_jars]: !ruby/object:Puppet::Resource::Status
+    title: copy_localdev_jars
+    file: "/Users/gassertm/src/puppetry/webmethods/manifests/designer.pp"
+    line: 15
+    resource: File[copy_localdev_jars]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods::Designer
+    - File[copy_localdev_jars]
+    evaluation_time: 
+    tags:
+    - file
+    - copy_localdev_jars
+    - class
+    - webmethods::designer
+    - webmethods
+    - designer
+    time: '2017-01-18T10:49:18.735205000-06:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: true
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  File[/Applications/SoftwareAG/Designer/eclipse/dropins/plugins/com.sag.gcs.common.lm_1.0.5.201407211752.jar]: !ruby/object:Puppet::Resource::Status
+    title: "/Applications/SoftwareAG/Designer/eclipse/dropins/plugins/com.sag.gcs.common.lm_1.0.5.201407211752.jar"
+    file: 
+    line: 
+    resource: File[/Applications/SoftwareAG/Designer/eclipse/dropins/plugins/com.sag.gcs.common.lm_1.0.5.201407211752.jar]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods::Designer
+    - File[/Applications/SoftwareAG/Designer/eclipse/dropins/plugins/com.sag.gcs.common.lm_1.0.5.201407211752.jar]
+    evaluation_time: 
+    tags:
+    - file
+    - copy_localdev_jars
+    - class
+    - webmethods::designer
+    - webmethods
+    - designer
+    time: '2017-01-18T10:49:18.736143000-06:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: true
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  File[/Applications/SoftwareAG/Designer/eclipse/dropins/plugins/com.sag.gcs.localdev_1.5.6.201509011745.jar]: !ruby/object:Puppet::Resource::Status
+    title: "/Applications/SoftwareAG/Designer/eclipse/dropins/plugins/com.sag.gcs.localdev_1.5.6.201509011745.jar"
+    file: 
+    line: 
+    resource: File[/Applications/SoftwareAG/Designer/eclipse/dropins/plugins/com.sag.gcs.localdev_1.5.6.201509011745.jar]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods::Designer
+    - File[/Applications/SoftwareAG/Designer/eclipse/dropins/plugins/com.sag.gcs.localdev_1.5.6.201509011745.jar]
+    evaluation_time: 
+    tags:
+    - file
+    - copy_localdev_jars
+    - class
+    - webmethods::designer
+    - webmethods
+    - designer
+    time: '2017-01-18T10:49:18.736902000-06:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: true
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  File[/Applications/SoftwareAG/Designer/eclipse/dropins/plugins/com.sag.gcs.wmtestsuite_2.1.5.201306301542.jar]: !ruby/object:Puppet::Resource::Status
+    title: "/Applications/SoftwareAG/Designer/eclipse/dropins/plugins/com.sag.gcs.wmtestsuite_2.1.5.201306301542.jar"
+    file: 
+    line: 
+    resource: File[/Applications/SoftwareAG/Designer/eclipse/dropins/plugins/com.sag.gcs.wmtestsuite_2.1.5.201306301542.jar]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods::Designer
+    - File[/Applications/SoftwareAG/Designer/eclipse/dropins/plugins/com.sag.gcs.wmtestsuite_2.1.5.201306301542.jar]
+    evaluation_time: 
+    tags:
+    - file
+    - copy_localdev_jars
+    - class
+    - webmethods::designer
+    - webmethods
+    - designer
+    time: '2017-01-18T10:49:18.737664000-06:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: true
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  File_line[set workspace]: !ruby/object:Puppet::Resource::Status
+    title: set workspace
+    file: "/Users/gassertm/src/puppetry/webmethods/manifests/designer.pp"
+    line: 22
+    resource: File_line[set workspace]
+    resource_type: File_line
+    containment_path:
+    - Stage[main]
+    - Webmethods::Designer
+    - File_line[set workspace]
+    evaluation_time: 
+    tags:
+    - file_line
+    - class
+    - webmethods::designer
+    - webmethods
+    - designer
+    time: '2017-01-18T10:49:18.738685000-06:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: true
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  File[/Users/gassertm/workspace97]: !ruby/object:Puppet::Resource::Status
+    title: "/Users/gassertm/workspace97"
+    file: "/Users/gassertm/src/puppetry/webmethods/manifests/designer.pp"
+    line: 29
+    resource: File[/Users/gassertm/workspace97]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods::Designer
+    - File[/Users/gassertm/workspace97]
+    evaluation_time: 
+    tags:
+    - file
+    - class
+    - webmethods::designer
+    - webmethods
+    - designer
+    time: '2017-01-18T10:49:18.739459000-06:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: true
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  File[/Users/gassertm/workspace97/.metadata]: !ruby/object:Puppet::Resource::Status
+    title: "/Users/gassertm/workspace97/.metadata"
+    file: "/Users/gassertm/src/puppetry/webmethods/manifests/designer.pp"
+    line: 29
+    resource: File[/Users/gassertm/workspace97/.metadata]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods::Designer
+    - File[/Users/gassertm/workspace97/.metadata]
+    evaluation_time: 
+    tags:
+    - file
+    - class
+    - webmethods::designer
+    - webmethods
+    - designer
+    time: '2017-01-18T10:49:18.740251000-06:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: true
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  File[/Users/gassertm/workspace97/.metadata/.plugins]: !ruby/object:Puppet::Resource::Status
+    title: "/Users/gassertm/workspace97/.metadata/.plugins"
+    file: "/Users/gassertm/src/puppetry/webmethods/manifests/designer.pp"
+    line: 29
+    resource: File[/Users/gassertm/workspace97/.metadata/.plugins]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods::Designer
+    - File[/Users/gassertm/workspace97/.metadata/.plugins]
+    evaluation_time: 
+    tags:
+    - file
+    - class
+    - webmethods::designer
+    - webmethods
+    - designer
+    time: '2017-01-18T10:49:18.741067000-06:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: true
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  File[/Users/gassertm/workspace97/.metadata/.plugins/com.softwareag.is.core]: !ruby/object:Puppet::Resource::Status
+    title: "/Users/gassertm/workspace97/.metadata/.plugins/com.softwareag.is.core"
+    file: "/Users/gassertm/src/puppetry/webmethods/manifests/designer.pp"
+    line: 29
+    resource: File[/Users/gassertm/workspace97/.metadata/.plugins/com.softwareag.is.core]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods::Designer
+    - File[/Users/gassertm/workspace97/.metadata/.plugins/com.softwareag.is.core]
+    evaluation_time: 
+    tags:
+    - file
+    - class
+    - webmethods::designer
+    - webmethods
+    - designer
+    time: '2017-01-18T10:49:18.741942000-06:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: true
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  File[/Users/gassertm/workspace97/.metadata/.plugins/org.eclipse.core.runtime]: !ruby/object:Puppet::Resource::Status
+    title: "/Users/gassertm/workspace97/.metadata/.plugins/org.eclipse.core.runtime"
+    file: "/Users/gassertm/src/puppetry/webmethods/manifests/designer.pp"
+    line: 29
+    resource: File[/Users/gassertm/workspace97/.metadata/.plugins/org.eclipse.core.runtime]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods::Designer
+    - File[/Users/gassertm/workspace97/.metadata/.plugins/org.eclipse.core.runtime]
+    evaluation_time: 
+    tags:
+    - file
+    - class
+    - webmethods::designer
+    - webmethods
+    - designer
+    time: '2017-01-18T10:49:18.742767000-06:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: true
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  File[server_connections]: !ruby/object:Puppet::Resource::Status
+    title: server_connections
+    file: "/Users/gassertm/src/puppetry/webmethods/manifests/designer.pp"
+    line: 37
+    resource: File[server_connections]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods::Designer
+    - File[server_connections]
+    evaluation_time: 
+    tags:
+    - file
+    - server_connections
+    - class
+    - webmethods::designer
+    - webmethods
+    - designer
+    time: '2017-01-18T10:49:18.743607000-06:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: true
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  File[plugin_configurations]: !ruby/object:Puppet::Resource::Status
+    title: plugin_configurations
+    file: "/Users/gassertm/src/puppetry/webmethods/manifests/designer.pp"
+    line: 43
+    resource: File[plugin_configurations]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods::Designer
+    - File[plugin_configurations]
+    evaluation_time: 
+    tags:
+    - file
+    - plugin_configurations
+    - class
+    - webmethods::designer
+    - webmethods
+    - designer
+    time: '2017-01-18T10:49:18.751690000-06:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: true
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  File[/Users/gassertm/workspace97/.metadata/.plugins/org.eclipse.core.runtime/.settings/com.sag.gcs.localdev.prefs]: !ruby/object:Puppet::Resource::Status
+    title: "/Users/gassertm/workspace97/.metadata/.plugins/org.eclipse.core.runtime/.settings/com.sag.gcs.localdev.prefs"
+    file: 
+    line: 
+    resource: File[/Users/gassertm/workspace97/.metadata/.plugins/org.eclipse.core.runtime/.settings/com.sag.gcs.localdev.prefs]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods::Designer
+    - File[/Users/gassertm/workspace97/.metadata/.plugins/org.eclipse.core.runtime/.settings/com.sag.gcs.localdev.prefs]
+    evaluation_time: 
+    tags:
+    - file
+    - plugin_configurations
+    - class
+    - webmethods::designer
+    - webmethods
+    - designer
+    time: '2017-01-18T10:49:18.752618000-06:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: true
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  File[/Users/gassertm/workspace97/.metadata/.plugins/org.eclipse.core.runtime/.settings/com.sag.gcs.wmtestsuite.prefs]: !ruby/object:Puppet::Resource::Status
+    title: "/Users/gassertm/workspace97/.metadata/.plugins/org.eclipse.core.runtime/.settings/com.sag.gcs.wmtestsuite.prefs"
+    file: 
+    line: 
+    resource: File[/Users/gassertm/workspace97/.metadata/.plugins/org.eclipse.core.runtime/.settings/com.sag.gcs.wmtestsuite.prefs]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods::Designer
+    - File[/Users/gassertm/workspace97/.metadata/.plugins/org.eclipse.core.runtime/.settings/com.sag.gcs.wmtestsuite.prefs]
+    evaluation_time: 
+    tags:
+    - file
+    - plugin_configurations
+    - class
+    - webmethods::designer
+    - webmethods
+    - designer
+    time: '2017-01-18T10:49:18.753381000-06:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: true
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  File[webmethods_home]: !ruby/object:Puppet::Resource::Status
+    title: webmethods_home
+    file: "/Users/gassertm/src/puppetry/webmethods/manifests/designer.pp"
+    line: 50
+    resource: File[webmethods_home]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods::Designer
+    - File[webmethods_home]
+    evaluation_time: 
+    tags:
+    - file
+    - webmethods_home
+    - class
+    - webmethods::designer
+    - webmethods
+    - designer
+    time: '2017-01-18T10:49:18.754466000-06:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: true
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  File[copy_jdbc_jar]: !ruby/object:Puppet::Resource::Status
+    title: copy_jdbc_jar
+    file: "/Users/gassertm/src/puppetry/webmethods/manifests/integration_server.pp"
+    line: 19
+    resource: File[copy_jdbc_jar]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods::Integration_server
+    - File[copy_jdbc_jar]
+    evaluation_time: 
+    tags:
+    - file
+    - copy_jdbc_jar
+    - class
+    - webmethods::integration_server
+    - webmethods
+    - integration_server
+    time: '2017-01-18T10:49:18.756133000-06:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: true
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  File[service_interceptor_jar]: !ruby/object:Puppet::Resource::Status
+    title: service_interceptor_jar
+    file: "/Users/gassertm/src/puppetry/webmethods/manifests/integration_server.pp"
+    line: 26
+    resource: File[service_interceptor_jar]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods::Integration_server
+    - File[service_interceptor_jar]
+    evaluation_time: 
+    tags:
+    - file
+    - service_interceptor_jar
+    - class
+    - webmethods::integration_server
+    - webmethods
+    - integration_server
+    time: '2017-01-18T10:49:18.756970000-06:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: true
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  File[service_interceptor_config]: !ruby/object:Puppet::Resource::Status
+    title: service_interceptor_config
+    file: "/Users/gassertm/src/puppetry/webmethods/manifests/integration_server.pp"
+    line: 31
+    resource: File[service_interceptor_config]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods::Integration_server
+    - File[service_interceptor_config]
+    evaluation_time: 
+    tags:
+    - file
+    - service_interceptor_config
+    - class
+    - webmethods::integration_server
+    - webmethods
+    - integration_server
+    time: '2017-01-18T10:49:18.757776000-06:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: true
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  File[server_constants]: !ruby/object:Puppet::Resource::Status
+    title: server_constants
+    file: "/Users/gassertm/src/puppetry/webmethods/manifests/integration_server.pp"
+    line: 36
+    resource: File[server_constants]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods::Integration_server
+    - File[server_constants]
+    evaluation_time: 
+    tags:
+    - file
+    - server_constants
+    - class
+    - webmethods::integration_server
+    - webmethods
+    - integration_server
+    time: '2017-01-18T10:49:18.758564000-06:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: true
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  Exec[unzip_packages]: !ruby/object:Puppet::Resource::Status
+    title: unzip_packages
+    file: "/Users/gassertm/src/puppetry/webmethods/manifests/integration_server.pp"
+    line: 41
+    resource: Exec[unzip_packages]
+    resource_type: Exec
+    containment_path:
+    - Stage[main]
+    - Webmethods::Integration_server
+    - Exec[unzip_packages]
+    evaluation_time: 
+    tags:
+    - exec
+    - unzip_packages
+    - class
+    - webmethods::integration_server
+    - webmethods
+    - integration_server
+    time: '2017-01-18T10:49:18.759376000-06:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: true
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  File[service_mock_license]: !ruby/object:Puppet::Resource::Status
+    title: service_mock_license
+    file: "/Users/gassertm/src/puppetry/webmethods/manifests/integration_server.pp"
+    line: 50
+    resource: File[service_mock_license]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods::Integration_server
+    - File[service_mock_license]
+    evaluation_time: 
+    tags:
+    - file
+    - service_mock_license
+    - class
+    - webmethods::integration_server
+    - webmethods
+    - integration_server
+    time: '2017-01-18T10:49:18.760286000-06:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: true
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  File[/Applications/SoftwareAG/IntegrationServer/instances/default/packages/__MACOSX/]: !ruby/object:Puppet::Resource::Status
+    title: "/Applications/SoftwareAG/IntegrationServer/instances/default/packages/__MACOSX/"
+    file: "/Users/gassertm/src/puppetry/webmethods/manifests/integration_server.pp"
+    line: 59
+    resource: File[/Applications/SoftwareAG/IntegrationServer/instances/default/packages/__MACOSX/]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods::Integration_server
+    - File[/Applications/SoftwareAG/IntegrationServer/instances/default/packages/__MACOSX/]
+    evaluation_time: 
+    tags:
+    - file
+    - class
+    - webmethods::integration_server
+    - webmethods
+    - integration_server
+    time: '2017-01-18T10:49:18.796476000-06:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: true
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  File[/Users/gassertm/Library/LaunchAgents/com.wwt.softwareag.integrationserver.plist]: !ruby/object:Puppet::Resource::Status
+    title: "/Users/gassertm/Library/LaunchAgents/com.wwt.softwareag.integrationserver.plist"
+    file: "/Users/gassertm/src/puppetry/webmethods/manifests/integration_server_startup.pp"
+    line: 15
+    resource: File[/Users/gassertm/Library/LaunchAgents/com.wwt.softwareag.integrationserver.plist]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Webmethods::Integration_server_startup
+    - File[/Users/gassertm/Library/LaunchAgents/com.wwt.softwareag.integrationserver.plist]
+    evaluation_time: 
+    tags:
+    - file
+    - class
+    - webmethods::integration_server_startup
+    - webmethods
+    - integration_server_startup
+    - webmethods::integration_server
+    - integration_server
+    time: '2017-01-18T10:49:18.798728000-06:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: true
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  Exec[launchd_load]: !ruby/object:Puppet::Resource::Status
+    title: launchd_load
+    file: "/Users/gassertm/src/puppetry/webmethods/manifests/integration_server_startup.pp"
+    line: 22
+    resource: Exec[launchd_load]
+    resource_type: Exec
+    containment_path:
+    - Stage[main]
+    - Webmethods::Integration_server_startup
+    - Exec[launchd_load]
+    evaluation_time: 
+    tags:
+    - exec
+    - launchd_load
+    - class
+    - webmethods::integration_server_startup
+    - webmethods
+    - integration_server_startup
+    - webmethods::integration_server
+    - integration_server
+    time: '2017-01-18T10:49:18.799766000-06:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: true
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  Exec[wget-download_upgrade_image]: !ruby/object:Puppet::Resource::Status
+    title: wget-download_upgrade_image
+    file: "/Users/gassertm/.puppetlabs/etc/code/modules/wget/manifests/fetch.pp"
+    line: 129
+    resource: Exec[wget-download_upgrade_image]
+    resource_type: Exec
+    containment_path:
+    - Stage[main]
+    - Webmethods
+    - Wget::Fetch[download_upgrade_image]
+    - Exec[wget-download_upgrade_image]
+    evaluation_time: 19.59137
+    tags:
+    - exec
+    - wget-download_upgrade_image
+    - wget::fetch
+    - wget
+    - fetch
+    - download_upgrade_image
+    - class
+    - webmethods
+    time: '2017-01-18T10:49:18.801061000-06:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: returns
+      previous_value: :notrun
+      desired_value:
+      - '0'
+      historical_value: 
+      message: executed successfully
+      name: :executed_command
+      status: success
+      time: 2017-01-18 10:49:18.814684000 -06:00
+      redacted: 
+      corrective_change: true
+    corrective_change: true
+  Schedule[puppet]: !ruby/object:Puppet::Resource::Status
+    title: puppet
+    file: 
+    line: 
+    resource: Schedule[puppet]
+    resource_type: Schedule
+    containment_path:
+    - Schedule[puppet]
+    evaluation_time: 0.0002
+    tags:
+    - schedule
+    - puppet
+    time: '2017-01-18T10:49:38.396682000-06:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: false
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  Schedule[hourly]: !ruby/object:Puppet::Resource::Status
+    title: hourly
+    file: 
+    line: 
+    resource: Schedule[hourly]
+    resource_type: Schedule
+    containment_path:
+    - Schedule[hourly]
+    evaluation_time: 9.9e-05
+    tags:
+    - schedule
+    - hourly
+    time: '2017-01-18T10:49:38.397067000-06:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: false
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  Schedule[daily]: !ruby/object:Puppet::Resource::Status
+    title: daily
+    file: 
+    line: 
+    resource: Schedule[daily]
+    resource_type: Schedule
+    containment_path:
+    - Schedule[daily]
+    evaluation_time: 8.9e-05
+    tags:
+    - schedule
+    - daily
+    time: '2017-01-18T10:49:38.397332000-06:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: false
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  Schedule[weekly]: !ruby/object:Puppet::Resource::Status
+    title: weekly
+    file: 
+    line: 
+    resource: Schedule[weekly]
+    resource_type: Schedule
+    containment_path:
+    - Schedule[weekly]
+    evaluation_time: 9.7e-05
+    tags:
+    - schedule
+    - weekly
+    time: '2017-01-18T10:49:38.397571000-06:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: false
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  Schedule[monthly]: !ruby/object:Puppet::Resource::Status
+    title: monthly
+    file: 
+    line: 
+    resource: Schedule[monthly]
+    resource_type: Schedule
+    containment_path:
+    - Schedule[monthly]
+    evaluation_time: 8.1e-05
+    tags:
+    - schedule
+    - monthly
+    time: '2017-01-18T10:49:38.397831000-06:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: false
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  Schedule[never]: !ruby/object:Puppet::Resource::Status
+    title: never
+    file: 
+    line: 
+    resource: Schedule[never]
+    resource_type: Schedule
+    containment_path:
+    - Schedule[never]
+    evaluation_time: 7.7e-05
+    tags:
+    - schedule
+    - never
+    time: '2017-01-18T10:49:38.398066000-06:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: false
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  Filebucket[puppet]: !ruby/object:Puppet::Resource::Status
+    title: puppet
+    file: 
+    line: 
+    resource: Filebucket[puppet]
+    resource_type: Filebucket
+    containment_path:
+    - Filebucket[puppet]
+    evaluation_time: 0.000155
+    tags:
+    - filebucket
+    - puppet
+    time: '2017-01-18T10:49:38.398392000-06:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: false
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+host: c02m9ybsfh00.wwt.local
+time: 2017-01-18 10:47:43.791425000 -06:00
+kind: apply
+report_format: 6
+puppet_version: 4.8.1
+configuration_version: 1484758062
+transaction_uuid: 52ce7c30-d71b-41e8-aa1e-993e39ebf5be
+code_id: 
+catalog_uuid: 429017cd-4534-457f-8b5a-0a02f5abc9b1
+cached_catalog_status: not_used
+master_used: 
+environment: production
+status: failed
+noop: false
+noop_pending: false
+corrective_change: true

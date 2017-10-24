@@ -1,0 +1,2392 @@
+<?xml version="1.0"?>
+<ProcessingGroup 
+	name="AT&amp;T-Ariba" 
+	priority="50" 
+	parent="StandardOrder"
+	errorAlertThreshold = "120"
+	ruleApplicationSource = "OTOS">
+	
+<!-- CVS Header: $Source: /CVS/oracle11i/applint/rules_config/om/ProcessingGroup-ATandT-Ariba.xml,v $, $Revision: 1.32 $, $Author: goughenk $, $Date: 2014/07/22 20:10:28 $ -->
+
+<!-- Processing Group Criteria -->
+<CriteriaSet>
+	<Criteria>
+		<tableName>APPS.WWT_ORIG_ORDER_HEADERS</tableName>
+		<columnName>SALESREP</columnName>
+		<value>AT&amp;T - Ariba</value>
+	</Criteria>
+	<Criteria>
+		<tableName>APPS.WWT_ORIG_ORDER_HEADERS</tableName>
+		<columnName>SOURCE</columnName>
+		<value>POI_TO_COP</value>
+	</Criteria>
+</CriteriaSet>
+
+<!-- ******************************** -->
+<!-- ****** BEGIN PRE-PROCESS ******* -->
+<!-- ******************************** -->
+
+<!-- CROSS REFERENCE ID WITH ACCOUNT NAME -->
+<Rule name="Lookup account name" class="PRE-PROCESS" executeOnReprocess="N">
+	<ConditionSet name="Lookup account name" exitOnSuccess="Y">
+		<Action name="Lookup account name" class="simpleLookup">
+			<!-- this should do nothing if no rows returned.  default behavior -->
+			<Parameter name="lookupType" valueType="STATIC">WWT_CXML_ENTERPRISE_NETWORK_ACCOUNT</Parameter>
+			<Parameter name="attribute3" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/WWT_STG_ORDER_HEADERS_DFF/ATTRIBUTE45</Parameter>
+			<Parameter name="returnColumn1" valueType="STATIC">DESCRIPTION</Parameter>
+			<Parameter name="targetElement1" valueType="TARGET">WWT_STG_ORDER_HEADERS/persistedOTOSTempVariables/tempVar5</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<!-- CHECK TO SEE IF THIS ORDER IS A PUNCHOUT OR NOT -->
+<Rule name="Check for punchout order and set inidcator for later processing" class="PRE-PROCESS"  executeOnReprocess="N">
+	<ConditionSet name="Check for punchout order and set inidcator" exitOnSuccess="N">
+		<Action name="Check to see if this order is a punchout order and set indicator" class="singleItemQuery">
+			<Parameter name="sqlConstantName" valueType="STATIC">ATTcheckForPunchoutOTOSSQL</Parameter>
+			<Parameter name="dbName" valueType="STATIC">ERP</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/persistedOTOSTempVariables/tempVar4</Parameter>
+			<Parameter name="actionOnMultiple" valueType="STATIC">NULL</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<Rule name="Fail non punchout orders" class="PRE-PROCESS"  executeOnReprocess="N">
+	<ConditionSet name="Check punch out indicator" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_HEADERS/persistedOTOSTempVariables/tempVar4</LHSValue>
+			<Operator>!=</Operator>
+			<RHSValue valueType="STATIC">Y</RHSValue>
+		</Condition>
+		<Action name="Concatenate custom error message" class="concatenateFields">
+			<Parameter name="field1" valueType="STATIC">This order came in via Ariba account: </Parameter>
+			<Parameter name="field2" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/persistedOTOSTempVariables/tempVar5</Parameter>
+			<Parameter name="field3" valueType="STATIC">, but did not start as a punchout. Please print the order from Ariba and then process it through Quote System.</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/persistedOTOSTempVariables/tempVar5</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+  		</Action>
+		<Action name="Fail the order" class="recordException">
+			<Parameter name="exceptionType" valueType="STATIC">FAIL</Parameter>
+			<Parameter name="exceptionMessage" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/persistedOTOSTempVariables/tempVar5</Parameter>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<!-- RETRIEVE INFO FROM THE LOOKUP -->
+<Rule name="Retrieve Header Level Data  From Lookup" class="PRE-PROCESS" executeOnReprocess="N">
+	<ConditionSet name="Retrieve Header Level Data  From Lookup" exitOnSuccess="Y">
+		<Action name="Retrieve Header Level Data  From Lookup" class="simpleLookup">			
+			<Parameter name="lookupType" valueType="STATIC">WWT_TELCO_DIST_ATT_ORDER_DATA</Parameter>
+			<!-- CONTRACT NUMBER -->
+			<Parameter name="attribute1" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/AGREEMENT</Parameter>			
+			<!-- ... -->
+			<Parameter name="returnColumn3" valueType="STATIC">ATTRIBUTE3</Parameter>
+			<Parameter name="targetElement3" valueType="TARGET">WWT_STG_ORDER_HEADERS/SALESREP</Parameter>			
+			<!-- ... -->
+			<Parameter name="returnColumn4" valueType="STATIC">ATTRIBUTE5</Parameter>
+			<Parameter name="targetElement4" valueType="TARGET">WWT_STG_ORDER_HEADERS/SALES_CHANNEL_CODE</Parameter>
+			<!-- ... -->
+			<Parameter name="returnColumn5" valueType="STATIC">ATTRIBUTE6</Parameter>
+			<Parameter name="targetElement5" valueType="TARGET">WWT_STG_ORDER_HEADERS/SHIP_FROM_ORG_ID</Parameter>
+			<!-- ... -->
+			<Parameter name="returnColumn6" valueType="STATIC">ATTRIBUTE10</Parameter>
+			<Parameter name="targetElement6" valueType="TARGET">WWT_STG_ORDER_HEADERS/ORDER_TYPE</Parameter>
+			<!-- ... -->
+			<Parameter name="returnColumn7" valueType="STATIC">ATTRIBUTE12</Parameter>
+			<Parameter name="targetElement7" valueType="TARGET">WWT_STG_ORDER_HEADERS/BUYER_NAME</Parameter>
+			<!-- ... -->
+			<Parameter name="returnColumn8" valueType="STATIC">ATTRIBUTE15</Parameter>
+			<Parameter name="targetElement8" valueType="TARGET">WWT_STG_ORDER_HEADERS/FLOW_STATUS_CODE</Parameter>			
+			<!-- ... -->
+			<Parameter name="returnColumn9" valueType="STATIC">ATTRIBUTE1</Parameter>
+			<Parameter name="targetElement9" valueType="TARGET">WWT_STG_ORDER_HEADERS/OTOSTempVariables/tempVar1</Parameter>
+			<ExceptionHandler type="ERROR">Failed to retrieve header info from the Lookup</ExceptionHandler>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<Rule name="If no rows returned write error message to OCU" class="PRE-PROCESS" executeOnReprocess="N">
+	<ConditionSet name="If nothing was returned from the Lookup" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_HEADERS/persistedOTOSTempVariables/tempVar4</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">Y</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_HEADERS/OTOSTempVariables/tempVar1</LHSValue>
+			<Operator>IS NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition> <!--Tonya.Miller@wwt.com,Kristin.Emahiser@wwt.com,Jean.Nelson@wwt.com,-->
+		<Action name="Send Notification to the Bus Ops for a case to be created" class="sendInternalEmail">
+			<Parameter name="subject" valueType="STATIC">AT&amp;T Ariba Order Contract Error | PO# %WWT_STG_ORDER_HEADERS/CUSTOMER_PO_NUMBER%</Parameter>
+			<Parameter name="toList" valueType="LOOKUP">DIST_LIST_INVALID_CONTRACT</Parameter>			
+			<Parameter name="body" valueType="STATIC">
+An AT&amp;T Ariba order has been received with an invalid contract number.  
+
+The order has failed to process and will need to be investigated and corrected in the COP Cleanup Form. 
+			</Parameter>
+			<ExceptionHandler type="WARN">Could not send email</ExceptionHandler>
+		</Action>  
+		<Action name="Fail the order" class="recordException">
+			<Parameter name="exceptionType" valueType="STATIC">FAIL</Parameter>
+			<Parameter name="exceptionMessage" valueType="STATIC">Invalid contract number received.</Parameter>			
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<Rule name="Map Bill To Customer to Ordered By Customer" class="PRE-PROCESS" executeOnReprocess="N">
+	<ConditionSet name="Map Bill To Customer to Ordered By Customer" exitOnSuccess="Y">		
+		<Action name="Map Bill To Customer to Ordered By Customer" class="assignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/INVOICE_CUSTOMER</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/CUSTOMER_NAME</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<!-- ******************************** -->
+<!-- ****** BEGIN HEADER ************ -->
+<!-- ******************************** -->
+
+<!-- HEADER DEFUALTS -->
+<Rule name="Header Defaults" class="HEADER" executeOnReprocess="N">
+	<ConditionSet name="Set Header Level Defaults" exitOnSuccess="Y">			
+		<Action name="Set Order Source" class="assignment">
+			 <Parameter name="sourceElement" valueType="STATIC">XML</Parameter>
+			 <Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/ORDER_SOURCE</Parameter>
+			 <ExceptionHandler type="NONE"></ExceptionHandler>	
+		</Action>
+		<Action name="Set Org ID" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">370</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/ORG_ID</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>		
+		<Action name="Set Freight Terms" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">Due</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/FREIGHT_TERMS_CODE</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Set Vendor Ship Terms" class="assignment">
+			<Parameter name="sourceElement" valueType="LOOKUP">VENDOR_SHIP_TERMS</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/WWT_STG_ORDER_HEADERS_DFF/ATTRIBUTE26</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Copy Customer PO# to Cisco Carton notes" class="assignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/CUSTOMER_PO_NUMBER</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/WWT_STG_ORDER_HEADERS_DFF/ATTRIBUTE37</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Set Context to Cisco Diversity" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">Cisco Diversity</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/WWT_STG_ORDER_HEADERS_DFF/CONTEXT</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Set Trade-In Returned flag" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">N</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/WWT_STG_ORDER_HEADERS_DFF/ATTRIBUTE30</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Set Vendor Ship Option" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">Ship ASAP/Partial</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/WWT_STG_ORDER_HEADERS_DFF/ATTRIBUTE36</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<Rule name="Determine Shipping Method" class="HEADER" executeOnReprocess="N">	
+	<ConditionSet name="IF Set to SHIP MOST ECONOMICAL WAY " exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_HEADERS/FREIGHT_CARRIER_CODE</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">SHIP MOST ECONOMICAL WAY</RHSValue>
+		</Condition>
+		<Action name="Set Shipping Method to Best Ground " class="assignment">
+			<Parameter name="sourceElement" valueType="LOOKUP">Ship_method_ground</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/SHIPPING_METHOD</Parameter>			
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="NULL out Carrier Code " class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC"></Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/FREIGHT_CARRIER_CODE</Parameter>			
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+	</ConditionSet>
+	<ConditionSet name="ELSE default Shipping Method to Best 2nd Day" exitOnSuccess="N">		
+		<Action name="Set Carrier to Best Ground " class="assignment">
+			<Parameter name="sourceElement" valueType="LOOKUP">Ship_method_2_day</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/SHIPPING_METHOD</Parameter>			
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="NULL out Carrier Code " class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC"></Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/FREIGHT_CARRIER_CODE</Parameter>			
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+	</ConditionSet>	
+</Rule>  
+
+<!-- PARSE OUT ORDERED BY CONTACT FROM THE SOLD TO CONTACT FIELD.-->
+<!--OTOSTempVariables/tempVar1-->
+<Rule name="Parse out Sold To Contact Holder into the Ordered By Contact Fields" class="HEADER" executeOnReprocess="N">
+	<ConditionSet name="Check for Middle Initial (count spaces)" exitOnSuccess="N">
+		<Action name="Count number of spaces" class="tokenize">
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/SOLD_TO_CONTACT</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/OTOSTempVariables/tempVar2</Parameter>
+			<Parameter name="delimiter" valueType="STATIC"> </Parameter>
+			<Parameter name="index" valueType="STATIC">2</Parameter>
+		</Action>
+	</ConditionSet>
+	<ConditionSet name="IF First and Last Name Only" exitOnSuccess="N">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_HEADERS/OTOSTempVariables/tempVar2</LHSValue>
+			<Operator>IS NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>		
+		<Action name="Parse out the Last Name" class="parseString">
+			<Parameter name="beginMarker" valueType="STATIC"> </Parameter>
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/SOLD_TO_CONTACT</Parameter>			
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/ORDERED_BY_CONTACT_LAST_NAME</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Parse out the First Name" class="parseString">
+			<Parameter name="endMarker" valueType="STATIC"> </Parameter>
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/SOLD_TO_CONTACT</Parameter>			
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/ORDERED_BY_CONTACT_FIRST_NAME</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+	</ConditionSet>
+	<ConditionSet name="IF First Middle Initial and Last Name" exitOnSuccess="N">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_HEADERS/OTOSTempVariables/tempVar2</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>		
+		<Action name="Set Last Name" class="assignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/OTOSTempVariables/tempVar2</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/ORDERED_BY_CONTACT_LAST_NAME</Parameter>			
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Parse out the First Name" class="parseString">
+			<Parameter name="endMarker" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/OTOSTempVariables/tempVar2</Parameter>
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/SOLD_TO_CONTACT</Parameter>			
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/ORDERED_BY_CONTACT_FIRST_NAME</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+	</ConditionSet>	
+	<ConditionSet name="Trim Leading and Trailing Spaces" exitOnSuccess="Y">
+		<Action name="Trim leading and trailing spaces from Ordered By Contact First Name" class="assignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/ORDERED_BY_CONTACT_FIRST_NAME</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/ORDERED_BY_CONTACT_FIRST_NAME</Parameter>
+			<Parameter name="trim" valueType="STATIC">true</Parameter>
+			<ExceptionHandler type="WARN">Error received trimming leading and trailing white space.</ExceptionHandler>	
+		</Action>
+		<Action name="Trim leading and trailing spaces from Ordered By Contact Last Name" class="assignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/ORDERED_BY_CONTACT_LAST_NAME</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/ORDERED_BY_CONTACT_LAST_NAME</Parameter>
+			<Parameter name="trim" valueType="STATIC">true</Parameter>
+			<ExceptionHandler type="WARN">Error received trimming leading and trailing white space.</ExceptionHandler>	
+		</Action>		
+		<Action name="NULL out Sold To Contact Holder" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC"></Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/SOLD_TO_CONTACT</Parameter>			
+			<ExceptionHandler type="NONE"></ExceptionHandler>	
+		</Action>  
+	</ConditionSet>	
+</Rule>	
+
+<!-- *** POPULATE ATTRIBUTE13 WITH CONTACT/PHONE -->
+<Rule  name="Build Contact-Phone-Fax" class="HEADER" executeOnReprocess="Y">
+	<ConditionSet name="Build Contact-Phone-FAX" exitOnSuccess="Y">		
+		<Action name="build Contact-Phone-Fax" class="concatenateFields">
+			<Parameter name="field1" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/ORDERED_BY_CONTACT_FIRST_NAME</Parameter>
+			<Parameter name="field2" valueType="STATIC"> </Parameter>
+			<Parameter name="field3" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/ORDERED_BY_CONTACT_LAST_NAME</Parameter>
+			<Parameter name="field4" valueType="STATIC"> P#</Parameter>
+			<Parameter name="field5" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/ORDERED_BY_CONTACT_TELEPHONE</Parameter>
+			<Parameter name="field6" valueType="STATIC"> F#</Parameter>
+			<Parameter name="field7" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/ORDERED_BY_CONTACT_FAX</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/ATTRIBUTE13</Parameter>
+			<ExceptionHandler type="WARN">Could not build Contact Concatenation String for HEADERS.ATTRIBUTE13</ExceptionHandler>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<!-- PARSE OUT SHIP TO LAST NAME INTO THE MARK FOR -->
+<!-- NEED TO KEEP CHECKING THE TEMP FOR DATA - THAT MEANS WE WERE ABLE TO PARSE DATA OUT.  IF NOTHING WAS FOUND THEN DO NOT 
+       MANIPULATE THE CONTACT LAST NAME OR THE MARK FOR, USER WILL FIX IN OCU.-->
+<Rule name="Build Ship To Contact Name and Mark For" class="HEADER" executeOnReprocess="N">
+	<ConditionSet name="Parse out Mark For and Ship To Contact Information" exitOnSuccess="N">
+		<Action name="Parse out the Mark For - looking for Room" class="parseString">
+			<Parameter name="beginMarker" valueType="STATIC">Room</Parameter>
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/SHIP_TO_CONTACT_LAST_NAME</Parameter>			
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/OTOSTempVariables/tempVar3</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Parse out Ship To Contact Name" class="parseString">
+			<Parameter name="endMarker" valueType="STATIC">Room</Parameter>
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/SHIP_TO_CONTACT_LAST_NAME</Parameter>			
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/SHIP_TO_CONTACT_LAST_NAME</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Trim leading and trailing spaces from Ship To Contact Last Name" class="assignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/SHIP_TO_CONTACT_LAST_NAME</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/SHIP_TO_CONTACT_LAST_NAME</Parameter>
+			<Parameter name="trim" valueType="STATIC">true</Parameter>
+			<ExceptionHandler type="WARN">Error received trimming leading and trailing white space.</ExceptionHandler>	
+		</Action>
+	</ConditionSet>
+	<ConditionSet name="Build Mark For" exitOnSuccess="N">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_HEADERS/OTOSTempVariables/tempVar3</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>	
+		<Action name="Set Mark For" class="concatenateFields">
+			<Parameter name="field1" valueType="STATIC">Room</Parameter>
+			<Parameter name="field2" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/OTOSTempVariables/tempVar3</Parameter>				
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/ATTRIBUTE9</Parameter>			
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+  		</Action>
+	</ConditionSet>
+	<ConditionSet name="Parse out Middle Initial" exitOnSuccess="N">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_HEADERS/OTOSTempVariables/tempVar3</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>	
+		<Action name="Parse out Middle Initial" class="parseString">
+			<Parameter name="endMarker" valueType="STATIC"> </Parameter>
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/SHIP_TO_CONTACT_LAST_NAME</Parameter>			
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/OTOSTempVariables/tempVar4</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+	</ConditionSet>	
+	<ConditionSet name="Build Ship To Contact Name with Middle Initial" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_HEADERS/OTOSTempVariables/tempVar3</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>	
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_HEADERS/OTOSTempVariables/tempVar4</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>	
+		<Action name="Build Ship To Contact First Name" class="concatenateFields">
+			<Parameter name="field1" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/SHIP_TO_CONTACT_FIRST_NAME</Parameter>
+			<Parameter name="field2" valueType="STATIC"> </Parameter>
+			<Parameter name="field3" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/OTOSTempVariables/tempVar4</Parameter>			
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/SHIP_TO_CONTACT_FIRST_NAME</Parameter>			
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+  		</Action>
+		<Action name="Set Ship To Contact Last Name" class="parseString">
+			<Parameter name="beginMarker" valueType="STATIC"> </Parameter>
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/SHIP_TO_CONTACT_LAST_NAME</Parameter>			
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/SHIP_TO_CONTACT_LAST_NAME</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Trim leading and trailing spaces from Ship To Contact Last Name" class="assignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/SHIP_TO_CONTACT_LAST_NAME</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/SHIP_TO_CONTACT_LAST_NAME</Parameter>
+			<Parameter name="trim" valueType="STATIC">true</Parameter>
+			<ExceptionHandler type="WARN">Error received trimming leading and trailing white space.</ExceptionHandler>	
+		</Action>
+		<Action name="Trim leading and trailing spaces from Ship To Contact First Name" class="assignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/SHIP_TO_CONTACT_FIRST_NAME</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/SHIP_TO_CONTACT_FIRST_NAME</Parameter>
+			<Parameter name="trim" valueType="STATIC">true</Parameter>
+			<ExceptionHandler type="WARN">Error received trimming leading and trailing white space.</ExceptionHandler>	
+		</Action>
+	</ConditionSet>	
+</Rule>
+
+<!-- REMOVE SPECIAL CHARACTER FOR SHIP TO CUSTOMER -->
+<Rule name="Remove Special Character in SHIP TO CUSTOMER" class="HEADER" executeOnReprocess="N">
+	<ConditionSet name="Remove Special Character in SHIP TO CUSTOMER" exitOnSuccess="Y">
+		<Action name="Remove Special Character in SHIP TO CUSTOMER" class="replaceCharacters">
+			<Parameter name="columns" valueType="STATIC">WWT_STG_ORDER_HEADERS/SHIP_TO_CUSTOMER</Parameter>
+			<Parameter name="charactersToReplace" valueType="STATIC">\x09</Parameter>
+			<Parameter name="replaceWith" valueType="STATIC"></Parameter>
+			<ExceptionHandler type="WARN">Error in removing Tab.</ExceptionHandler>
+		</Action>
+		<Action name="Trim leading and trailing spaces in SHIP TO CUSTOMER" class="assignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/SHIP_TO_CUSTOMER</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/SHIP_TO_CUSTOMER</Parameter>
+			<Parameter name="trim" valueType="STATIC">true</Parameter>
+			<ExceptionHandler type="WARN">Error received trimming leading and trailing white space.</ExceptionHandler>	
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<!--AUTO CREATE ALL ADDRESSES AT HEADER-->
+<Rule name="Autocreate Address" class="HEADER" executeOnReprocess="N">
+	<ConditionSet name="Autocreate Ship To Address" exitOnSuccess="Y">
+		<Action name="Autocreate Ship To Address" class="createShipToAddress">
+		<ExceptionHandler type="ERROR">Could not create Ship To Address</ExceptionHandler>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<!-- POPULATE RMA DUE DATE -->
+<Rule name="Populate RMA Due Date" class="HEADER" executeOnReprocess="Y">
+	<ConditionSet name="Populate RMA Due Date" exitOnSuccess="Y">
+		<Action name="Get Sysdate" class="dateFormat">
+			<Parameter name="newPattern" valueType="STATIC">dd-MMM-yyyy</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/WWT_STG_ORDER_HEADERS_DFF/ATTRIBUTE38</Parameter>
+			<ExceptionHandler type="WARN">Could not set date format</ExceptionHandler>
+		</Action>
+		<Action name="Calculate RMA Date" class = "calcFutureDate">
+		  	<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/WWT_STG_ORDER_HEADERS_DFF/ATTRIBUTE38</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/WWT_STG_ORDER_HEADERS_DFF/ATTRIBUTE38</Parameter>
+			<Parameter name="daysForward" valueType="STATIC">66</Parameter>
+			<Parameter name="businessDaysOnly" valueType="STATIC">Y</Parameter>
+			<Parameter name="sourceDatePattern" valueType="STATIC">dd-MMM-yyyy</Parameter>
+			<ExceptionHandler type="WARN">Could not calculate RMA Date</ExceptionHandler>
+		 </Action>
+	</ConditionSet>
+</Rule>
+
+<!-- SET DFF ATTRIBUTE42 DATE -->
+<Rule name="SET DFF ATTRIBUTE42 to 0.00 for later calculation" class="HEADER" executeOnReprocess="Y">
+	<ConditionSet name="Populate DFF ATTRIBUTE42" exitOnSuccess="Y">
+		<Action name="Populate DFF ATTRIBUTE42" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">0.00</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/WWT_STG_ORDER_HEADERS_DFF/ATTRIBUTE42</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<!-- CHECK FOR DEAL/DART WITH CISCO VENDOR COMBINATION FOR LATER USE -->
+<!-- NOTE - THE MULTI ITEM POPULATES PERSISTED TEMP VARIABLE 6 -->
+<Rule name="Check for DEAL/DART with vendor Cisco combination for later use" class="HEADER" executeOnReprocess="Y">
+	<ConditionSet name="Check for DEAL/DART with vendor Cisco combination for later usee" exitOnSuccess="N">
+		<Action name="Check for DEAL/DART with vendor Cisco combination for later use" class="multiItemQuery">
+			<Parameter name="sqlConstantName" valueType="STATIC">ciscoDiversityGetStgFlagOTOSSQL</Parameter>
+			<Parameter name="dbName" valueType="STATIC">ERP</Parameter>
+			<Parameter name="actionOnMultiple" valueType="STATIC">NULL</Parameter>
+			<Parameter name="recordCountTargetName" valueType="STATIC">WWT_STG_ORDER_HEADERS/OTOSTempVariables/tempVar5</Parameter>
+			<Parameter name="sourceElement1" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/HEADER_ID</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+	</ConditionSet>
+	<ConditionSet name="If DART and DEAL is found on a Cisco Line then Error the order and clear DEAL/DART flag" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_HEADERS/OTOSTempVariables/tempVar5</LHSValue>
+			<Operator>&gt;</Operator>
+			<RHSValue valueType="STATIC">1</RHSValue>
+		</Condition>
+		<Action name="clear DEAL/DART flag" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC"></Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/persistedOTOSTempVariables/tempVar6</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Write an error to OCU" class="recordException">
+			<Parameter name="exceptionType" valueType="STATIC">WARN</Parameter>
+			<Parameter name="exceptionMessage" valueType="STATIC">This order contains both a DART and DEAL for Cisco.  Vendor site cannot be determined for $0 lines</Parameter>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<!-- Set salesrep to CDSD - MSIP when header DFF attribute99 contains the word 'trigger' -->
+<Rule name = "Set salesrep to CDSD - MSIP when header DFF attribute99 contains the word 'trigger'" class="HEADER" executeOnReprocess="N">
+	<ConditionSet name="Set salesrep to CDSD - MSIP when header DFF attribute99 contains the word 'trigger'" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_HEADERS/WWT_STG_ORDER_HEADERS_DFF/ATTRIBUTE99</LHSValue>
+			<Operator>RLIKE</Operator>
+			<RHSValue valueType="STATIC">.*TRIGGER.*</RHSValue>
+		</Condition>
+		<Action name="Set salesrep to CDSD - MSIP" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">CDSD - MSIP</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/SALESREP</Parameter>
+		</Action>
+	</ConditionSet>
+</Rule>
+		
+<!-- ******************************** -->
+<!-- ****** BEGIN LINES  ************ -->
+<!-- ******************************** -->
+
+<!-- RETRIEVE LINE INFO FROM THE LOOKUP -->
+<Rule name="Retrieve Line Level Data  From Lookup" class="LINE" executeOnReprocess="N">
+	<ConditionSet name="Retrieve Line Level Data  From Lookup" exitOnSuccess="Y">
+		<Action name="Retrieve Line Level Data  From Lookup" class="simpleLookup">			
+			<Parameter name="lookupType" valueType="STATIC">WWT_TELCO_DIST_ATT_ORDER_DATA</Parameter>
+			<!-- CONTRACT NUMBER -->
+			<Parameter name="attribute1" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/AGREEMENT</Parameter>			
+			<!-- ... -->
+			<Parameter name="returnColumn3" valueType="STATIC">ATTRIBUTE6</Parameter>
+			<Parameter name="targetElement3" valueType="TARGET">WWT_STG_ORDER_LINES/SHIP_FROM_ORG_ID</Parameter>
+			<!-- ... -->
+			<Parameter name="returnColumn4" valueType="STATIC">ATTRIBUTE7</Parameter>
+			<Parameter name="targetElement4" valueType="TARGET">WWT_STG_ORDER_LINES/SUBINVENTORY</Parameter>
+			<!-- ... -->
+			<Parameter name="returnColumn5" valueType="STATIC">ATTRIBUTE8</Parameter>
+			<Parameter name="targetElement5" valueType="TARGET">WWT_STG_ORDER_LINES/INVENTORY_ITEM_SEGMENT_1</Parameter>
+			<!-- ... -->
+			<Parameter name="returnColumn6" valueType="STATIC">ATTRIBUTE9</Parameter>
+			<Parameter name="targetElement6" valueType="TARGET">WWT_STG_ORDER_LINES/INVENTORY_ITEM_SEGMENT_4</Parameter>
+			<!-- ... -->
+			<Parameter name="returnColumn7" valueType="STATIC">ATTRIBUTE11</Parameter>
+			<Parameter name="targetElement7" valueType="TARGET">WWT_STG_ORDER_LINES/LINE_TYPE</Parameter>	
+			<ExceptionHandler type="ERROR">Failed to retrieve line info from the Lookups</ExceptionHandler>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<!-- LINE DEFAULTS -->
+<Rule name="Line Defaults" class="LINE" executeOnReprocess="N">
+	<ConditionSet name="Set Line Level Defaults" exitOnSuccess="Y">			
+		<Action name="Set Org ID" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">370</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/ORG_ID</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Set Segment3" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">ACTUAL</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/INVENTORY_ITEM_SEGMENT_3</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>	
+		</Action>
+		<Action name="NULL out Additional Description (attribute12)" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC"></Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/ATTRIBUTE12</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>	
+		</Action>
+		<Action name="Set Vendor Name" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">Cisco Systems Inc</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/VENDOR_NAME</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Set Context" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">Cisco Diversity</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/CONTEXT</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Remove Special Characters and replace with a space" class="replaceCharacters">
+			<Parameter name="columns" valueType="STATIC">WWT_STG_ORDER_LINES/INVENTORY_ITEM_SEGMENT_2,WWT_STG_ORDER_LINES/ATTRIBUTE6,WWT_STG_ORDER_LINES/USER_ITEM_DESCRIPTION</Parameter>
+			<Parameter name="charactersToReplace" valueType="STATIC">\t\r\x1d\x1c\x13\x12\x3f\xA0</Parameter>		
+			<Parameter name="replaceWith" valueType="STATIC"></Parameter>
+			<ExceptionHandler type="WARN">Error in removing Tabs, Carriage Returns and EPCDIC characters.</ExceptionHandler>
+		</Action>
+		<Action name="Trim leading and trailing spaces from ATTRIBUTE6" class="assignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/ATTRIBUTE6</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/ATTRIBUTE6</Parameter>
+			<Parameter name="trim" valueType="STATIC">true</Parameter>
+			<ExceptionHandler type="WARN">Error received trimming leading and trailing white space.</ExceptionHandler>
+		</Action>
+		<Action name="Trim leading and trailing spaces from INVENTORY_ITEM_SEGMENT_2" class="assignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/INVENTORY_ITEM_SEGMENT_2</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/INVENTORY_ITEM_SEGMENT_2</Parameter>
+			<Parameter name="trim" valueType="STATIC">true</Parameter>
+			<ExceptionHandler type="WARN">Error received trimming leading and trailing white space.</ExceptionHandler>
+		</Action>
+		<Action name="Trim leading and trailing spaces from USER_ITEM_DESCRIPTION" class="assignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/USER_ITEM_DESCRIPTION</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/USER_ITEM_DESCRIPTION</Parameter>
+			<Parameter name="trim" valueType="STATIC">true</Parameter>
+			<ExceptionHandler type="WARN">Error received trimming leading and trailing white space.</ExceptionHandler>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<Rule name="Default Vendor Sku (attribute6) if an Ad Hoc order is placed" class="LINE" executeOnReprocess="N">	
+	<ConditionSet name="IF Not Available" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/ATTRIBUTE6</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">Not Available</RHSValue>
+		</Condition>
+		<Action name="Override Vendor Sku (attribute6) with the Part#" class="assignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/INVENTORY_ITEM_SEGMENT_2</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/ATTRIBUTE6</Parameter>			
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+	</ConditionSet>
+	<ConditionSet name="IF NULL" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/ATTRIBUTE6</LHSValue>
+			<Operator>IS NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Action name="Override Vendor Sku (attribute6) with the Part#" class="assignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/INVENTORY_ITEM_SEGMENT_2</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/ATTRIBUTE6</Parameter>			
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<!-- Set List Price -->
+<Rule name="Get item List Price" class="LINE" executeOnReprocess="N">
+	<ConditionSet name="Get item List Price" exitOnSuccess="Y">
+		<Action name="Lookup item's List Price" class="multiItemQuery">
+			<Parameter name="sqlConstantName" valueType="STATIC">ATTgetItemCostOTOSSQL</Parameter>
+			<Parameter name="dbName" valueType="STATIC">REPOS</Parameter>
+			<Parameter name="actionOnMultiple" valueType="STATIC">ERROR</Parameter>
+			<Parameter name="sourceElement1" valueType="REFERENCE">WWT_STG_ORDER_LINES/INVENTORY_ITEM_SEGMENT_2</Parameter>
+			<ExceptionHandler type="ERROR">Could not retrieve item list price</ExceptionHandler>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<!-- SET SPECIAL PRICING ACCOUNT NUMBER AND SALESREP -->
+<Rule name="Populate special pricing account number and salesrep if selling price/list = .46" class="LINE" executeOnReprocess="N">
+	<ConditionSet name="Check for list greater than zero and perform arithmetic" exitOnSuccess="N">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE45</LHSValue>
+			<Operator>&gt;</Operator>
+			<RHSValue valueType="STATIC">0</RHSValue>
+		</Condition>
+		<Action name="Divide unit selling price by unit list price" class="arithmetic">
+			<Parameter name="LHS" valueType="REFERENCE">WWT_STG_ORDER_LINES/UNIT_SELLING_PRICE</Parameter>
+			<Parameter name="operator" valueType="STATIC">/</Parameter>
+			<Parameter name="RHS" valueType="REFERENCE">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE45</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar9</Parameter>
+			<ExceptionHandler type="WARN">Arithmetic failed.</ExceptionHandler>
+		</Action>
+		<Action name="Format the price to 3 decimal places" class="numberFormat">
+			<Parameter name="pattern" valueType="STATIC">#.00</Parameter>
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar9</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar9</Parameter>
+		</Action>
+	</ConditionSet>
+	<ConditionSet name="Check special pricing criteria and set special pricing account" exitOnSuccess="N">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE45</LHSValue>
+			<Operator>&gt;</Operator>
+			<RHSValue valueType="STATIC">0</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar9</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="LOOKUP">PRICE_ACCOUNT</RHSValue>
+		</Condition>
+		<Action name="Set special pricing account number" class="assignment">
+			<Parameter name="sourceElement" valueType="LOOKUP">ATTRIBUTE16</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE16</Parameter>			
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Set line dff attribute53" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">DART</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE53</Parameter>			
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+	</ConditionSet>
+	<ConditionSet name="Check special pricing criteria and set salesrep" exitOnSuccess="N">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE45</LHSValue>
+			<Operator>&gt;</Operator>
+			<RHSValue valueType="STATIC">0</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar9</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="LOOKUP">PRICE_ACCOUNT</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_HEADERS/SALESREP</LHSValue>
+			<Operator>NOT IN</Operator>
+			<RHSValue valueType="STATIC">CDSD - AT&amp;T MSCP,CDSD - MSIP,AT&amp;T IT - Cisco</RHSValue>
+		</Condition>
+		<Action name="Set header salesrep name" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">CDSD - AT&amp;T MSCP</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/SALESREP</Parameter>			
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<!-- Set DEAL or DART on $0 lines -->
+<Rule name="Set Special Pricing Type for lines where it is NULL, by using the Special Pricing Type specified on other lines" class="LINE" executeOnReprocess="Y">
+	<ConditionSet name="Set Special Pricing Type" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE53</LHSValue>
+			<Operator>IS NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_HEADERS/persistedOTOSTempVariables/tempVar6</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Action name="Assign tempVar6 from DEAL/DART header rule to Special Pricing Type" class="assignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/persistedOTOSTempVariables/tempVar6</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE53</Parameter>
+		</Action>
+	</ConditionSet>
+</Rule>
+			
+<!-- Set WWT Cost and Wholesale based on DEAL or DART -->
+<Rule name="Set WWT Cost and Wholesale based on Special Pricing Type of DEAL or DART" class="LINE" executeOnReprocess="Y">
+	<ConditionSet name="For DEAL with Trade-In, set WWT Cost" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE53</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">DEAL</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE41</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Action name="Set WWT Cost = Selling Price - Trade-In Amt" class="arithmetic">
+			<Parameter name="LHS" valueType="REFERENCE">WWT_STG_ORDER_LINES/UNIT_SELLING_PRICE</Parameter>
+			<Parameter name="operator" valueType="STATIC">-</Parameter>
+			<Parameter name="RHS" valueType="REFERENCE">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE41</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+		</Action>
+		<Action name="Round WWT Cost to 2 decimal places" class="roundNumber">
+			<Parameter name="numberOfDecimals" valueType="STATIC">2</Parameter>
+			<Parameter name="sourceValue" valueType="REFERENCE">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<ExceptionHandler type="ERROR">Rounding error - WHOLESALE/DEAL/TRADE-IN</ExceptionHandler>
+		</Action>
+		<Action name="Format WWT Cost to 2 decimal places" class="numberFormat">
+			<Parameter name="pattern" valueType="STATIC">#.00</Parameter>
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<ExceptionHandler type="ERROR">Formatting error - WHOLESALE/DEAL/TRADE-IN</ExceptionHandler>
+		</Action>
+		<Action name="Null out Wholesale" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC"></Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE21</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+			<Action name="Null out Deviation" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC"></Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE22</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+	</ConditionSet>
+	<ConditionSet name="For DEAL without Trade-In, set WWT Cost" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE53</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">DEAL</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE41</LHSValue>
+			<Operator>IS NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_HEADERS/SALESREP</LHSValue>
+			<Operator>!=</Operator>
+			<RHSValue valueType="STATIC">AT&amp;T IT - Cisco</RHSValue>
+		</Condition>
+		<Action name="Set WWT Cost = Selling Price" class="assignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/UNIT_SELLING_PRICE</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Round WWT Cost to 2 decimal places" class="roundNumber">
+			<Parameter name="numberOfDecimals" valueType="STATIC">2</Parameter>
+			<Parameter name="sourceValue" valueType="REFERENCE">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<ExceptionHandler type="ERROR">Rounding error - WHOLESALE/DEAL/NO TRADE-IN</ExceptionHandler>
+		</Action>
+		<Action name="Format WWT Cost to 2 decimal places" class="numberFormat">
+			<Parameter name="pattern" valueType="STATIC">#.00</Parameter>
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<ExceptionHandler type="ERROR">Formatting error - WHOLESALE/DEAL/NO TRADE-IN</ExceptionHandler>
+		</Action>
+		<Action name="Null out Wholesale" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC"></Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE21</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+			<Action name="Null out Deviation" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC"></Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE22</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+	</ConditionSet>
+	<ConditionSet name="For DART service items with Trade-In, set WWT Cost and Wholesale" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE53</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">DART</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/INVENTORY_ITEM_SEGMENT_2</LHSValue>
+			<Operator>LIKE</Operator>
+			<RHSValue valueType="STATIC">CON%</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE41</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Action name="Set WWT Cost = List Price * Percent for Srv Item with Trade-in" class="arithmetic">
+			<Parameter name="LHS" valueType="REFERENCE">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE45</Parameter>
+			<Parameter name="operator" valueType="STATIC">*</Parameter>
+			<Parameter name="RHS" valueType="LOOKUP">DART_SRV_ITEM_WITH_TRADE</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Subtract Trade-In Amt from calculated WWT Cost" class="arithmetic">
+			<Parameter name="LHS" valueType="REFERENCE">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<Parameter name="operator" valueType="STATIC">-</Parameter>
+			<Parameter name="RHS" valueType="REFERENCE">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE41</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Round WWT Cost to 2 decimal places" class="roundNumber">
+			<Parameter name="numberOfDecimals" valueType="STATIC">2</Parameter>
+			<Parameter name="sourceValue" valueType="REFERENCE">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<ExceptionHandler type="ERROR">Rounding error - WHOLESALE/DART/MNT/TRADE-IN</ExceptionHandler>
+		</Action>
+		<Action name="Format WWT Cost to 2 decimal places" class="numberFormat">
+			<Parameter name="pattern" valueType="STATIC">#.00</Parameter>
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<ExceptionHandler type="ERROR">Formatting error - WHOLESALE/DART/MNT/TRADE-IN</ExceptionHandler>
+		</Action>
+		<Action name="Set Wholesale = calculated WWT Cost" class="assignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE21</Parameter>
+			<ExceptionHandler type="NONE">Assignment error - WHOLESALE/DART/MNT/TRADE-IN</ExceptionHandler>
+		</Action>
+	</ConditionSet>
+	<ConditionSet name="For DART service items without Trade-In, set WWT Cost and Wholesale" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE53</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">DART</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/INVENTORY_ITEM_SEGMENT_2</LHSValue>
+			<Operator>LIKE</Operator>
+			<RHSValue valueType="STATIC">CON%</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE41</LHSValue>
+			<Operator>IS NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Action name="Set WWT Cost = List Price * Percent for Srv Item without Trade-in" class="arithmetic">
+			<Parameter name="LHS" valueType="REFERENCE">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE45</Parameter>
+			<Parameter name="operator" valueType="STATIC">*</Parameter>
+			<Parameter name="RHS" valueType="LOOKUP">DART_SRV_ITEM_WITHOUT_TRADE</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Round WWT Cost to 2 decimal places" class="roundNumber">
+			<Parameter name="numberOfDecimals" valueType="STATIC">2</Parameter>
+			<Parameter name="sourceValue" valueType="REFERENCE">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<ExceptionHandler type="ERROR">Rounding error - WHOLESALE/DART/MNT/NON TRADE-IN</ExceptionHandler>
+		</Action>
+		<Action name="Format WWT Cost to 2 decimal places" class="numberFormat">
+			<Parameter name="pattern" valueType="STATIC">#.00</Parameter>
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<ExceptionHandler type="ERROR">Formatting error - WHOLESALE/DART/MNT/NON TRADE-IN</ExceptionHandler>
+		</Action>
+		<Action name="Set Wholesale = calculated WWT Cost" class="assignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE21</Parameter>
+			<ExceptionHandler type="NONE">Assignment error - WHOLESALE/DART/MNT/NON TRADE-IN</ExceptionHandler>
+		</Action>
+	</ConditionSet>
+	<ConditionSet name="For DART hardware items with Trade-In, set WWT Cost and Wholesale" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE53</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">DART</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/INVENTORY_ITEM_SEGMENT_2</LHSValue>
+			<Operator>NOT LIKE</Operator>
+			<RHSValue valueType="STATIC">CON%</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE41</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Action name="Set WWT Cost = List Price * 0.58" class="arithmetic">
+			<Parameter name="LHS" valueType="REFERENCE">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE45</Parameter>
+			<Parameter name="operator" valueType="STATIC">*</Parameter>
+			<Parameter name="RHS" valueType="STATIC">0.58</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Subtract Trade-In Amt from calculated WWT Cost" class="arithmetic">
+			<Parameter name="LHS" valueType="REFERENCE">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<Parameter name="operator" valueType="STATIC">-</Parameter>
+			<Parameter name="RHS" valueType="REFERENCE">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE41</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Round WWT Cost to 2 decimal places" class="roundNumber">
+			<Parameter name="numberOfDecimals" valueType="STATIC">2</Parameter>
+			<Parameter name="sourceValue" valueType="REFERENCE">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<ExceptionHandler type="ERROR">Rounding error - WHOLESALE/DART/HW/TRADE-IN</ExceptionHandler>
+		</Action>
+		<Action name="Format WWT Cost to 2 decimal places" class="numberFormat">
+			<Parameter name="pattern" valueType="STATIC">#.00</Parameter>
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<ExceptionHandler type="ERROR">Formatting error - WHOLESALE/DART/HW/TRADE-IN</ExceptionHandler>
+		</Action>
+		<Action name="Set Wholesale = calculated WWT Cost" class="assignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE21</Parameter>
+			<ExceptionHandler type="NONE">Assignment error - WHOLESALE/DART/HW/TRADE-IN</ExceptionHandler>
+		</Action>
+	</ConditionSet>
+	<ConditionSet name="For DART hardware items without Trade-In, set WWT Cost and Wholesale" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE53</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">DART</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/INVENTORY_ITEM_SEGMENT_2</LHSValue>
+			<Operator>NOT LIKE</Operator>
+			<RHSValue valueType="STATIC">CON%</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE41</LHSValue>
+			<Operator>IS NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Action name="Set WWT Cost = List Price * 0.58" class="arithmetic">
+			<Parameter name="LHS" valueType="REFERENCE">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE45</Parameter>
+			<Parameter name="operator" valueType="STATIC">*</Parameter>
+			<Parameter name="RHS" valueType="STATIC">0.58</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Round WWT Cost to 2 decimal places" class="roundNumber">
+			<Parameter name="numberOfDecimals" valueType="STATIC">2</Parameter>
+			<Parameter name="sourceValue" valueType="REFERENCE">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<ExceptionHandler type="ERROR">Rounding error - WHOLESALE/DART/HW/NON TRADE-IN</ExceptionHandler>
+		</Action>
+		<Action name="Format WWT Cost to 2 decimal places" class="numberFormat">
+			<Parameter name="pattern" valueType="STATIC">#.00</Parameter>
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<ExceptionHandler type="ERROR">Rounding error - WHOLESALE/DART/HW/NON TRADE-IN</ExceptionHandler>
+		</Action>
+		<Action name="Set Wholesale = calculated WWT Cost" class="assignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE21</Parameter>
+			<ExceptionHandler type="NONE">Assignment error - WHOLESALE/DART/HW/NON TRADE-IN</ExceptionHandler>
+		</Action>
+	</ConditionSet>
+
+<ConditionSet name="For DEAL hardware items without Trade-In, set WWT Cost and Wholesale" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE53</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">DEAL</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/INVENTORY_ITEM_SEGMENT_2</LHSValue>
+			<Operator>NOT LIKE</Operator>
+			<RHSValue valueType="STATIC">CON%</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE41</LHSValue>
+			<Operator>IS NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_HEADERS/SALESREP</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">AT&amp;T IT - Cisco</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_HEADERS/WWT_STG_ORDER_HEADERS_DFF/ATTRIBUTE23</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="LOOKUP">ATT IT CISCO DEAL 1</RHSValue>
+			</Condition>
+		<Action name="Set WWT Cost = List Price * ATT IT Cisco Discount" class="arithmetic">
+			<Parameter name="LHS" valueType="REFERENCE">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE45</Parameter>
+			<Parameter name="operator" valueType="STATIC">*</Parameter>
+			<Parameter name="RHS" valueType="LOOKUP">ATT IT CISCO DEAL HW NO Trade Disc</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Set Unit Selling Price = List Price * ATT IT Cisco Discount" class="arithmetic">
+			<Parameter name="LHS" valueType="REFERENCE">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE45</Parameter>
+			<Parameter name="operator" valueType="STATIC">*</Parameter>
+			<Parameter name="RHS" valueType="LOOKUP">ATT IT CISCO DEAL HW NO Trade Customer Disc</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/UNIT_SELLING_PRICE</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Round WWT Cost to 2 decimal places" class="roundNumber">
+			<Parameter name="numberOfDecimals" valueType="STATIC">2</Parameter>
+			<Parameter name="sourceValue" valueType="REFERENCE">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<ExceptionHandler type="ERROR">Rounding error - WHOLESALE/DEAL/HW/NON TRADE-IN</ExceptionHandler>
+		</Action>
+		<Action name="Format WWT Cost to 2 decimal places" class="numberFormat">
+			<Parameter name="pattern" valueType="STATIC">#.00</Parameter>
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<ExceptionHandler type="ERROR">Rounding error - WHOLESALE/DEAL/HW/NON TRADE-IN</ExceptionHandler>
+		</Action>
+		<Action name="Set Wholesale = calculated WWT Cost" class="assignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE21</Parameter>
+			<ExceptionHandler type="NONE">Assignment error - WHOLESALE/DEAL/HW/NON TRADE-IN</ExceptionHandler>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<Rule name="IF No Cost Item set Segment3 to NC" class="LINE" executeOnReprocess="N">
+	<ConditionSet name="IF No Cost Item" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/ATTRIBUTE7</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">0</RHSValue>
+		</Condition>
+		<Action name="Override Segment3 to NC" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">NC</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/INVENTORY_ITEM_SEGMENT_3</Parameter>			
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<!-- Set DART Deviation Price -->
+<Rule name="If header Recalc Deviation flag = Y, set Deviation price" class="LINE" executeOnReprocess="Y">
+	<ConditionSet name="If header Recalc Deviation flag = Y, and there is a Trade-In Amt, set Deviation price" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE53</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">DART</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_HEADERS/WWT_STG_ORDER_HEADERS_DFF/ATTRIBUTE55</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">Y</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE41</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE22</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Action name="Set Deviation = Selling Price - Trade-In Amt" class="arithmetic">
+			<Parameter name="LHS" valueType="REFERENCE">WWT_STG_ORDER_LINES/UNIT_SELLING_PRICE</Parameter>
+			<Parameter name="operator" valueType="STATIC">-</Parameter>
+			<Parameter name="RHS" valueType="REFERENCE">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE41</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE22</Parameter>
+			<ExceptionHandler type="ERROR">Assignment error - DEVIATION/DART/RECALC Y/TRADE-IN</ExceptionHandler>
+		</Action>
+		<Action name="Round Deviation to 2 decimal places" class="roundNumber">
+			<Parameter name="numberOfDecimals" valueType="STATIC">2</Parameter>
+			<Parameter name="sourceValue" valueType="REFERENCE">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE22</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE22</Parameter>
+			<ExceptionHandler type="ERROR">Rounding error - DEVIATION/DART/RECALC Y/TRADE-IN</ExceptionHandler>
+		</Action>
+		<Action name="Format Deviation to 2 decimal places" class="numberFormat">
+			<Parameter name="pattern" valueType="STATIC">#.00</Parameter>
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE22</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE22</Parameter>
+			<ExceptionHandler type="ERROR">Formatting error - DEVIATION/DART/RECALC Y/TRADE-IN</ExceptionHandler>
+		</Action>
+	</ConditionSet>
+	<ConditionSet name="If header Recalc Deviation flag is NULL, and there is a Trade-In Amt, set Deviation price" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE53</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">DART</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_HEADERS/WWT_STG_ORDER_HEADERS_DFF/ATTRIBUTE55</LHSValue>
+			<Operator>IS NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE41</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Action name="Set Deviation = Selling Price - Trade-In Amt" class="arithmetic">
+			<Parameter name="LHS" valueType="REFERENCE">WWT_STG_ORDER_LINES/UNIT_SELLING_PRICE</Parameter>
+			<Parameter name="operator" valueType="STATIC">-</Parameter>
+			<Parameter name="RHS" valueType="REFERENCE">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE41</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE22</Parameter>
+			<ExceptionHandler type="ERROR">Assignment error - DEVIATION/DART/RECALC NULL/TRADE-IN</ExceptionHandler>
+		</Action>
+		<Action name="Round Deviation to 2 decimal places" class="roundNumber">
+			<Parameter name="numberOfDecimals" valueType="STATIC">2</Parameter>
+			<Parameter name="sourceValue" valueType="REFERENCE">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE22</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE22</Parameter>
+			<ExceptionHandler type="ERROR">Rounding error - DEVIATION/DART/RECALC NULL/TRADE-IN</ExceptionHandler>
+		</Action>
+		<Action name="Format Deviation to 2 decimal places" class="numberFormat">
+			<Parameter name="pattern" valueType="STATIC">#.00</Parameter>
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE22</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE22</Parameter>
+			<ExceptionHandler type="ERROR">Formatting error - DEVIATION/DART/RECALC NULL/TRADE-IN</ExceptionHandler>
+		</Action>
+	</ConditionSet>
+	
+	<ConditionSet name="If header Recalc Deviation flag = Y, and there is not a Trade-In Amt, set Deviation price" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE53</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">DART</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_HEADERS/WWT_STG_ORDER_HEADERS_DFF/ATTRIBUTE55</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">Y</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE41</LHSValue>
+			<Operator>IS NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Action name="Set Deviation = Selling Price" class="assignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/UNIT_SELLING_PRICE</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE22</Parameter>
+			<ExceptionHandler type="ERROR">Assignment error - DEVIATION/DART/RECALC Y/NON TRADE-IN</ExceptionHandler>
+		</Action>
+		<Action name="Round Deviation to 2 decimal places" class="roundNumber">
+			<Parameter name="numberOfDecimals" valueType="STATIC">2</Parameter>
+			<Parameter name="sourceValue" valueType="REFERENCE">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE22</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE22</Parameter>
+			<ExceptionHandler type="ERROR">Rounding error - DEVIATION/DART/RECALC Y/NON TRADE-IN</ExceptionHandler>
+		</Action>
+		<Action name="Format Deviation to 2 decimal places" class="numberFormat">
+			<Parameter name="pattern" valueType="STATIC">#.00</Parameter>
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE22</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE22</Parameter>
+			<ExceptionHandler type="ERROR">Formatting error - DEVIATION/DART/RECALC Y/NON TRADE-IN</ExceptionHandler>
+		</Action>
+	</ConditionSet>
+	<ConditionSet name="If header Recalc Deviation flag is NULL, and there is not a Trade-In Amt, set Deviation price" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE53</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">DART</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_HEADERS/WWT_STG_ORDER_HEADERS_DFF/ATTRIBUTE55</LHSValue>
+			<Operator>IS NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE41</LHSValue>
+			<Operator>IS NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Action name="Set Deviation = Selling Price" class="assignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/UNIT_SELLING_PRICE</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE22</Parameter>
+			<ExceptionHandler type="ERROR">Assignment error - DEVIATION/DART/RECALC NULL/NON TRADE-IN</ExceptionHandler>
+		</Action>
+			<Action name="Round Deviation to 2 decimal places" class="roundNumber">
+			<Parameter name="numberOfDecimals" valueType="STATIC">2</Parameter>
+			<Parameter name="sourceValue" valueType="REFERENCE">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE22</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE22</Parameter>
+			<ExceptionHandler type="ERROR">Rounding error - DEVIATION/DART/RECALC NULL/NON TRADE-IN</ExceptionHandler>
+		</Action>
+		<Action name="Format Deviation to 2 decimal places" class="numberFormat">
+			<Parameter name="pattern" valueType="STATIC">#.00</Parameter>
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE22</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE22</Parameter>
+			<ExceptionHandler type="ERROR">Formatting error - DEVIATION/DART/RECALC NULL/NON TRADE-IN</ExceptionHandler>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<!-- DETERMINE TAX  -->
+<Rule name="Determine Tax Status" class="LINE" executeOnReprocess="N">
+	<ConditionSet name="Copy contents of tax exempt flag to Header DFF ATT44" exitOnSuccess="N">
+		<Action name="Copy contents of tax exempt flag to Header DFF ATT44" class="assignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/TAX_EXEMPT_FLAG</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/WWT_STG_ORDER_HEADERS_DFF/ATTRIBUTE44</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+	</ConditionSet>
+	<ConditionSet name="Tax Exempt when not set to Standard" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/TAX_EXEMPT_FLAG</LHSValue>
+			<Operator>!=</Operator>
+			<RHSValue valueType="STATIC">S</RHSValue>
+		</Condition>
+		<Action name="Set Tax Exempt Flag" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">E</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/TAX_EXEMPT_FLAG</Parameter>
+			<ExceptionHandler type="WARN">Could not set Tax Exempt Flag to E</ExceptionHandler>
+		</Action>
+		<Action name="Set Tax Exempt Reason Code" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">Other</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/TAX_EXEMPT_REASON_CODE</Parameter>
+			<ExceptionHandler type="WARN">Could not set Rax Exempt Reason Code to Other</ExceptionHandler>
+		</Action>
+		<Action name="Set Tax Exempt Tax Code" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">Exempt</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/TAX_CODE</Parameter>
+			<ExceptionHandler type="WARN">Could not set Tax Code to Exempt</ExceptionHandler>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<!-- AUTOCREATE SHIP TO ADDRESS - SET TO EXECUTE ON REPROCESS SO WHEN THEY CREATE THE SHIP TO CUSTOMER
+        THE ADDRESS WILL AUTO-CREATE.-->  
+<Rule name="Autocreate Address" class="LINE" executeOnReprocess="Y">
+	<ConditionSet name="Autocreate Ship To Address" exitOnSuccess="Y">
+		<Action name="Autocreate Ship To Address" class="createShipToAddress">
+		<ExceptionHandler type="ERROR">Could not create Ship To Address</ExceptionHandler>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<!-- ALERT OPERATIONS GROUP THAT ORDER HAS BEEN RECEIVED -->
+<Rule name="Build Email to Operations Group" class="LINE" executeOnReprocess="N">
+	<ConditionSet name="Build email to Operations Group" exitOnSuccess="Y">			
+		<Action name="Build Email Body" class="concatenateFields">
+			<Parameter name="field1" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/persistedOTOSTempVariables/tempVar2</Parameter>
+			<Parameter name="field2" valueType="STATIC">
+Part# %WWT_STG_ORDER_LINES/INVENTORY_ITEM_SEGMENT_2% 		
+Price: $%WWT_STG_ORDER_LINES/UNIT_SELLING_PRICE%
+			</Parameter>			
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/persistedOTOSTempVariables/tempVar2</Parameter>
+			<ExceptionHandler type="ERROR"></ExceptionHandler>	
+		</Action>
+	</ConditionSet>
+</Rule>	
+
+<!-- NEW SECTION OF RULES FROM CISCO DIVERSITY -->
+<Rule name="Validate data fields are populated - Cisco Diversity" class="LINE" executeOnReprocess="Y">
+	<ConditionSet name="IF DART# or DEAL ID IS NULL" exitOnSuccess="N">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE41</LHSValue>
+			<Operator>IS NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE29</LHSValue>
+			<Operator>NOT LIKE</Operator>
+			<RHSValue valueType="STATIC">TELCO%</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE29</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE16</LHSValue>
+			<Operator>IS NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>	
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE45</LHSValue>
+			<Operator>&gt;</Operator>
+			<RHSValue valueType="STATIC">0</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_HEADERS/SALESREP</LHSValue>
+			<Operator>!=</Operator>
+			<RHSValue valueType="STATIC">AT&amp;T IT - Cisco</RHSValue>
+		</Condition>
+		<Action name="Write an error to OCU" class="recordException">			
+			<Parameter name="exceptionType" valueType="STATIC">ERROR</Parameter>
+			<Parameter name="exceptionMessage" valueType="STATIC">DART # or DEAL ID is missing for this line.</Parameter>			
+		</Action>
+	</ConditionSet>
+	<ConditionSet name="IF Distribution Cost IS NULL" exitOnSuccess="N">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE53</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">DART</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE41</LHSValue>
+			<Operator>IS NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE29</LHSValue>
+			<Operator>NOT LIKE</Operator>
+			<RHSValue valueType="STATIC">TELCO%</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE29</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE22</LHSValue>
+			<Operator>IS NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>		
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE45</LHSValue>
+			<Operator>&gt;</Operator>
+			<RHSValue valueType="STATIC">0</RHSValue>
+		</Condition>
+		<Action name="Write an error to OCU" class="recordException">			
+			<Parameter name="exceptionType" valueType="STATIC">ERROR</Parameter>
+			<Parameter name="exceptionMessage" valueType="STATIC">Distributor Deviation cost is required.  Please populate with the correct value for this DART #.</Parameter>			
+		</Action>
+	</ConditionSet>
+	<ConditionSet name="IF Wholesale Cost IS NULL" exitOnSuccess="N">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE53</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">DART</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE41</LHSValue>
+			<Operator>IS NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE29</LHSValue>
+			<Operator>NOT LIKE</Operator>
+			<RHSValue valueType="STATIC">TELCO%</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE29</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE21</LHSValue>
+			<Operator>IS NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE45</LHSValue>
+			<Operator>&gt;</Operator>
+			<RHSValue valueType="STATIC">0</RHSValue>
+		</Condition>
+		<Action name="Write an error to OCU" class="recordException">			
+			<Parameter name="exceptionType" valueType="STATIC">ERROR</Parameter>
+			<Parameter name="exceptionMessage" valueType="STATIC">Wholesale cost is required.  Please populate with 42% off List.</Parameter>			
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<Rule name="Validate DART# against approved discount level - Cisco Diversity" class="LINE" executeOnReprocess="Y">
+	<ConditionSet name="Lookup Discount Level" exitOnSuccess="N">	
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE41</LHSValue>
+			<Operator>IS NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>	
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE29</LHSValue>
+			<Operator>NOT LIKE</Operator>
+			<RHSValue valueType="STATIC">TELCO%</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE29</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE16</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Action name="Lookup Discount Level" class="simpleLookup">
+			<Parameter name="lookupType" valueType="STATIC">WWT_CISCO_REUSABLE_DEVIATIONS</Parameter>			
+			<Parameter name="attribute1" valueType="REFERENCE">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE16</Parameter>
+			<Parameter name="returnColumn1" valueType="STATIC">ATTRIBUTE2</Parameter>
+			<Parameter name="targetElement1" valueType="TARGET">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar1</Parameter>
+			<Parameter name="returnColumn2" valueType="STATIC">ATTRIBUTE1</Parameter>
+			<Parameter name="targetElement2" valueType="TARGET">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar5</Parameter>
+			<Parameter name="returnColumn3" valueType="STATIC">ATTRIBUTE3</Parameter>
+			<Parameter name="targetElement3" valueType="TARGET">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar8</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+	</ConditionSet>
+	<ConditionSet name="Multiply discount amount" exitOnSuccess="N">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE41</LHSValue>
+			<Operator>IS NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE29</LHSValue>
+			<Operator>NOT LIKE</Operator>
+			<RHSValue valueType="STATIC">TELCO%</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE29</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE45</LHSValue>
+			<Operator>&gt;</Operator>
+			<RHSValue valueType="STATIC">0</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE16</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="REFERENCE">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar5</RHSValue>
+		</Condition>		
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE16</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>	
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE22</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>	
+		<Action name="Multiply discount amount" class="arithmetic">
+			<Parameter name="LHS" valueType="REFERENCE">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE45</Parameter>
+			<Parameter name="operator" valueType="STATIC">*</Parameter>
+			<Parameter name="RHS" valueType="REFERENCE">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar1</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar2</Parameter>
+			<ExceptionHandler type="WARN">Approved discount arithmetic failed.</ExceptionHandler>
+		</Action>
+		<!--NEED TO USE THE NUMBERFORMAT ACTION TO KEEP THE VALUE AT .00-->
+		<Action name="Round the price to 2 decimal places" class="numberFormat">
+			<Parameter name="pattern" valueType="STATIC">#.00</Parameter>
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE22</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE22</Parameter>
+		</Action>
+		<Action name="Round the calculation to 2 decimal places" class="numberFormat">
+			<Parameter name="pattern" valueType="STATIC">#.00</Parameter>
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar2</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar2</Parameter>
+		</Action>		
+	</ConditionSet>
+	<ConditionSet name="Validate discount against calculation" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE41</LHSValue>
+			<Operator>IS NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE29</LHSValue>
+			<Operator>NOT LIKE</Operator>
+			<RHSValue valueType="STATIC">TELCO%</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE29</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar2</LHSValue>
+			<Operator>!=</Operator>
+			<RHSValue valueType="REFERENCE">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE22</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE45</LHSValue>
+			<Operator>&gt;</Operator>
+			<RHSValue valueType="STATIC">0</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE16</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="REFERENCE">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar5</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE16</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>	
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE22</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>	
+		<Action name="Write an error to OCU" class="recordException">			
+			<Parameter name="exceptionType" valueType="STATIC">ERROR</Parameter>
+			<Parameter name="exceptionMessage" valueType="STATIC">Discount for this DART# doesn't match approved amount.</Parameter>			
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<!-- IDENTIFY ITEMS THAT BEGIN WITH CON% FOR LATER USE-->
+<Rule name="Identify items like CON% - Cisco Diversity" class="LINE" executeOnReprocess="Y">
+	<ConditionSet name="Identify items like CON%" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE41</LHSValue>
+			<Operator>IS NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE29</LHSValue>
+			<Operator>NOT LIKE</Operator>
+			<RHSValue valueType="STATIC">TELCO%</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE29</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/INVENTORY_ITEM_SEGMENT_2</LHSValue>
+			<Operator>LIKE</Operator>
+			<RHSValue valueType="STATIC">CON%</RHSValue>
+		</Condition>
+		<Action name="Set Temp Variable for CON% items" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">Y</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar7</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<!-- ADDED ENTIRE CONDITION SEE FOR THE PRE-DETERMINE Precentage DISCOUNT LIKE CON% SEE BELOW-->
+<Rule name="Validate Wholesale Discount - Cisco Diversity" class="LINE" executeOnReprocess="Y">
+	<ConditionSet name="Multiply discount amount with 15%" exitOnSuccess="N">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE53</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">DART</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE41</LHSValue>
+			<Operator>IS NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE29</LHSValue>
+			<Operator>NOT LIKE</Operator>
+			<RHSValue valueType="STATIC">TELCO%</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE29</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE45</LHSValue>
+			<Operator>&gt;</Operator>
+			<RHSValue valueType="STATIC">0</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar7</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">Y</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE21</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Action name="Multiply discount amount by 15%" class="arithmetic">
+			<Parameter name="LHS" valueType="REFERENCE">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE45</Parameter>
+			<Parameter name="operator" valueType="STATIC">*</Parameter>
+			<Parameter name="RHS" valueType="LOOKUP">WHOLESALE_DISCOUNT</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar3</Parameter>
+			<ExceptionHandler type="WARN">Wholesale discount arithmetic failed.</ExceptionHandler>
+		</Action>
+		<Action name="Round the price to 2 decimal places" class="roundNumber">
+			<Parameter name="numberOfDecimals" valueType="STATIC">2</Parameter>
+			<Parameter name="sourceValue" valueType="REFERENCE">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar3</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar3</Parameter>
+		</Action>
+		<Action name="Round the wholesale cost to 2 decimal places" class="roundNumber">
+			<Parameter name="numberOfDecimals" valueType="STATIC">0</Parameter>
+			<Parameter name="sourceValue" valueType="REFERENCE">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE21</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE21</Parameter>
+		</Action>
+	</ConditionSet>
+	<ConditionSet name="Validate discount against calculation 15%" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE41</LHSValue>
+			<Operator>IS NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE29</LHSValue>
+			<Operator>NOT LIKE</Operator>
+			<RHSValue valueType="STATIC">TELCO%</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE29</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar3</LHSValue>
+			<Operator>!=</Operator>
+			<RHSValue valueType="REFERENCE">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE21</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE45</LHSValue>
+			<Operator>&gt;</Operator>
+			<RHSValue valueType="STATIC">0</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE21</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar7</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">Y</RHSValue>
+		</Condition>
+		<Action name="Write an error to OCU" class="recordException">			
+			<Parameter name="exceptionType" valueType="STATIC">ERROR</Parameter>
+			<Parameter name="exceptionMessage" valueType="STATIC">Wholesale cost is was not 15% off list.  Fix flexfield and re-process.</Parameter>			
+		</Action>
+	</ConditionSet>	
+<!-- ADDED ENTIRE CONDITION SEE FOR THE 20% DISCOUNT LIKE CON% SEE ABOVE-->
+	<ConditionSet name="Multiply discount amount 42%" exitOnSuccess="N">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE41</LHSValue>
+			<Operator>IS NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE29</LHSValue>
+			<Operator>NOT LIKE</Operator>
+			<RHSValue valueType="STATIC">TELCO%</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE29</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE45</LHSValue>
+			<Operator>&gt;</Operator>
+			<RHSValue valueType="STATIC">0</RHSValue>
+		</Condition>	
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar7</LHSValue>
+			<Operator>!=</Operator>
+			<RHSValue valueType="STATIC">Y</RHSValue>
+		</Condition>
+		<Action name="Multiply discount amount 42%" class="arithmetic">
+			<Parameter name="LHS" valueType="REFERENCE">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE45</Parameter>
+			<Parameter name="operator" valueType="STATIC">*</Parameter>
+			<Parameter name="RHS" valueType="STATIC">.58</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar3</Parameter>
+			<ExceptionHandler type="WARN">Wholesale discount arithmetic failed.</ExceptionHandler>
+		</Action>		
+		<Action name="Round the price to 2 decimal places" class="roundNumber">
+			<Parameter name="numberOfDecimals" valueType="STATIC">2</Parameter>
+			<Parameter name="sourceValue" valueType="REFERENCE">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar3</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar3</Parameter>
+		</Action>		
+		<Action name="Round the wholesale cost to 2 decimal places" class="roundNumber">
+			<Parameter name="numberOfDecimals" valueType="STATIC">2</Parameter>
+			<Parameter name="sourceValue" valueType="REFERENCE">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE21</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE21</Parameter>
+		</Action>
+	</ConditionSet>
+	<ConditionSet name="Validate discount against calculation 42%" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE41</LHSValue>
+			<Operator>IS NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE29</LHSValue>
+			<Operator>NOT LIKE</Operator>
+			<RHSValue valueType="STATIC">TELCO%</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE29</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar3</LHSValue>
+			<Operator>!=</Operator>
+			<RHSValue valueType="REFERENCE">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE21</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE45</LHSValue>
+			<Operator>&gt;</Operator>
+			<RHSValue valueType="STATIC">0</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE21</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar7</LHSValue>
+			<Operator>!=</Operator>
+			<RHSValue valueType="STATIC">Y</RHSValue>
+		</Condition>
+		<Action name="Write an error to OCU" class="recordException">			
+			<Parameter name="exceptionType" valueType="STATIC">WARN</Parameter>
+			<Parameter name="exceptionMessage" valueType="STATIC">Wholesale cost is not 42% off list. Verify and fix if needed.</Parameter>			
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<!-- NEW RULE FOR SMB PRICING -->
+<Rule name="Validate item exists in US Fast Track Price List - Cisco Diversity" class="LINE" executeOnReprocess="Y">
+	<ConditionSet name="Check Part# against Repos for this Contract" exitOnSuccess="N">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE41</LHSValue>
+			<Operator>IS NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE29</LHSValue>
+			<Operator>NOT LIKE</Operator>
+			<RHSValue valueType="STATIC">TELCO%</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE29</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE16</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="REFERENCE">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar5</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar8</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Action name="Check Part# against Repos for this Contract" class="singleItemQuery">
+			<Parameter name="sqlConstantName" valueType="STATIC">ciscoDiversityFastTrackPriceListCheckOTOSSQL</Parameter>
+			<Parameter name="dbName" valueType="STATIC">ERP</Parameter>			
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar4</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+	</ConditionSet>
+	<ConditionSet name="SMB validation code is in SMB price list" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE41</LHSValue>
+			<Operator>IS NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE29</LHSValue>
+			<Operator>NOT LIKE</Operator>
+			<RHSValue valueType="STATIC">TELCO%</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE29</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar4</LHSValue>
+			<Operator>!=</Operator>
+			<RHSValue valueType="STATIC">Y</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE16</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="REFERENCE">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar5</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar8</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Action name="Write an error to OCU" class="recordException">
+			<Parameter name="exceptionType" valueType="STATIC">ERROR</Parameter>
+			<Parameter name="exceptionMessage" valueType="STATIC">This item is not in the price list associated to the DART # provided. Change DART# to a valid option for this item.</Parameter>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<!--CHECK DISTRIBUTION DEVIATION PRICE AGAINST CUSTOMER SELLING PRICE --> 
+<Rule name="Check Distribution Deviation Price against Customer Selling Price - Cisco Diversity" class="LINE" executeOnReprocess="Y">
+	<ConditionSet name="Validate Cisco line has punchout data" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE53</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">DART</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE41</LHSValue>
+			<Operator>IS NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE29</LHSValue>
+			<Operator>NOT LIKE</Operator>
+			<RHSValue valueType="STATIC">TELCO%</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE29</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE45</LHSValue>
+			<Operator>&gt;</Operator>
+			<RHSValue valueType="STATIC">0</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE22</LHSValue>
+			<Operator>&gt;</Operator>
+			<RHSValue valueType="REFERENCE">WWT_STG_ORDER_LINES/UNIT_SELLING_PRICE</RHSValue>
+		</Condition>
+		<Action name="Write an error to OCU" class="recordException">
+			<Parameter name="exceptionType" valueType="STATIC">WARN</Parameter>
+			<Parameter name="exceptionMessage" valueType="STATIC">Distributor deviation price is higher than customer selling price</Parameter>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<!--DISCOUNT SUMMARY RULE --> 
+<Rule name="Applied Discount times quantity" class="LINE" executeOnReprocess="Y">
+	<ConditionSet name="Applied Discount times quantity" exitOnSuccess="N">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE41</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Action name="Round DFF Attribute 41 to two decimal places" class="numberFormat">
+			<Parameter name="pattern" valueType="STATIC">#.00</Parameter>
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE41</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE41</Parameter>
+		</Action>
+		<Action name="Multiply DFF Attribute 41 * Ordered Quantity" class="arithmetic">
+			<Parameter name="LHS" valueType="REFERENCE">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE41</Parameter>
+			<Parameter name="operator" valueType="STATIC">*</Parameter>
+			<Parameter name="RHS" valueType="REFERENCE">WWT_STG_ORDER_LINES/ORDERED_QUANTITY</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar10</Parameter>
+			<ExceptionHandler type="WARN">Multiply Arithmetic failed.</ExceptionHandler>
+		</Action>
+		<Action name="Round Line Discount to two decimal places" class="roundNumber">
+			<Parameter name="numberOfDecimals" valueType="STATIC">2</Parameter>
+			<Parameter name="sourceValue" valueType="REFERENCE">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar10</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar10</Parameter>
+		</Action>
+		<Action name="Format Line Discount to two decimal places" class="numberFormat">
+			<Parameter name="pattern" valueType="STATIC">#.00</Parameter>
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar10</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar10</Parameter>
+		</Action>
+		<Action name="Add Line Discount Amount to Header Dff Attribute42" class="arithmetic">
+			<Parameter name="LHS" valueType="REFERENCE">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar10</Parameter>
+			<Parameter name="operator" valueType="STATIC">+</Parameter>
+			<Parameter name="RHS" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/WWT_STG_ORDER_HEADERS_DFF/ATTRIBUTE42</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/WWT_STG_ORDER_HEADERS_DFF/ATTRIBUTE42</Parameter>
+			<ExceptionHandler type="WARN">Addition Arithmetic failed.</ExceptionHandler>
+		</Action>
+		<Action name="Format Sum of Discount Amounts to two decimals" class="numberFormat">
+			<Parameter name="pattern" valueType="STATIC">#.00</Parameter>
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/WWT_STG_ORDER_HEADERS_DFF/ATTRIBUTE42</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/WWT_STG_ORDER_HEADERS_DFF/ATTRIBUTE42</Parameter>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<Rule name="Check for Auth Type to be populated" class="LINE" executeOnReprocess="Y">
+	<ConditionSet name="Check for Auth Type to be populated" exitOnSuccess="N">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE45</LHSValue>
+			<Operator>&gt;</Operator>
+			<RHSValue valueType="STATIC">0</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE53</LHSValue>
+			<Operator>IS NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_HEADERS/SALESREP</LHSValue>
+			<Operator>!=</Operator>
+			<RHSValue valueType="STATIC">AT&amp;T IT - Cisco</RHSValue>
+		</Condition>
+		<Action name="Write an error to OCU" class="recordException">
+			<Parameter name="exceptionType" valueType="STATIC">ERROR</Parameter>
+			<Parameter name="exceptionMessage" valueType="STATIC">Auth Type is required for this line</Parameter>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<Rule name="Format data for comparison" class="LINE" executeOnReprocess="Y">
+	<ConditionSet name="Format Unit Selling price for comparison" exitOnSuccess="N">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/UNIT_SELLING_PRICE</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Action name="Round the unit selling price to 2 decimal places" class="roundNumber">
+			<Parameter name="numberOfDecimals" valueType="STATIC">2</Parameter>
+			<Parameter name="sourceValue" valueType="REFERENCE">WWT_STG_ORDER_LINES/UNIT_SELLING_PRICE</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar2</Parameter>
+		</Action>
+		<Action name="Format unit selling price to 2 decimal places" class="numberFormat">
+			<Parameter name="pattern" valueType="STATIC">#.00</Parameter>
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar2</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar2</Parameter>
+		</Action>
+	</ConditionSet>
+	<ConditionSet name="Format Cost for comparison" exitOnSuccess="N">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/ATTRIBUTE7</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Action name="Round the Cost to 2 decimal places" class="roundNumber">
+			<Parameter name="numberOfDecimals" valueType="STATIC">2</Parameter>
+			<Parameter name="sourceValue" valueType="REFERENCE">WWT_STG_ORDER_LINES/ATTRIBUTE7</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar3</Parameter>
+		</Action>
+		<Action name="Format the Cost to 2 decimal places" class="numberFormat">
+			<Parameter name="pattern" valueType="STATIC">#.00</Parameter>
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar3</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar3</Parameter>
+		</Action>
+	</ConditionSet>
+	<ConditionSet name="Format Wholesale for comparison" exitOnSuccess="N">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE21</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Action name="Round the Wholesale to 2 decimal places" class="roundNumber">
+			<Parameter name="numberOfDecimals" valueType="STATIC">2</Parameter>
+			<Parameter name="sourceValue" valueType="REFERENCE">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE21</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar4</Parameter>
+		</Action>
+		<Action name="Format the Wholesale to 2 decimal places" class="numberFormat">
+			<Parameter name="pattern" valueType="STATIC">#.00</Parameter>
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar4</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar4</Parameter>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<Rule name="Unit Cost (temp3) and Wholesale (temp4) rule" class="LINE" executeOnReprocess="Y">
+	<ConditionSet name="ERROR if Unit Cost and Wholesale are not equal" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE53</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">DART</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE45</LHSValue>
+			<Operator>&gt;</Operator>
+			<RHSValue valueType="STATIC">0</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar3</LHSValue>
+			<Operator>!=</Operator>
+			<RHSValue valueType="REFERENCE">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar4</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/INVENTORY_ITEM_SEGMENT_2</LHSValue>
+			<Operator>NOT LIKE</Operator>
+			<RHSValue valueType="STATIC">CON-%</RHSValue>
+		</Condition>
+		<Action name="ERROR in OCU" class="recordException">
+			<Parameter name="exceptionType" valueType="STATIC">ERROR</Parameter>
+			<Parameter name="exceptionMessage" valueType="STATIC">Unit Cost should equal Wholesale when line is for DART</Parameter>
+		</Action>
+	</ConditionSet>
+	<ConditionSet name="WARN if Unit Cost and Wholesale are not equal-Error for CON Parts" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE53</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">DART</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE45</LHSValue>
+			<Operator>&gt;</Operator>
+			<RHSValue valueType="STATIC">0</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar3</LHSValue>
+			<Operator>!=</Operator>
+			<RHSValue valueType="REFERENCE">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar4</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/INVENTORY_ITEM_SEGMENT_2</LHSValue>
+			<Operator>LIKE</Operator>
+			<RHSValue valueType="STATIC">CON-%</RHSValue>
+		</Condition>
+		<Action name="WARN in OCU" class="recordException">
+			<Parameter name="exceptionType" valueType="STATIC">WARN</Parameter>
+			<Parameter name="exceptionMessage" valueType="STATIC">Unit Cost does not equal Wholesale when line is for DART</Parameter>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+
+<Rule name="Cost (temp3) and Selling Price (temp2) rule" class="LINE" executeOnReprocess="Y">
+	<ConditionSet name="Check to see if Unit Cost and Selling Price are not equal" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE53</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">DEAL</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE45</LHSValue>
+			<Operator>&gt;</Operator>
+			<RHSValue valueType="STATIC">0</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar2</LHSValue>
+			<Operator>!=</Operator>
+			<RHSValue valueType="REFERENCE">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar3</RHSValue>
+		</Condition>
+		<Action name="Write an error to OCU" class="recordException">
+			<Parameter name="exceptionType" valueType="STATIC">WARN</Parameter>
+			<Parameter name="exceptionMessage" valueType="STATIC">Unit Cost and Selling Price do not match. Verify this mismatch is correct</Parameter>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<Rule name="Copy DEAL ID to Header DFF Attribute23" class="LINE" executeOnReprocess="Y">
+	<ConditionSet name="Copy DEAL ID to Header DFF Attribute23" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE53</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">DEAL</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE16</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_HEADERS/WWT_STG_ORDER_HEADERS_DFF/ATTRIBUTE23</LHSValue>
+			<Operator>IS NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Action name="Copy DEAL ID to Header DFF Attribute23" class="assignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE16</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/WWT_STG_ORDER_HEADERS_DFF/ATTRIBUTE23</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<!-- CHANGE LINE TYPE ON ZERO DOLLAR LINES -->
+<Rule name="Change line type on zero dollar lines" class="LINE" executeOnReprocess="Y">
+	<ConditionSet name="Change line type on zero/zero dollar lines" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE45</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">0</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/UNIT_SELLING_PRICE</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">0</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/SHIP_FROM_ORG_ID</LHSValue>
+			<Operator>IN</Operator>
+			<RHSValue valueType="LOOKUP">ZERO_DOLLAR_NO_INV_ORGS</RHSValue>
+		</Condition>
+		<Action name="Set line type to Telco Drop Ship-No Invoice" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">Telco Drop Ship-No Invoice</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/LINE_TYPE</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+	</ConditionSet>
+	<ConditionSet name="Change line type on NULL/zero dollar lines" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE45</LHSValue>
+			<Operator>IS NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/UNIT_SELLING_PRICE</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">0</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/SHIP_FROM_ORG_ID</LHSValue>
+			<Operator>IN</Operator>
+			<RHSValue valueType="LOOKUP">ZERO_DOLLAR_NO_INV_ORGS</RHSValue>
+		</Condition>
+		<Action name="Set line type to Telco Drop Ship-No Invoice" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">Telco Drop Ship-No Invoice</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/LINE_TYPE</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+	</ConditionSet>
+	<ConditionSet name="Change line type on 0.00/zero dollar lines" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE45</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">0.00</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/UNIT_SELLING_PRICE</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">0</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/SHIP_FROM_ORG_ID</LHSValue>
+			<Operator>IN</Operator>
+			<RHSValue valueType="LOOKUP">ZERO_DOLLAR_NO_INV_ORGS</RHSValue>
+		</Condition>
+		<Action name="Set line type to Telco Drop Ship-No Invoice" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">Telco Drop Ship-No Invoice</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/LINE_TYPE</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<!-- Apply MSIP Vendor SKU when salesrep is CDSD - MSIP -->
+<Rule name="Apply MSIP Vendor SKU when salesrep is CDSD - MSIP" class="LINE" executeOnReprocess="N">
+	<ConditionSet name="Apply MSIP Vendor SKU when salesrep is CDSD - MSIP" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_HEADERS/SALESREP</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">CDSD - MSIP</RHSValue>
+		</Condition>
+		<Action name="Get MSIP Vendor SKU" class="singleItemQuery">
+			<Parameter name="sqlConstantName" valueType="STATIC">ATTgetMSIPVendorSKUOTOSSQL</Parameter>
+			<Parameter name="dbName" valueType="STATIC">REPOS</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/ATTRIBUTE6</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<!-- Warn when MSIP Vendor SKU is NULL from previous rule or is equal to item segment2 -->
+<Rule name="Warn when MSIP Vendor SKU is NULL from previous rule" class="LINE" executeOnReprocess="Y">
+	<ConditionSet name="Generate warning when line attribute6 is NULL" exitOnSuccess="N">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_HEADERS/SALESREP</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">CDSD - MSIP</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/ATTRIBUTE6</LHSValue>
+			<Operator>IS NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Action name="Generate warning" class="recordException">
+			<Parameter name="exceptionType" valueType="STATIC">WARN</Parameter>
+			<Parameter name="exceptionMessage" valueType="STATIC">No vendor sku found for this item. Please populate manually</Parameter>
+		</Action>
+	</ConditionSet>
+	<ConditionSet name="Generate warning when line attribute6 is equal to item segment2" exitOnSuccess="N">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_HEADERS/SALESREP</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">CDSD - MSIP</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/ATTRIBUTE6</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="REFERENCE">WWT_STG_ORDER_LINES/INVENTORY_ITEM_SEGMENT_2</RHSValue>
+		</Condition>
+		<Action name="Generate warning" class="recordException">
+			<Parameter name="exceptionType" valueType="STATIC">WARN</Parameter>
+			<Parameter name="exceptionMessage" valueType="STATIC">No vendor sku found for this item. Please populate manually</Parameter>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<!-- Add Trade-In verbiage to line Additional Description -->
+<Rule name="Add additional description text for trade-in lines" class="LINE" executeOnReprocess="Y">
+	<ConditionSet name="Add additional description text for trade-in lines" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE41</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE41</LHSValue>
+			<Operator>&gt;</Operator>
+			<RHSValue valueType="STATIC">0</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/ATTRIBUTE12</LHSValue>
+			<Operator>NOT LIKE</Operator>
+			<RHSValue valueType="STATIC">Trade in Discount applied%</RHSValue>
+		</Condition>
+		<Action name="Prefix additional description with trade-in text" class="concatenateFields">
+			<Parameter name="field1" valueType="STATIC">Trade in Discount applied: $</Parameter>
+			<Parameter name="field2" valueType="REFERENCE">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE41</Parameter>
+			<Parameter name="field3" valueType="STATIC">;</Parameter>
+			<Parameter name="field4" valueType="REFERENCE">WWT_STG_ORDER_LINES/ATTRIBUTE12</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/ATTRIBUTE12</Parameter>
+			<ExceptionHandler type="WARN">Error building trade-in additional description</ExceptionHandler>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<!-- Set Punchout Source System -->
+<Rule name="Set Punchout Source System since AT&T doesn't send it" class="LINE" executeOnReprocess="Y">
+	<ConditionSet name="Check for ICT style SupplierPartAuxiliaryID" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE29</LHSValue>
+			<Operator>RLIKE</Operator>
+			<RHSValue valueType="STATIC">.*;\w{4}$</RHSValue>
+		</Condition>
+		<Action name="Set Punchout Source System to ICT" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">ICT</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE19</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+	</ConditionSet>
+	<ConditionSet name="Else assume CCW style SupplierPartAuxiliaryID" exitOnSuccess="Y">
+		<Action name="Set Punchout Source System to CCW" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">CCW</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE19</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<!-- ******************************** -->
+<!-- ****** BEGIN POST-PROCESS  ***** -->
+<!-- ******************************** -->
+	
+<Rule name="Send Email to Operations Group" class ="POST-PROCESS" executeOnReprocess="N">
+	<ConditionSet name="Check if END_CUSTOMER_NAME and ATTRIBUTE99 are NULL, if so populate with 'N/A'" exitOnSuccess="N">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_HEADERS/persistedOTOSTempVariables/tempVar4</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">Y</RHSValue>
+		</Condition>
+		<Action name="Check for Care of and Trigger for Email Subject" class="singleItemQuery">
+			<Parameter name="sqlConstantName" valueType="STATIC">ATTemailSubjectOTOSSQL</Parameter>
+			<Parameter name="dbName" valueType="STATIC">ERP</Parameter>
+			<Parameter name="targetElement" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/persistedOTOSTempVariables/tempVar11</Parameter>
+			<Parameter name="actionOnMultiple" valueType="STATIC">NULL</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+	</ConditionSet>
+	<ConditionSet name="Check if order is a NON-TRIGGER order" exitOnSuccess="N">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_HEADERS/OTOSTempVariables/tempVar7</LHSValue>
+			<Operator>LIKE</Operator>
+			<RHSValue valueType="STATIC">'%NON-TRIGGER%'</RHSValue>
+		</Condition>
+		<Action name="Set as a NON-TRIGGER Order" class="assignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">NON-TRIGGER</Parameter>			
+			<Parameter name="targetElement" valueType="STATIC">WWT_STG_ORDER_HEADERS/OTOSTempVariables/tempVar7</Parameter>
+		</Action>
+	</ConditionSet>
+	<ConditionSet name="Check if order is a TRIGGER order" exitOnSuccess="N">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_HEADERS/OTOSTempVariables/tempVar7</LHSValue>
+			<Operator>LIKE</Operator>
+			<RHSValue valueType="STATIC">'%TRIGGER%'</RHSValue>
+		</Condition>
+		<Action name="Set as a TRIGGER Order" class="assignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">TRIGGER</Parameter>			
+			<Parameter name="targetElement" valueType="STATIC">WWT_STG_ORDER_HEADERS/OTOSTempVariables/tempVar7</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+	</ConditionSet>
+	<ConditionSet name="Send Email to Operations Group" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_HEADERS/persistedOTOSTempVariables/tempVar4</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">Y</RHSValue>
+		</Condition>
+		<Action name="Build Email Subject" class="concatenateFields">
+			<Parameter name="field1" valueType="STATIC">%WWT_STG_ORDER_HEADERS/CUSTOMER_PO_NUMBER% - %WWT_STG_ORDER_HEADERS/CUSTOMER_NAME% - </Parameter>			
+			<Parameter name="field2" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/persistedOTOSTempVariables/tempVar12</Parameter>
+			<Parameter name="field3" valueType="STATIC"> - </Parameter>
+			<Parameter name="field4" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/persistedOTOSTempVariables/tempVar11</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/persistedOTOSTempVariables/tempVar13</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>	
+		</Action>		
+		<Action name="Build Email Body" class="concatenateFields">
+			<Parameter name="field1" valueType="STATIC">
+PO# %WWT_STG_ORDER_HEADERS/CUSTOMER_PO_NUMBER% has been received for order processing.
+
+Order Contact:  %WWT_STG_ORDER_HEADERS/ORDERED_BY_CONTACT_FIRST_NAME% %WWT_STG_ORDER_HEADERS/ORDERED_BY_CONTACT_LAST_NAME%
+Customer Comments:  %WWT_STG_ORDER_HEADERS/WWT_STG_ORDER_HEADERS_DFF/ATTRIBUTE99%
+Shipping Method:  %WWT_STG_ORDER_HEADERS/SHIPPING_METHOD%
+
+Please see line details below:</Parameter>			
+			<Parameter name="field2" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/persistedOTOSTempVariables/tempVar2</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/persistedOTOSTempVariables/tempVar2</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>	
+		</Action>
+		<Action name="Send Notification" class="sendInternalEmail">
+			<Parameter name="subject" valueType="STATIC">WWT_STG_ORDER_HEADERS/persistedOTOSTempVariables/tempVar13</Parameter>
+			<Parameter name="toList" valueType="LOOKUP">DIST_LIST_PO_RECEIVED</Parameter>				
+			<Parameter name="body" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/persistedOTOSTempVariables/tempVar2</Parameter>
+			<ExceptionHandler type="WARN">Could not send email</ExceptionHandler>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<!-- ******************************** -->
+<!-- ****** POST-PINWHEEL ************ -->
+<!-- ******************************** -->
+
+<!-- WRITE PO ACKNOWLEDGEMENT RECORDS TO THE OUTBOUND PO STAGING TABLES -->
+<Rule name="Write PO Acknowledgement records to the outbound PO Staging tables" class="POST-PINWHEEL" executeOnReprocess="Y">
+	<ConditionSet name="Check for salesrep_id, customer_id and invoice_to_org_id combination" exitOnSuccess="N">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_HEADERS/STATUS</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">PROCESSED</RHSValue>
+		</Condition>
+		<Action name="WWT_LOOKUP = WWT_OB_PO_ACKS" class="simpleLookup">
+			<Parameter name="lookupType" valueType="STATIC">WWT_OB_PO_ACKS</Parameter>
+			<Parameter name="attribute1" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/SALESREP_ID</Parameter>
+			<Parameter name="attribute4" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/CUSTOMER_ID</Parameter>
+			<Parameter name="attribute5" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/INVOICE_TO_ORG_ID</Parameter>
+			<Parameter name="attribute6" valueType="STATIC">CXML</Parameter>
+			<Parameter name="returnColumn1" valueType="STATIC">ATTRIBUTE6</Parameter>
+			<Parameter name="targetElement1" valueType="TARGET">WWT_STG_ORDER_HEADERS/persistedOTOSTempVariables/tempVar3</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+	</ConditionSet>
+	<ConditionSet name="Check for salesrep_id, customer_id and NULL invoice_to_org_id combination" exitOnSuccess="N">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_HEADERS/STATUS</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">PROCESSED</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_HEADERS/persistedOTOSTempVariables/tempVar3</LHSValue>
+			<Operator>IS NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Action name="WWT_LOOKUP = WWT_OB_PO_ACKS" class="simpleLookup">
+			<Parameter name="lookupType" valueType="STATIC">WWT_OB_PO_ACKS</Parameter>
+			<Parameter name="attribute1" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/SALESREP_ID</Parameter>
+			<Parameter name="attribute4" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/CUSTOMER_ID</Parameter>
+			<Parameter name="attribute5" valueType="STATIC"></Parameter>
+			<Parameter name="attribute6" valueType="STATIC">CXML</Parameter>
+			<Parameter name="returnColumn1" valueType="STATIC">ATTRIBUTE6</Parameter>
+			<Parameter name="targetElement1" valueType="TARGET">WWT_STG_ORDER_HEADERS/persistedOTOSTempVariables/tempVar3</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+	</ConditionSet>
+	<ConditionSet name="Write PO Acknowledgement records to the outbound PO Staging tables" exitOnSuccess="Y">
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_HEADERS/STATUS</LHSValue>
+			<Operator>=</Operator>
+			<RHSValue valueType="STATIC">PROCESSED</RHSValue>
+		</Condition>
+		<Condition>
+			<LHSValue>WWT_STG_ORDER_HEADERS/persistedOTOSTempVariables/tempVar3</LHSValue>
+			<Operator>IS NOT NULL</Operator>
+			<RHSValue valueType="STATIC"></RHSValue>
+		</Condition>
+		<Action name="Write PO Acknowledgement records to the outbound PO Staging tables" class="stagePOAcknowledgements">
+		    <Parameter name="communicationMethod" valueType="STATIC">CXML</Parameter>
+		    <ExceptionHandler type="ERROR">Problem with the stagePOAcknowledgements action</ExceptionHandler>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+</ProcessingGroup>

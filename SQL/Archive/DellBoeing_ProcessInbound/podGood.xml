@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<FileIDs>
+        <FileID UniqueID="1690787624">
+                <TransmitDate>08022014</TransmitDate>
+                <TransmitTime>0706</TransmitTime>
+                <Partner_OrderNumbers>
+                        <Partner_OrderNumber UniqueID="PO2463817">
+                                <POD_Date>08022014</POD_Date>
+                                <POD_Time></POD_Time>
+                                <SignedBy>AUTO-CLOSE</SignedBy>
+                                <DeliveredBy>AUTO-CLOSE</DeliveredBy>
+                        </Partner_OrderNumber>
+                        <Partner_OrderNumber UniqueID="PO2461382">
+                                <POD_Date>08022014</POD_Date>
+                                <POD_Time></POD_Time>
+                                <SignedBy>AUTO-CLOSE</SignedBy>
+                                <DeliveredBy>AUTO-CLOSE</DeliveredBy>
+                        </Partner_OrderNumber>
+                </Partner_OrderNumbers>
+        </FileID>
+</FileIDs>

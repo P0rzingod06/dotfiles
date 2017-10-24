@@ -1,0 +1,176 @@
+<?xml version="1.0"?>
+<ProcessingGroup 
+	name="Charter" 
+	priority="50" 
+	parent="StandardOrder"
+	errorAlertThreshold = "120"
+	ruleApplicationSource = "OTOS">	
+	
+<!--AG EDWARDS DATA INTERFACED FROM KETERA-->
+
+<!-- Processing Group Criteria -->
+<CriteriaSet>
+	<Criteria>
+		<tableName>APPS.WWT_ORIG_ORDER_HEADERS</tableName>
+		<columnName>SOURCE</columnName>
+		<value>POI_TO_COP</value>
+	</Criteria>
+	<Criteria>
+		<tableName>APPS.WWT_ORIG_ORDER_HEADERS</tableName>
+		<columnName>CUSTOMER_PO_NUMBER</columnName>
+		<value>PO45758</value>
+	</Criteria>
+</CriteriaSet>
+
+<!-- ******************************** -->
+<!-- ****** BEGIN PRE-PROCESS ******* -->
+<!-- ******************************** -->
+	
+<Rule name="Pre-Header Defaults" class="PRE-PROCESS" executeOnReprocess="N">
+	<ConditionSet name="Pre-Header_Defaults" exitOnSuccess="Y">	
+		<Action name="Set Customer Name" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">Charter Communications</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/CUSTOMER_NAME</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Set Invoice Customer" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">Charter Communications</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/INVOICE_CUSTOMER</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Set Ship To Customer" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">Charter Communications</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/SHIP_TO_CUSTOMER</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>	
+	</ConditionSet>
+</Rule>
+
+<!-- ******************************** -->
+<!-- ****** BEGIN HEADER ************ -->
+<!-- ******************************** -->
+
+<!-- HEADER DEFUALTS -->
+<Rule name="Header Defaults" class="HEADER" executeOnReprocess="N">
+	<ConditionSet name="Set AG Edwards Header Level Defaults" exitOnSuccess="Y">		
+ 		<Action name="Set Order Type" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">6704</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/CUSTOMER_ID</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Set Order Date Type Code" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">COMM - ESP Brian Daus</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/SALES_CHANNEL</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Set Sales Channel" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">100379288</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/SALESREP_ID</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Set Order Source" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">cXML</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/ORDER_SOURCE</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>		
+		<Action name="Set Org ID" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">101</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/ORG_ID</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>		
+<!--		<Action name="Set Ship From Org ID" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">582</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/SHIP_FROM_ORG_ID</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>				
+ 		<Action name="Set Buyer Name" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">Hampton, Jr., Charles D.</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/BUYER_NAME</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>	 -->		
+	</ConditionSet>		
+</Rule>
+
+<!-- ******************************** -->
+<!-- ****** BEGIN LINES  ************ -->
+<!-- ******************************** -->
+
+<!-- LINES DEFUALTS -->
+<Rule name="Lines Defaults" class="LINE" executeOnReprocess="N">
+	<ConditionSet name="Set AG Edwards Line Level Defaults" exitOnSuccess="Y">	
+		<Action name="Set Line Type" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">WWT Pick-Ship-Invoice</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/LINE_TYPE</Parameter>
+			<Parameter name="overWrite" valueType="STATIC">N</Parameter>	
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Copy Vendor SKU (attribute6) into Item Segment2" class="assignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/ATTRIBUTE6</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/INVENTORY_ITEM_SEGMENT_2</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Set Segment3" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">ACTUAL</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/INVENTORY_ITEM_SEGMENT_3</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>	
+		<Action name="Set Segment4" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">AGE</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/INVENTORY_ITEM_SEGMENT_4</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Set Subinventory" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">AGE</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/SUBINVENTORY</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>			
+<!-- 		<Action name="Set Ship From Org ID" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">582</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/SHIP_FROM_ORG_ID</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action> -->
+		<Action name="Set Org ID" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">101</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/ORG_ID</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>					
+<!--		<Action name="Set Buyer Name" class="assignment">
+			<Parameter name="sourceElement" valueType="STATIC">GASSERT,MICHAEL</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/BUYER_NAME</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>	-->					
+	</ConditionSet>
+</Rule>		
+		
+<!-- MOVE HEADER REQUESTDATE TO LINE LEVEL DATES 
+<Rule name="Move Header Request Date to lines" class="LINE" executeOnReprocess="N">
+	<ConditionSet name="Move Header Request Date to lines" exitOnSuccess="Y">
+		<Action name="Set Request Date" class="assignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/REQUEST_DATE</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/REQUEST_DATE</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Set Promise Date" class="assignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/REQUEST_DATE</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/PROMISE_DATE</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>		
+		<Action name="Set SLA Date" class="assignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_HEADERS/persistedOTOSTempVariables/tempVar1</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE30</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Set Original Requested Ship Date" class="assignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/REQUEST_DATE</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE31</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Set Original Promise Date" class="assignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/REQUEST_DATE</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/WWT_STG_ORDER_LINES_DFF/ATTRIBUTE33</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>		
+	</ConditionSet>
+</Rule> -->
+
+</ProcessingGroup>

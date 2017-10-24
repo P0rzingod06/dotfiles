@@ -1,0 +1,459 @@
+---
+resources:
+  File[copy_files_locally]:
+    parameters:
+      ensure:
+        system_value:
+        - :directory
+  File[/tmp/webMethods/95Licenses]:
+    parameters:
+      ensure:
+        system_value:
+        - :directory
+  File[/tmp/webMethods/95Licenses/wwtAi_WmPipelineCapture.txt]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}ba906563db7ff79f08eeb01a4a30114a"
+      ensure:
+        system_value:
+        - :file
+  File[/tmp/webMethods/95Licenses/wwtAi_WmProfiler.txt]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}e71903c7bf52feffd6a6a85857d26333"
+      ensure:
+        system_value:
+        - :file
+  File[/tmp/webMethods/95Licenses/wwtAi_WmServiceMock.txt]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}ebef3380ef85d0c63a9fc0a37574ec95"
+      ensure:
+        system_value:
+        - :file
+  File[/tmp/webMethods/95Licenses/wwtAi_localdev.txt]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}5f9cb40387fb759d433d70d0e6c6fdae"
+      ensure:
+        system_value:
+        - :file
+  File[/tmp/webMethods/95Licenses/wwtAi_wmisprofiler.txt]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}d3001e8585bfdd2dd1dd41c798f95ff3"
+      ensure:
+        system_value:
+        - :file
+  File[/tmp/webMethods/95Licenses/wwtAi_wmtestsuite.txt]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}e171d7c6be94285b723ff55dec9dd1bc"
+      ensure:
+        system_value:
+        - :file
+  File[/tmp/webMethods/PIE90.xml]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}f0762b741a3d5afc1ec6a028c62d052b"
+      ensure:
+        system_value:
+        - :file
+  File[/tmp/webMethods/designer]:
+    parameters:
+      ensure:
+        system_value:
+        - :directory
+  File[/tmp/webMethods/designer/logicalServer.properties]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}d3e78446645ac016bc5d0d2bf0dee200"
+      ensure:
+        system_value:
+        - :file
+  File[/tmp/webMethods/designer/settings]:
+    parameters:
+      ensure:
+        system_value:
+        - :directory
+  File[/tmp/webMethods/designer/settings/com.sag.gcs.localdev.prefs]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}59d1793381c2818fe08b3603a0279143"
+      ensure:
+        system_value:
+        - :file
+  File[/tmp/webMethods/designer/settings/com.sag.gcs.wmtestsuite.prefs]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}2ccde5da54768e5456316859645af8a9"
+      ensure:
+        system_value:
+        - :file
+  File[/tmp/webMethods/localdev]:
+    parameters:
+      ensure:
+        system_value:
+        - :directory
+  File[/tmp/webMethods/localdev/com.sag.gcs.common.lm_1.0.5.201407211752.jar]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}cdb0d3ee16d3b83fb753f7dc8646bd15"
+      ensure:
+        system_value:
+        - :file
+  File[/tmp/webMethods/localdev/com.sag.gcs.localdev_1.5.6.201509011745.jar]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}ee6b1e77e2a87f41b616e7af77bc842b"
+      ensure:
+        system_value:
+        - :file
+  File[/tmp/webMethods/localdev/com.sag.gcs.wmtestsuite_2.1.5.201306301542.jar]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}58625c22cf3a41eda5334c13a98b2d2b"
+      ensure:
+        system_value:
+        - :file
+  File[/tmp/webMethods/ojdbc6.jar]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}76852c42c44401f44d26319a74e55f5b"
+      ensure:
+        system_value:
+        - :file
+  File[/tmp/webMethods/service_interceptor]:
+    parameters:
+      ensure:
+        system_value:
+        - :directory
+  File[/tmp/webMethods/service_interceptor/config]:
+    parameters:
+      ensure:
+        system_value:
+        - :directory
+  File[/tmp/webMethods/service_interceptor/config/invokemanager.cnf]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}6ca9a281e51374cd711b94882c9e329c"
+      ensure:
+        system_value:
+        - :file
+  File[/tmp/webMethods/service_interceptor/lib]:
+    parameters:
+      ensure:
+        system_value:
+        - :directory
+  File[/tmp/webMethods/service_interceptor/lib/jars]:
+    parameters:
+      ensure:
+        system_value:
+        - :directory
+  File[/tmp/webMethods/service_interceptor/lib/jars/serviceInterceptor.jar]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}275747fb76c0aceb6986bfc2b3e29cdf"
+      ensure:
+        system_value:
+        - :file
+  File[/tmp/webMethods/service_interceptor/packages]:
+    parameters:
+      ensure:
+        system_value:
+        - :directory
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock]:
+    parameters:
+      ensure:
+        system_value:
+        - :directory
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock.zip]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}70c7b805d9e95b3760c5d1bb588722d1"
+      ensure:
+        system_value:
+        - :file
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/code]:
+    parameters:
+      ensure:
+        system_value:
+        - :directory
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/code/classes]:
+    parameters:
+      ensure:
+        system_value:
+        - :directory
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/code/classes/wm]:
+    parameters:
+      ensure:
+        system_value:
+        - :directory
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/code/classes/wm/ps]:
+    parameters:
+      ensure:
+        system_value:
+        - :directory
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/code/classes/wm/ps/serviceMock.class]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}6a36912061083e76c64f16c92bd50eb5"
+      ensure:
+        system_value:
+        - :file
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/config]:
+    parameters:
+      ensure:
+        system_value:
+        - :directory
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/config/license.txt]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}fa12c86a49d6ec05daa9c153e591216f"
+      ensure:
+        system_value:
+        - :file
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/manifest.v3]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}2958a272b07eac42cc5ad4c9fb82a09e"
+      ensure:
+        system_value:
+        - :file
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns]:
+    parameters:
+      ensure:
+        system_value:
+        - :directory
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm]:
+    parameters:
+      ensure:
+        system_value:
+        - :directory
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/node.idf]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}b6fb8de8e44eb9727cad772922daa38a"
+      ensure:
+        system_value:
+        - :file
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps]:
+    parameters:
+      ensure:
+        system_value:
+        - :directory
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/node.idf]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}f4cb56e319a75ebe9583fdba4f0b0887"
+      ensure:
+        system_value:
+        - :file
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock]:
+    parameters:
+      ensure:
+        system_value:
+        - :directory
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/clearAllMocks]:
+    parameters:
+      ensure:
+        system_value:
+        - :directory
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/clearAllMocks/java.frag]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}c5373ac4c6521c34d4ca0800b1a7382f"
+      ensure:
+        system_value:
+        - :file
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/clearAllMocks/node.ndf]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}6be8cc39bd063ae52adfb1eeb4102be7"
+      ensure:
+        system_value:
+        - :file
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/clearMock]:
+    parameters:
+      ensure:
+        system_value:
+        - :directory
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/clearMock/java.frag]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}06fa75342b472a403a9c70e41494167d"
+      ensure:
+        system_value:
+        - :file
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/clearMock/node.ndf]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}239af8558375d246d8c3a3fe9c5a9b33"
+      ensure:
+        system_value:
+        - :file
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/getMockedServices]:
+    parameters:
+      ensure:
+        system_value:
+        - :directory
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/getMockedServices/java.frag]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}c180e11abf0bdef7705fe388407a3a7c"
+      ensure:
+        system_value:
+        - :file
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/getMockedServices/node.ndf]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}82fcd85e7e1f2fc4565d83058d48bdd4"
+      ensure:
+        system_value:
+        - :file
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/loadMock]:
+    parameters:
+      ensure:
+        system_value:
+        - :directory
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/loadMock/java.frag]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}24a59aae8d08545ac576fad19f61fbad"
+      ensure:
+        system_value:
+        - :file
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/loadMock/node.ndf]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}54347edad610d8760fafcc0a26fd7feb"
+      ensure:
+        system_value:
+        - :file
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/node.idf]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}8d0412d1dc132706cbf30cee0c876c04"
+      ensure:
+        system_value:
+        - :file
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/resumeMocks]:
+    parameters:
+      ensure:
+        system_value:
+        - :directory
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/resumeMocks/java.frag]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}4b508e1f1e7c8b57d3e5faa347f8e76e"
+      ensure:
+        system_value:
+        - :file
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/resumeMocks/node.ndf]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}f7ad4079099e2c31a2f78cc620077b97"
+      ensure:
+        system_value:
+        - :file
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/suspendMocks]:
+    parameters:
+      ensure:
+        system_value:
+        - :directory
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/suspendMocks/java.frag]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}921baec659de8122cf50fd9f3a61eba3"
+      ensure:
+        system_value:
+        - :file
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMock/ns/wm/ps/serviceMock/suspendMocks/node.ndf]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}f7ad4079099e2c31a2f78cc620077b97"
+      ensure:
+        system_value:
+        - :file
+  File[/tmp/webMethods/service_interceptor/packages/WmServiceMockSamples.zip]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}8f1cad4e6990536726b855493254c234"
+      ensure:
+        system_value:
+        - :file
+  File[/tmp/webMethods/wwt_server.properties]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}fde64e54f15024810cd19a7bf542ea7e"
+      ensure:
+        system_value:
+        - :file
+  File[build_installScript]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}3bf96b2b403eb76e012007e29a4cdc78"
+      ensure:
+        system_value:
+        - :file
+  File[build_upgradeScript]:
+    parameters:
+      content:
+        system_value:
+        - "{md5}04644dff07c7c3b517c5bdd3b475b267"
+      ensure:
+        system_value:
+        - :file
+  Exec[wget-download_installer]:
+    parameters:
+      returns:
+        system_value:
+        - '0'
+  Exec[wget-download_image]:
+    parameters:
+      returns:
+        system_value:
+        - '0'
+  Exec[wget-download_upgrade_image]:
+    parameters:
+      returns:
+        system_value:
+        - '0'

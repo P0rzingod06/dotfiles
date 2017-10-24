@@ -1,0 +1,10 @@
+{
+  "url": "https://api.github.com/repos/borisyankov/DefinitelyTyped/branches/master",
+  "key": "9980d37b117f1045694ad54fa08a55830e296499",
+  "contentType": "application/json; charset=utf-8",
+  "cacheCreated": "2017-02-14T16:30:00.480Z",
+  "cacheUpdated": "2017-09-25T20:33:25.942Z",
+  "httpETag": "W/\"82abb1dc5616574088182eec63f5b233\"",
+  "httpModified": "2017-09-25T20:33:25.942Z",
+  "contentChecksum": "9657d2f2f86a4c3f72648b574a6ff9b0b3dae5ec"
+}

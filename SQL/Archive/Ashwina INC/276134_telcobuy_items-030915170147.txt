@@ -1,0 +1,104 @@
+Items|telcobuy_items-030915170147.txt
+No of lines in the file: 1
+No of bytes in the file: 252
+#ITEM_NUMBER|MANUFACTURER|DESCRIPTION|SERIAL|ITEM_TYPE|TECHNOLOGY|LIST_PRICE|CUSTOMER_PART_NUMBER|PRIMARY|EXTERNAL_DOWNLOAD_FLAG|EXPENDITURE_TYPE|BOM_ITEM_TYPE|LAST_UPDATE_DATE|ITEM_STATUS
+CEQ.11805|Cellular Specialties|Cellular Specialties,CS10-382-403,,DISCONTINUED USE,CEQ.10857,DSP85-C/P; 1:1; EMR;,Frequency Programmable,Repeater;,Cellular/PCS,|N|NETWORK||4800|CS10-382-403|EA|E|Amplifier TMA/BDA|Standard|03/09/2015 05:03:46|Phase NTW
+ANT.14875|Rosenberger Site Solutions|Rosenberger Site Solutions,CX694-2711,,,,Hanger Adapter Grommet (Kit,of 10) for one 12-2 power and,two 7mm fiber jumpers; used,with 7/8-inch hangers and,double clamps|N|NETWORK||10.46|CX694-2711|EA|B|Antenna Sys Matl|Standard|04/02/2015 01:04:55|Active NTW
+ANT.14876|Rosenberger Site Solutions|Rosenberger Site Solutions,CX696-8212,,,,Hanger adapter grommet (kit,of 10) for two 8-2 power and,two 7mm fiber jumpers; used,with 1 1/4-inch hangers and,double blocks|N|NETWORK||17.09|CX696-8212|EA|B|Antenna Sys Matl|Standard|04/02/2015 01:04:55|Active NTW
+ANT.14879|123eWireless|123eWireless,123-171-03,,,,Xtreme Weather RET Cable,Assembly 3,Meter,,|N|NETWORK||28|123-171-03|EA|B|Antenna Sys Matl|Standard|04/02/2015 01:04:55|Active NTW
+ANT.14881|Laird|Laird,CMD69273P-AJ1,,STANDARDIZATION NON-APPROVED,,Ceiling Mounted Omni,Directional,Antenna,,|N|NETWORK||54|CMD69273P-AJ1|EA|E|Antennas|Standard|04/02/2015 01:04:55|Phase NTW
+ANT.14882|Huber Suhner|Huber Suhner,3409.41.0076,84073078,,,High-Power/Low IM GDT Hybrid;,820-2500 MHZ; 7/16 Female DIN,7/16 Female,Connections,|N|NETWORK||162.81|3409.41.0076|EA|B|Antenna Sys Matl|Standard|04/02/2015 01:04:55|Active NTW
+ANT.14883|KMW|KMW,EPBQ-652L8H8,,,,8ft Ultra-Broadband,(700/850/PCS/AWS/WCS) 10-port, X-pol 65deg HBW Antenna,w/Bracket &,Actuators|N|NETWORK||2399|EPBQ-652L8H8|EA|E|Antennas|Standard|04/02/2015 01:04:55|Active NTW
+ANT.14885|Huber & Suhner|Huber & Suhner,98002388,,STANDARDIZATION NON-APPROVED,,2 Way Power Splitter 800/2500,MHz,,,|N|NETWORK||70|98002388|EA|B|Antenna Sys Matl|Standard|04/02/2015 01:04:55|Phase NTW
+ANT.14886|Huber & Suhner|Huber & Suhner,98002757,,STANDARDIZATION NON-APPROVED,,2 Way Power Splitter 800/2500,MHz,,,|N|NETWORK||70|98002757|EA|B|Antenna Sys Matl|Standard|04/02/2015 01:04:55|Phase NTW
+ANT.14889|CommScope|CommScope,SBNHH-1D85C,,,,8ft Ultra-Broadband,(700/850/PCS/WCS) Hexport,X-Pol 85deg HBW with,Bracket,|N|NETWORK||2220|SBNHH-1D85C|EA|E|Antennas|Standard|04/02/2015 01:04:55|Active NTW
+ANT.14891|CommScope|CommScope,SBNHH-1D45C,,,,8ft Ultra-Broadband,(700/850/PCS/WCS) Hexport,X-Pol 45deg Antenna HBW with,Bracket,|N|NETWORK||2800|SBNHH-1D45C|EA|E|Antennas|Standard|04/02/2015 01:04:55|Active NTW
+ANT.14892|CommScope|CommScope,T-50-DFI6,,,,LOW PIM TERMINATION 50 WATT,698-2700,DF,,|N|NETWORK||584|T-50-DFI6|EA|B|Antenna Sys Matl|Standard|04/02/2015 01:04:55|Active NTW
+CEQ.15252|Rosenberger Site Solutions|Rosenberger Site Solutions,FB-L98B-A0126-30000,,,,White Jacket Preconnect Trunk,30-meter w/UL cert cable,36-Fiber 18 channels 9/125,G657A2 single mode optical,fiber; 18 x LCC top/bottom OFN|N|NETWORK||1172.43|FB-L98B-A0126-30000|EA|B|Radio Cabinets|Standard|04/02/2015 01:04:55|Active NTW
+CEQ.15256|Rosenberger Site Solutions|Rosenberger Site Solutions,FB-L98B-A0126-50000,,,,White Jacket Preconnect Trunk,50-meter w/UL cert cable,36-Fiber 18 channels 9/125,G657A2 single mode optical,fiber; 18 x LCC top/bottom OFN|N|NETWORK||1275.98|FB-L98B-A0126-50000|EA|B|Radio Cabinets|Standard|04/02/2015 01:04:55|Active NTW
+CEQ.15257|Rosenberger Site Solutions|Rosenberger Site Solutions,FB-L98B-A0126-60000,,,,White Jacket Preconnect Trunk,60-meter w/UL cert cable,36-Fiber 18 channels 9/125,G657A2 single mode optical,fiber; 18 x LCC top/bottom OFN|N|NETWORK||1327.75|FB-L98B-A0126-60000|EA|B|Radio Cabinets|Standard|04/02/2015 01:04:55|Active NTW
+CEQ.15258|Corning|Corning,RAU5US,,,,Remote Access Unit; Five Band,Remort Supporting;,ESMR,,|N|NETWORK||1840|RAU5US|EA|E|Radio Cabinets|Standard|04/02/2015 01:04:55|Active NTW
+CEQ.15259|Rosenberger Site Solutions|Rosenberger Site Solutions,FB-L98B-A0126-75000,,,,White Jacket Preconnect Trunk,75-meter w/UL cert cable,36-Fiber 18 channels 9/125,G657A2 single mode optical,fiber; 18 x LCC top/bottom OFN|N|NETWORK||1405.42|FB-L98B-A0126-75000|EA|B|Radio Cabinets|Standard|04/02/2015 01:04:55|Active NTW
+CEQ.15261|Rosenberger Site Solutions|Rosenberger Site Solutions,FB-L98B-A0126-125000,,,,White Jacket Preconnect Trunk,125-meter w/UL cert cable,36-Fiber 18 channels 9/125,G657A2 single mode optical,fiber; 18 x LCC top/bottom OFN|N|NETWORK||1664.29|FB-L98B-A0126-125000|EA|B|Radio Cabinets|Standard|04/02/2015 01:04:55|Active NTW
+CEQ.15265|Rosenberger Site Solutions|Rosenberger Site Solutions,FB-SLODF018-025,,,,Fiber Distribution Enclosure,with 23-inch relay rack,adapter plate; capacity 36,fibers (18 channels/pairs),includes 18 x LC duplex single|N|NETWORK||251.02|FB-SLODF018-025|EA|B|Radio Cabinets|Standard|04/02/2015 01:04:55|Active NTW
+CEQ.15269|Corning|Corning,RXU-L70A17-M,,,,Remote Expansion Unit for 700,LTE/AWS,MIMO,,|N|NETWORK||874|RXU-L70A17-M|EA|E|Radio Cabinets|Standard|04/02/2015 01:04:55|Active NTW
+CEQ.15272|Corning|Corning,HR1818H6C06U820470F-PK,,,,ONE Composite Tether; LC/APC,- LC/APC 6F/6Cu 16AWG Plenum,Non-Armored,470F,|N|NETWORK||739.18|HR1818H6C06U820470F-PK|EA|B|Radio Cabinets|Standard|04/02/2015 01:04:55|Active NTW
+CEQ.15273|Corning|Corning,HR1818H6C06U820530F-PK,,,,ONE Composite Tether; LC/APC,- LC/APC 6F/6Cu 16AWG Plenum,Non-Armored 530,Ft,|N|NETWORK||796.18|HR1818H6C06U820530F-PK|EA|B|Radio Cabinets|Standard|04/02/2015 01:04:55|Active NTW
+CEQ.15274|Corning|Corning,HR1818H6C06U820600F-PK,,,,ONE Composite Tether; LC/APC,- LC/APC 6F/6Cu 16AWG Plenum,Non-Armored 600,Ft,|N|NETWORK||863.98|HR1818H6C06U820600F-PK|EA|B|Radio Cabinets|Standard|04/02/2015 01:04:55|Active NTW
+CEQ.15275|Corning|Corning,HR1818H6C06U820700F-PK,,,,ONE Composite Tether; LC/APC,- LC/APC 6F/6Cu 16AWG Plenum,Non-Armored 700,Ft,|N|NETWORK||959.98|HR1818H6C06U820700F-PK|EA|B|Radio Cabinets|Standard|04/02/2015 01:04:55|Active NTW
+CEQ.15277|Corning|Corning,HR1818K6C06U820200F-PK,,,,ONE Composite Tether; LC/APC,- LC/APC 06F/6Cu 20AWG Plenum,Non-Armored 200,Ft,|N|NETWORK||399.24|HR1818K6C06U820200F-PK|EA|B|Radio Cabinets|Standard|04/02/2015 01:04:55|Active NTW
+CEQ.15278|Corning|Corning,HR1818K6C06U820420F-PK,,,,ONE Composite Tether; LC/APC,- LC/APC 06F/6Cu 20AWG Plenum,Non-Armored 420,Ft,|N|NETWORK||565.18|HR1818K6C06U820420F-PK|EA|B|Radio Cabinets|Standard|04/02/2015 01:04:56|Active NTW
+CEQ.15279|Corning|Corning,CCH-02U,,,,2 Rack Units; Hold 4 Closet,Connector Housing (CCH),Connector,Panels,|N|NETWORK||160.41|CCH-02U|EA|B|Radio Cabinets|Standard|04/02/2015 01:04:56|Active NTW
+CEQ.15284|Ericsson|Ericsson,SDF111172/1,,,,FRONT COVER/Front Solar,Shield,,,|N|NETWORK||43.23|SDF111172/1|EA|B|Radio Cabinets|Standard|04/02/2015 01:04:56|Active NTW
+CEQ.15285|Bafo|Bafo,MUTP5E-25BUB,,,,Cat. 5E UTP Patch Cable RJ-45,Male RJ-45 Male 25ft,Blue,,|N|NETWORK||8|MUTP5E-25BUB|EA|B|Radio Cabinets|Standard|04/02/2015 01:04:56|Active NTW
+CEQ.15287|CommScope|CommScope,C195-SMQM-2M-AMBG,,,,CA:CNT195 BRAIDED CABLE,ASSEMBLY,2M,,|N|NETWORK||25|C195-SMQM-2M-AMBG|EA|B|Radio Cabinets|Standard|04/02/2015 01:04:56|Active NTW
+CEQ.15288|Ericsson|Ericsson,SXK1251586/2,,,,Ventilation hole cover for,A2,,,|N|NETWORK||10|SXK1251586/2|EA|B|Radio Cabinets|Standard|04/02/2015 01:04:56|Active NTW
+CEQ.15297|Westell|Westell,DSAWM-202ALCDI4V,,,,Digital Analog Mounting,Assembly,,,|N|NETWORK||100|DSAWM-202ALCDI4V|EA|B|Radio Cabinets|Standard|04/02/2015 01:04:56|Phase NTW
+CEQ.15298|Westell|Westell,DSAWM-202ALCDI3V,,,,Digital Analog Mounting,Assembly,,,|N|NETWORK||100|DSAWM-202ALCDI3V|EA|B|Radio Cabinets|Standard|04/02/2015 01:04:56|Phase NTW
+CEQ.15302|Alcatel-Lucent|Alcatel-Lucent,304-1540-070,,,,Mech Terminal Insulated Crimp,Female (Package of,4),,|N|NETWORK||3|304-1540-070|EA|B|Radio Cabinets|Standard|04/02/2015 01:04:56|Active NTW
+CEQ.15303|Alcatel-Lucent|Alcatel-Lucent,357-7448-060,,,,Single Right Angle,Pendant,,,|N|NETWORK||3|357-7448-060|EA|B|Radio Cabinets|Standard|04/02/2015 01:04:56|Active NTW
+CEQ.15304|Telcobuy|Telcobuy,TBUY-849071790,,,,Bracket,,,,|N|NETWORK||9.8|TBUY-849071790|EA|B|Radio Cabinets|Standard|04/02/2015 01:04:56|Active NTW
+NEQ.18715|Alpha Technologies|Alpha Technologies,5901489-001,,,,Replacement Door; Blank 1200A,Modular,Distribution,,|N|NETWORK||100.9|5901489-001|EA|B|Power Board 24v|Standard|04/02/2015 01:04:56|Active NTW
+NEQ.18716|Telect|Telect,02122-0015,,,,GUARD BOX UF 23 IN RR 25,15/16 X 15 IN,EQ,,|N|NETWORK||250|02122-0015|EA|B|Transport Equip|Standard|04/02/2015 01:04:56|Active NTW
+NEQ.18717|Heinemann|Heinemann,AM1S-B98AAA02ALDDU-W,,,,CIRCUIT BREAKER; 30A; MID,TRIP BULLET TYPE BLACK HANDLE,80V DC TRIP AMPS: 37.5 TD:,3,|N|NETWORK||77|AM1S-B98AAA02ALDDU-W|EA|B|Power Board 24v|Standard|04/02/2015 01:04:56|Active NTW
+NEQ.18736|Westell|Westell,A90-FTD24P-LA22,,,,VirtualEdge Fiber Termination,Drawer; 24 LC/APC,Couplers;Two 12 Fiber,LC/APC,|N|NETWORK||535|A90-FTD24P-LA22|EA|B|Fiber Optic Equip|Standard|04/02/2015 01:04:56|Active NTW
+NEQ.18744|Emerson Network Power|Emerson Network Power,150292,,,,Kit; 1 Ft Heat,Shrink,,,|N|NETWORK||5.13|150292|EA|B|Power Board -48v|Standard|04/02/2015 01:04:56|Active NTW
+NEQ.18754|Telect|Telect,636-6520-001,,,,Support Cable (Kit of,6),,,|N|NETWORK||25|636-6520-001|EA|B|Transport Equip|Standard|04/02/2015 01:04:56|Active NTW
+SEQ.17233|Oracle|Oracle,7055021,,,,X4600 ATLS1QGe Gigabit M2,PCIe 4-Port,Card,,|N|NETWORK||150|7055021|EA|B|Adjunct Data Proc Equip|Standard|04/02/2015 01:04:56|Active NTW
+SEQ.17235|Juniper Networks|Juniper Networks,FTRJ8519P1BNL-J3,,,,GBIC SFP Transceiver,Module,,,|N|NETWORK||365|FTRJ8519P1BNL-J3|EA|E|Adjunct Data Proc Equip|Standard|04/02/2015 01:04:56|Active NTW
+SEQ.17239|Dantel|Dantel,A25-00704-10,,,,AC to -48 DC power supply for,DSS01,,,|N|NETWORK||90|A25-00704-10|EA|B|Adjunct Data Proc Equip|Standard|04/02/2015 01:04:56|Active NTW
+SEQ.17248|Sonus Networks|Sonus Networks,822-00097,,,,GSX9000HD Fan,Tray,,,|N|NETWORK||288|822-00097|EA|B|Adjunct Switch Equip|Standard|04/02/2015 01:04:56|Active NTW
+CEQ.15208|Ericsson|Ericsson,1/BFM901575,,,,CABINET/Purcell FLX16-2520,1600W - RBS (V2,Cab),,|Y|NETWORK||6750|1/BFM901575|EA|E|Radio Cabinets|Standard|04/02/2015 01:04:56|Active NTW
+CEQ.15251|Corning|Corning,OIM,,,,Optical Interface,Module,,,|Y|NETWORK||1288|OIM|EA|E|Radio Cabinets|Standard|04/02/2015 01:04:56|Active NTW
+CEQ.15262|Corning|Corning,RIM-A17,,,,Radio Interface Module (RIM),-,AWS,,|Y|NETWORK||506|RIM-A17|EA|E|Radio Cabinets|Standard|04/02/2015 01:04:56|Active NTW
+CEQ.15263|Corning|Corning,RIM-A17-M,,,,Radio Interface Module (RIM),- AWS,(MIMO),,|Y|NETWORK||506|RIM-A17-M|EA|E|Radio Cabinets|Standard|04/02/2015 01:04:56|Active NTW
+CEQ.15264|Corning|Corning,RIM-C85,,,,Radio Interface Module (RIM),-,CELL,,|Y|NETWORK||506|RIM-C85|EA|E|Radio Cabinets|Standard|04/02/2015 01:04:56|Active NTW
+CEQ.15266|Corning|Corning,RIM-L70,,,,Radio Interface Module (RIM),-,LTE,,|Y|NETWORK||506|RIM-L70|EA|E|Radio Cabinets|Standard|04/02/2015 01:04:56|Active NTW
+CEQ.15267|Corning|Corning,RIM-L70-M,,,,Radio Interface Module (RIM),- LTE,(MIMO),,|Y|NETWORK||506|RIM-L70-M|EA|E|Radio Cabinets|Standard|04/02/2015 01:04:56|Active NTW
+CEQ.15268|Corning|Corning,RIM-P19,,,,Radio Interface Module (RIM),-,PCS,,|Y|NETWORK||506|RIM-P19|EA|E|Radio Cabinets|Standard|04/02/2015 01:04:56|Active NTW
+CEQ.15289|Corning|Corning,IHU-2-11-1-D-H,,STANDARDIZATION NON-APPROVED,,1-RIX (Extender Mod);  1-OIX,(Extender Mod); 1-ERFC,(Cable); 1-PSM-DC (Power,Supply); 1- HCM (Control,Module); 1-IHU (Chassis w/back|Y|NETWORK||6716|IHU-2-11-1-D-H|EA|E|Radio Cabinets|Model|04/02/2015 01:04:56|Active NTW
+CEQ.15290|Corning|Corning,HCM,,STANDARDIZATION NON-APPROVED,,HCM - Head End Controller,Module,,,|Y|NETWORK||1150|HCM|EA|E|Radio Cabinets|Standard|04/02/2015 01:04:56|Active NTW
+CEQ.15291|Corning|Corning,RIX,,STANDARDIZATION NON-APPROVED,,RIX - Radio Interface,Extender,Module,,|Y|NETWORK||552|RIX|EA|E|Radio Cabinets|Standard|04/02/2015 01:04:56|Active NTW
+CEQ.15292|Corning|Corning,OIX,,STANDARDIZATION NON-APPROVED,,Corning ONE Optical Interface,Extender,Module,,|Y|NETWORK||552|OIX|EA|E|Radio Cabinets|Standard|04/02/2015 01:04:56|Active NTW
+CEQ.15294|Corning|Corning,PSM-DC,,STANDARDIZATION NON-APPROVED,,DC Power Supply,Module,,,|Y|NETWORK||253|PSM-DC|EA|E|Radio Cabinets|Standard|04/02/2015 01:04:56|Active NTW
+CEQ.15300|Ericsson|Ericsson,UC6601ODV2CAB,,,,Non-Comm RBS6601ODV2 Cab; No,DUS/SAU/GPS,,,|Y|NETWORK||7875.9|UC6601ODV2CAB|EA|E|Radio Cabinets|Model|04/02/2015 01:04:56|Active NTW
+NEQ.18718|GE|GE,150024269,,STANDARDIZATION EXCEPTION,,GPS 2436 Infinity Power,System Primary Bay; w Pulsar,Controller (ASG,Only),|Y|NETWORK||9550.85|150024269|EA|E|Power Board 24v|Model|04/02/2015 01:04:56|Active NTW
+NEQ.18719|RFS|RFS,PDU-6A,,STANDARDIZATION NON-APPROVED,,6-Way Alarm and Distribution,Unit for Masthead,LNAs,,|Y|NETWORK||475|PDU-6A|EA|E|Transport Equip|Standard|04/02/2015 01:04:56|Phase NTW
+NEQ.18753|Argus|Argus,026-155-20,,STANDARDIZATION NON-APPROVED,,Power System; 24V 1200A Neg,Grn,,,|Y|NETWORK||100|026-155-20|EA|E|Converter|Standard|04/02/2015 01:04:56|Phase NTW
+SEQ.17234|Juniper Networks|Juniper Networks,CHAS-BP3-MX480-S,,,,MX480 with Installed,Backplane,,,|Y|NETWORK||2050|CHAS-BP3-MX480-S|EA|E|Adjunct Data Proc Equip|Standard|04/02/2015 01:04:56|Active NTW
+SEQ.17236|DPS Telecom|DPS Telecom,D-PK-NG480-12051-00002,,,,NetGuardian 480-G4 Dual -48V,RTC 1-Plug TP/IT RS485 2 Temp,Sensors,,|Y|NETWORK||2063.25|D-PK-NG480-12051-00002|EA|E|Adjunct Data Proc Equip|Standard|04/02/2015 01:04:56|Active NTW
+SEQ.17241|F5 Networks|F5 Networks,F5-BIG-BT-10200V-F,,,,BIG-IP SWITCH: 10200V FIPS,BEST BUNDLE (LTM; DNS; AAM;,AFM; SDN; ROUTING; APM; ASM),(VCMP; 48G; MAX SSL &,COMP)|Y|NETWORK||113594.3|F5-BIG-BT-10200V-F|EA|E|Adjunct Data Proc Equip|Standard|04/02/2015 01:04:56|Active NTW
+SEQ.17242|Accedian Networks|Accedian Networks,753-000,,,,MetroNode 10GE LT-S (Dual DC,Power,Supplies),,|Y|NETWORK||4750|753-000|EA|E|Adjunct Data Proc Equip|Standard|04/02/2015 01:04:56|Active NTW
+SEQ.17243|Sun Microsystems|Sun Microsystems,7103829,,,,ZFS Storage ZS3-2 Controller,2U,,,|Y|NETWORK||17097|7103829|EA|E|Adjunct Data Proc Equip|Standard|04/02/2015 01:04:56|Active NTW
+SEQ.17244|Sun Microsystems|Sun Microsystems,7103910,,,,Storage Drive Enclosure,DE2-24P,2U,,|Y|NETWORK||17500|7103910|EA|E|Adjunct Data Proc Equip|Standard|04/02/2015 01:04:56|Active NTW
+SEQ.17245|Hewlett Packard|Hewlett Packard,BL540B,,,,MSL LTO-5 Ultrium 3000 SAS,Drive,,,|Y|NETWORK||3000|BL540B|EA|E|Adjunct Data Proc Equip|Standard|04/02/2015 01:04:56|Active NTW
+SEQ.17246|Hewlett Packard|Hewlett Packard,AK379A,,,,MSL2024 0-Drive Tape Library,2U,,,|Y|NETWORK||1350|AK379A|EA|E|Adjunct Data Proc Equip|Standard|04/02/2015 01:04:56|Active NTW
+SEQ.17247|Alcatel-Lucent|Alcatel-Lucent,T5-2_BASED_WMS,14US21525304,,,T5-2 Based WMS Platform with,Tape,Libraries,,|Y|NETWORK||713142|T5-2_BASED_WMS|EA|E|Adjunct Data Proc Equip|Model|04/02/2015 01:04:56|Active NTW
+NEQ.18732|Alpha Technologies|Alpha Technologies,7400232-011,,,,Assy; Cordex CXCI+ Controller,48V; RIA DB25;,RoHS6,,|N|NETWORK||266.45|7400232-011|EA|B|Power Board -48v|Standard|04/02/2015 01:04:56|Active NTW
+NEQ.18746|Emerson Network Power|Emerson Network Power,150293,,,,Kit; 18 Ft,Wire,,,|N|NETWORK||108|150293|EA|B|Power Board -48v|Standard|04/02/2015 01:04:56|Active NTW
+ANT.14884|Rosenberger Site Solutions|Rosenberger Site Solutions,C00111374-072,,,,(1) Package RG142 Coax Cable,N Type Male Straight; N Type,Female Straight Bulk,Head,|N|NETWORK||51.88|C00111374-072|EA|B|Antenna Sys Matl|Standard|04/02/2015 01:04:56|Active NTW
+ANT.14890|CommScope|CommScope,SBNHH-1D45B,,,,6ft Ultra-Broadband,(700/850/PCS/WCS) Hexport,X-Pol 45deg HBW with,Bracket,|N|NETWORK||2710|SBNHH-1D45B|EA|E|Antennas|Standard|04/02/2015 01:04:56|Active NTW
+CEQ.15255|CommScope|CommScope,C400-NMNM-60M,,,,CA:DW C400 BRAIDED CABLE ASSY,60M,,,|N|NETWORK||109.26|C400-NMNM-60M|EA|B|Radio Cabinets|Standard|04/02/2015 01:04:56|Active NTW
+CEQ.15260|Rosenberger Site Solutions|Rosenberger Site Solutions,FB-L98B-A0126-100000,,,,White Jacket Preconnect Trunk,100-meter w/UL cert cable,36-Fiber 18 channels 9/125,G657A2 single mode optical,fiber; 18 x LCC top/bottom OFN|N|NETWORK||1534.85|FB-L98B-A0126-100000|EA|B|Radio Cabinets|Standard|04/02/2015 01:04:56|Active NTW
+CEQ.15271|Corning|Corning,37HP900162-006F,,,,MTP to LC APC Harness Cable 6,ft,,,|N|NETWORK||417.76|37HP900162-006F|EA|B|Radio Cabinets|Standard|04/02/2015 01:04:56|Active NTW
+CEQ.15276|Corning|Corning,HR1818K6C06U820130F-PK,,,,ONE Composite Tether; LC/APC,- LC/APC 06F/6Cu 20AWG Plenum,Non-Armored 130,Ft,|N|NETWORK||333.61|HR1818K6C06U820130F-PK|EA|B|Radio Cabinets|Standard|04/02/2015 01:04:56|Active NTW
+CEQ.15280|Corning|Corning,CCH-CP24-B3,,,,Panel; CCH; with 12 LC DUP,APC,,,|N|NETWORK||117.18|CCH-CP24-B3|EA|B|Radio Cabinets|Standard|04/02/2015 01:04:56|Active NTW
+CEQ.15286|Ericsson|Ericsson,SDF111275/1,,,,COVER/Back Solar,Shield,,,|N|NETWORK||57.47|SDF111275/1|EA|B|Radio Cabinets|Standard|04/02/2015 01:04:56|Active NTW
+CEQ.15301|Alcatel-Lucent|Alcatel-Lucent,330-2882-030,,,,.625in .216-24 UNC-2A PAN,CROSS-RECESSED CARBON ScREWS,Package of,10,|N|NETWORK||3|330-2882-030|EA|B|Radio Cabinets|Standard|04/02/2015 01:04:56|Active NTW
+CEQ.15305|Telcobuy|Telcobuy,TBUY-849091418,,,,Bracket,,,,|N|NETWORK||14.9|TBUY-849091418|EA|B|Radio Cabinets|Standard|04/02/2015 01:04:56|Active NTW
+CEQ.14751|Telect|Telect,SCWME2424,,,,Seismic Small Cell Wall-Mount,Enclosure w/o Door 24x24,inches,,|N|NETWORK||420|SCWME2424|EA|E|Radio Cabinets|Standard|04/02/2015 09:04:19|Active NTW
+NEQ.16263|Telect|Telect,ACCE-LBAR-19BLK,,,,19-inch Lacing Bar,Black,,,|N|NETWORK||9.75|ACCE-LBAR-19BLK|EA|B|Transport Equip|Standard|04/02/2015 09:04:19|Active NTW
+CEQ.15305|Telcobuy|Telcobuy,TBUY-849091418,,,,Bracket,,,,|N|NETWORK||14.9|TBUY-849091418|EA|B|Radio Cabinets|Standard|04/01/2015 07:04:01|Active NTW
+CEQ.15304|Telcobuy|Telcobuy,TBUY-849071790,,,,Bracket,,,,|N|NETWORK||9.8|TBUY-849071790|EA|B|Radio Cabinets|Standard|04/01/2015 07:04:01|Active NTW
+NEQ.15949|Ericsson|Ericsson,RF1-NFF-23-L,,,,RF PROTECTOR DC PASS FEMALE,FEMALE,,,|N|NETWORK||102.8|RF1-NFF-23-L|EA|B|Transport Equip|Standard|04/01/2015 03:04:17|Active NTW
+CEQ.25459|Nortel|Nortel,NTQA19AA,,,,ADU FOR S80,GIPS,,,|Y|NETWORK||747|NTQA19AA|EA|E|Radio Cabinets|Standard|04/01/2015 03:04:17|Active NTW
+ANT.14885|Huber & Suhner|Huber & Suhner,98002388,,STANDARDIZATION NON-APPROVED,,2 Way Power Splitter 800/2500,MHz,,,|N|NETWORK||70|98002388|EA|B|Antenna Sys Matl|Standard|03/31/2015 05:03:53|Phase NTW
+CEQ.15297|Westell|Westell,DSAWM-202ALCDI4V,,,,Digital Analog Mounting,Assembly,,,|N|NETWORK||100|DSAWM-202ALCDI4V|EA|B|Radio Cabinets|Standard|03/31/2015 05:03:53|Phase NTW
+CEQ.15298|Westell|Westell,DSAWM-202ALCDI3V,,,,Digital Analog Mounting,Assembly,,,|N|NETWORK||100|DSAWM-202ALCDI3V|EA|B|Radio Cabinets|Standard|03/31/2015 05:03:53|Phase NTW
+NEQ.18753|Argus|Argus,026-155-20,,STANDARDIZATION NON-APPROVED,,Power System; 24V 1200A Neg,Grn,,,|Y|NETWORK||100|026-155-20|EA|E|Converter|Standard|03/31/2015 05:03:53|Phase NTW
+ANT.14886|Huber & Suhner|Huber & Suhner,98002757,,STANDARDIZATION NON-APPROVED,,2 Way Power Splitter 800/2500,MHz,,,|N|NETWORK||70|98002757|EA|B|Antenna Sys Matl|Standard|03/31/2015 05:03:53|Phase NTW
+NEQ.15543|SAFT|SAFT,80-94794-01,,,,TelX180 (38x) NiCd 48V,Battery,String,,|N|NETWORK||4756|80-94794-01|EA|E|Battery|Standard|03/31/2015 05:03:53|Active NTW
+NEQ.14983|SAFT|SAFT,80-94743-01,,,,38 X TelX 180 NiCd 48V,Battery,String,,|N|NETWORK||4756|80-94743-01|EA|E|Battery|Standard|03/31/2015 05:03:53|Active NTW
+NEQ.17963|SAFT|SAFT,80-94830-01,,,,TelX180 (38x) NiCd 48V,Battery String; 172 A-h C8,rate,,|N|NETWORK||4756|80-94830-01|EA|E|Battery|Standard|03/31/2015 05:03:53|Active NTW
+
+

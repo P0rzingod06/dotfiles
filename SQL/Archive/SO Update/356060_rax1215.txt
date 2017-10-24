@@ -1,0 +1,49 @@
+EMAIL TO:	matt.viefhaus@wwt.com																																																	
+SALESREP	CUSTOMER PO#	END CUSTOMER ORDER #	DATE ORDER RECEIVED	PROMISE DATE	REQUEST DATE	ORDER LINE #	PART # 	ITEM COST TYPE	MANUFACTURER ID	ITEM CONTRACT	CUSTOMER PART #	UNIT SELLING PRICE	ORDERED_QUANTITY	MATERIAL DESIGNATOR	LINE TYPE	HEADER DFF ATTRIBUTE48	HEADER DFF ATTRIBUTE17	LAB FLAG	HEADER SHIPPING INSTRUCTIONS	LAB FLAG	Cust Line #	MARK FOR	SHIP TO CONTACT FIRST NAME	SHIP TO CONTACT LAST NAME	SHIP TO CONTACT TELEPHONE	SHIP TO STREET ADDRESS	SHIP TO BUILDING/FLOOR/SUITE/DOOR #	SHIP TO CITY	SHIP TO STATE	SHIP TO POSTAL CODE	SHIP SET	LINE SHIP FROM ORG CODE	HEADER CONTEXT	HEADER DFF ATTRIBUTE16	BUYER NAME	SHIP TO CUSTOMER	MATERIAL DESIGNATOR	ORG ID	FLOW STATUS CODE	ORDER TYPE	CUSTOMER NAME	SALES CHANNEL	INVOICE_CUSTOMER	INVOICE ADDRESS1	INVOICE CITY	INVOICE COUNTY	INVOICE STATE	INVOICE POSTAL CODE	FREIGHT TERMS	PRICE LIST NAME
+Comm - Rackspace US VMI	278771	278771	14-Oct-2015		21-Oct-2015	1	EB171248	ACTUAL	104378	RCKSPC	900-0044		15	RKSP - O	WWT Pick-Ship-Invoice	RS_US_Orders@wwt.com		No		No		AARON THACKER 847-593-9612	AARON	THACKER	847-593-9612	2200 Busse Road		Elk Grove Village	IL	60007		3346			"Viefhaus, Matt"	"Rackspace US, Inc."	RKSP - O	101	Booked	WWT Mixed	"Rackspace US, Inc."	"HAGEMAN, WHENDY L."	"Rackspace US, Inc."	1 Fanatical Place	WINDCREST		TX	78218	Prepay & Add	Rackspace US
+Comm - Rackspace US VMI	278769	278769	14-Oct-2015		20-Oct-2015	1	RS-1860-2A01	ACTUAL	10461	RCKSPC	860-0055		75	RKSP - O	WWT Pick-Ship-Invoice	RS_US_Orders@wwt.com		No		No		AARON THACKER 847-593-9612	AARON	THACKER	847-593-9612	2200 Busse Road		Elk Grove Village	IL	60007		3346			"Viefhaus, Matt"	"Rackspace US, Inc."	RKSP - O	101	Booked	WWT Mixed	"Rackspace US, Inc."	"HAGEMAN, WHENDY L."	"Rackspace US, Inc."	1 Fanatical Place	WINDCREST		TX	78218	Prepay & Add	Rackspace US
+Comm - Rackspace US VMI	278770	278770	14-Oct-2015		16-Oct-2015	1	F5-BIG-LTM-2000S-FG	ACTUAL	11865	RCKSPC	140-0067		3	RKSP - O	WWT Pick-Ship-Invoice	RS_US_Orders@wwt.com		No		No		AARON THACKER 847-593-9612	AARON	THACKER	847-593-9612	2200 Busse Road		Elk Grove Village	IL	60007		3346			"Viefhaus, Matt"	"Rackspace US, Inc."	RKSP - O	101	Booked	WWT Mixed	"Rackspace US, Inc."	"HAGEMAN, WHENDY L."	"Rackspace US, Inc."	1 Fanatical Place	WINDCREST		TX	78218	Prepay & Add	Rackspace US
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		
+																																																		

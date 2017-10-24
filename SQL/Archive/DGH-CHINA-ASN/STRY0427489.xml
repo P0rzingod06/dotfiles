@@ -1,0 +1,191 @@
+<?xml version="1.0"?>
+<ProcessingGroup
+	name="DGH-China-ASN"
+	priority="50"
+  ordersPerBatch="10" 
+	parent="StandardOrder"
+	errorAlertThreshold = "120"
+	ruleApplicationSource = "OTOS">
+	
+<!-- CVS Header: $Source: /CVS/oracle11i/applint/rules_config/om/ProcessingGroup-DGH-China-ASN.xml,v $, $Revision: 1.4 $, $Author: baronil $, $Date: 2014/05/15 17:51:48 $ -->
+
+<CriteriaSet>
+	<Criteria>
+		<tableName>APPS.WWT_ORIG_ORDER_HEADERS</tableName>
+		<columnName>SOURCE</columnName>
+		<value>DGH-ASN</value>
+	</Criteria>
+</CriteriaSet>
+
+<!-- ******************************** -->
+<!-- ****** BEGIN PRE-PROCESS ******* -->
+<!-- ******************************** -->
+
+
+<!-- ******************************** -->
+<!-- ****** BEGIN HEADER ************ -->
+<!-- ******************************** -->
+
+<!-- HEADER DEFAULTS -->
+<Rule name="Header Defaults" class="HEADER" executeOnReprocess="N">
+	<ConditionSet name="Set Header Level Defaults" exitOnSuccess="Y">
+		<Action name="Set Order Status" class="assignment">
+			<Parameter name="sourceElement" valueType="LOOKUP">FLOW_STATUS_CODE</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/FLOW_STATUS_CODE</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Set Sales Channel" class="assignment">
+			<Parameter name="sourceElement" valueType="LOOKUP">SALES_CHANNEL</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/SALES_CHANNEL</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Set Sales Channel Code" class="assignment">
+			<Parameter name="sourceElement" valueType="LOOKUP">SALES_CHANNEL_CODE</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/SALES_CHANNEL_CODE</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Set Buyer" class="assignment">
+			<Parameter name="sourceElement" valueType="LOOKUP">BUYER_NAME</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/BUYER_NAME</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Set Org ID" class="assignment">
+			<Parameter name="sourceElement" valueType="LOOKUP">ORG_ID</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/ORG_ID</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Set Order Type" class="assignment">
+			<Parameter name="sourceElement" valueType="LOOKUP">ORDER_TYPE</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_HEADERS/ORDER_TYPE</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<!-- ******************************** -->
+<!-- ****** BEGIN LINES  ************ -->
+<!-- ******************************** -->
+
+<!-- LINES DEFUALTS -->
+<Rule name="Lines Defaults" class="LINE" executeOnReprocess="N">
+	<ConditionSet name="Set Line Level Defaults" exitOnSuccess="Y">
+		<Action name="Set Buyer" class="assignment">
+			<Parameter name="sourceElement" valueType="LOOKUP">BUYER_NAME</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/BUYER_NAME</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Set Org ID" class="assignment">
+			<Parameter name="sourceElement" valueType="LOOKUP">ORG_ID</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/ORG_ID</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Set Order Qty UOM" class="assignment">
+			<Parameter name="sourceElement" valueType="LOOKUP">ORDER_QUANTITY_UOM</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/ORDER_QUANTITY_UOM</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Set Line Type" class="assignment">
+			<Parameter name="sourceElement" valueType="LOOKUP">LINE_TYPE</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/LINE_TYPE</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+		<Action name="Set ORIG_SYS_LINE_REF with data from WWT_ATTRIBUTE1" class="assignment">
+			<Parameter name="sourceElement" valueType="REFERENCE">WWT_STG_ORDER_LINES/WWT_ATTRIBUTE1</Parameter>
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/ORIG_SYS_LINE_REF</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+	</ConditionSet>
+</Rule>
+
+<Rule name="Get Consigned based on Query Result" class="LINE" executeOnReprocess="Y">
+	<ConditionSet name="Get Consigned based on Query Result" exitOnSuccess="N">
+    <Action name="Get Consigned based on Query Result" class="singleItemQuery">
+			<Parameter name="sqlConstantName" valueType="STATIC">getDGHConsingedOTOSSQL</Parameter> 
+			<Parameter name="dbName" valueType="STATIC">ERP</Parameter> 
+			<Parameter name="targetElement" valueType="TARGET">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar2</Parameter>
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+	</Action>
+	</ConditionSet>	
+</Rule>
+
+<Rule name="Set Salesrep, Program and Subinventory based on flag in Line WWT_ATTRIBUTE3" class="LINE" executeOnReprocess="Y">
+	<ConditionSet name="Get defaulted values from lookup" exitOnSuccess="N">
+    <Action name="Retrieve Header and Line Level Data  From Lookup" class="simpleLookup">			
+			<Parameter name="lookupType" valueType="STATIC">WWT_DGH_COP_DEFAULTS</Parameter>
+			<Parameter name="attribute3" valueType="REFERENCE">WWT_STG_ORDER_LINES/WWT_ATTRIBUTE3</Parameter>
+			<Parameter name="attribute16" valueType="REFERENCE">WWT_STG_ORDER_LINES/OTOSTempVariables/tempVar2</Parameter>
+			<!-- ... -->
+			<Parameter name="returnColumn1" valueType="STATIC">ATTRIBUTE3</Parameter>
+			<Parameter name="targetElement1" valueType="TARGET">WWT_STG_ORDER_HEADERS/OTOSTempVariables/tempVar1</Parameter>
+			<!-- ... -->
+			<Parameter name="returnColumn2" valueType="STATIC">ATTRIBUTE8</Parameter>
+			<Parameter name="targetElement2" valueType="TARGET">WWT_STG_ORDER_HEADERS/FLOW_STATUS_CODE</Parameter>
+			<!-- ... -->
+			<Parameter name="returnColumn3" valueType="STATIC">ATTRIBUTE9</Parameter>
+			<Parameter name="targetElement3" valueType="TARGET">WWT_STG_ORDER_HEADERS/SALES_CHANNEL</Parameter>
+			<!-- ... -->
+			<Parameter name="returnColumn4" valueType="STATIC">ATTRIBUTE10</Parameter>
+			<Parameter name="targetElement4" valueType="TARGET">WWT_STG_ORDER_HEADERS/SALES_CHANNEL_CODE</Parameter>
+			<!-- ... -->
+			<Parameter name="returnColumn5" valueType="STATIC">ATTRIBUTE11</Parameter>
+			<Parameter name="targetElement5" valueType="TARGET">WWT_STG_ORDER_HEADERS/BUYER_NAME</Parameter>
+			<!-- ... -->
+			<Parameter name="returnColumn6" valueType="STATIC">ATTRIBUTE4</Parameter>
+			<Parameter name="targetElement6" valueType="TARGET">WWT_STG_ORDER_HEADERS/ORG_ID</Parameter>	
+			<!-- ... -->
+			<Parameter name="returnColumn7" valueType="STATIC">ATTRIBUTE6</Parameter>
+			<Parameter name="targetElement7" valueType="TARGET">WWT_STG_ORDER_HEADERS/SALESREP</Parameter>	
+			<!-- ... -->
+			<Parameter name="returnColumn8" valueType="STATIC">ATTRIBUTE7</Parameter>
+			<Parameter name="targetElement8" valueType="TARGET">WWT_STG_ORDER_HEADERS/PROGRAM</Parameter>	
+			<!-- ... -->
+			<Parameter name="returnColumn9" valueType="STATIC">ATTRIBUTE11</Parameter>
+			<Parameter name="targetElement9" valueType="TARGET">WWT_STG_ORDER_LINES/BUYER_NAME</Parameter>	
+			<!-- ... -->
+			<Parameter name="returnColumn10" valueType="STATIC">ATTRIBUTE4</Parameter>
+			<Parameter name="targetElement10" valueType="TARGET">WWT_STG_ORDER_LINES/ORG_ID</Parameter>	
+			<!-- ... -->
+			<Parameter name="returnColumn11" valueType="STATIC">ATTRIBUTE14</Parameter>
+			<Parameter name="targetElement11" valueType="TARGET">WWT_STG_ORDER_LINES/ORDER_QUANTITY_UOM</Parameter>	
+			<!-- ... -->
+			<Parameter name="returnColumn12" valueType="STATIC">ATTRIBUTE13</Parameter>
+			<Parameter name="targetElement12" valueType="TARGET">WWT_STG_ORDER_LINES/LINE_TYPE</Parameter>
+			<!-- ... -->
+			<Parameter name="returnColumn13" valueType="STATIC">ATTRIBUTE5</Parameter>
+			<Parameter name="targetElement13" valueType="TARGET">WWT_STG_ORDER_LINES/SUBINVENTORY</Parameter>
+			<!-- ... -->
+			<Parameter name="returnColumn14" valueType="STATIC">ATTRIBUTE12</Parameter>
+			<Parameter name="targetElement14" valueType="TARGET">WWT_STG_ORDER_HEADERS/ORDER_TYPE</Parameter>		
+			<!-- ... -->	
+			<Parameter name="returnColumn15" valueType="STATIC">ATTRIBUTE15</Parameter>
+			<Parameter name="targetElement15" valueType="TARGET">WWT_STG_ORDER_LINES/INVOICE_TO_ORG_ID</Parameter>
+			<!-- ... -->	
+			<Parameter name="returnColumn16" valueType="STATIC">ATTRIBUTE18</Parameter>
+			<Parameter name="targetElement16" valueType="TARGET">WWT_STG_ORDER_LINES/INVOICE_TO_ADDRESS1</Parameter>
+			<!-- ... -->	
+			<Parameter name="returnColumn17" valueType="STATIC">ATTRIBUTE17</Parameter>
+			<Parameter name="targetElement17" valueType="TARGET">WWT_STG_ORDER_LINES/INVOICE_TO_CUSTOMER_NAME</Parameter>
+			<!-- ... -->	
+			<!-- <Parameter name="returnColumn17" valueType="STATIC">ATTRIBUTE19</Parameter>
+			<Parameter name="targetElement17" valueType="TARGET">WWT_STG_ORDER_LINES/INVOICE_TO_COUNTRY</Parameter> -->
+			<ExceptionHandler type="ERROR">Failed to retrieve default values info from the Lookups</ExceptionHandler>
+		</Action>
+	</ConditionSet>	
+</Rule>
+
+<!--  GET PRICING DATE  -->
+<Rule name="Get Pricing Date" class="LINE" executeOnReprocess="N">
+	<ConditionSet name="Get Pricing Date" exitOnSuccess="N">
+		<Action name="Get Princing Date" class="multiItemQuery">
+			<Parameter name="sqlConstantName" valueType="STATIC">getDGHPricingDateOTOSSQL</Parameter> 
+			<Parameter name="dbName" valueType="STATIC">ERP</Parameter> 
+			<ExceptionHandler type="NONE"></ExceptionHandler>
+		</Action>
+	</ConditionSet>	
+</Rule>
+
+<!-- ******************************** -->
+<!-- ****** BEGIN POST-PROCESS ****** -->
+<!-- ******************************** -->
+
+</ProcessingGroup>

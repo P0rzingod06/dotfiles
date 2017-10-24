@@ -1,0 +1,4 @@
+Unable to connect to FTP server dtxobinet.us.dell.com at step Connecting session com.jcraft.jsch.JSchException: Auth fail
+
+
+Unable to connect to FTP server dtxobinet.us.dell.com at step Connecting channel com.jcraft.jsch.JSchException: java.io.IOException: channel is broken

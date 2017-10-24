@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE cXML SYSTEM "http://xml.cxml.org/schemas/cXML/1.2.025/Fulfill.dtd">
+<cXML payloadID = "AN01009902651" timestamp = "2015-01-05T15:11:24-08:00" version = "1.2.025" xml:lang = "en">
+    <Header>
+        <From>
+            <Credential domain = "NetworkID">
+                <Identity>AN0000000000</Identity>
+            </Credential>
+            <Credential domain = "VendorID">
+                <Identity>1234567</Identity>
+            </Credential>
+            <Credential domain = "VendorSiteID">
+                <Identity>
+                    <IdReference domain = "SiteID" identifier = "1234567"/>
+                </Identity>
+            </Credential>
+            <Credential domain = "PrivateID">
+                <Identity>2702214___2702214___2702214</Identity>
+            </Credential>
+        </From>
+        <To>
+            <Credential domain = "NetworkID">
+                <Identity>AN01009902651</Identity>
+            </Credential>
+        </To>
+        <Sender>
+            <Credential domain = "NetworkID">
+                <Identity>AN01000000000</Identity>
+                <SharedSecret>SAP Ariba</SharedSecret>
+            </Credential>
+            <UserAgent>EDI Gateway</UserAgent>
+        </Sender>
+    </Header>
+    <Request deploymentMode = "production">
+        <ConfirmationRequest>
+            <ConfirmationHeader confirmID = "01-15373-00" operation = "new" type = "accept" noticeDate = "2015-01-05T00:00:00-06:00">
+                <Total>
+                    <Money currency = "USA">83.4</Money>
+                </Total>
+                <Contact role = "billTo">
+                    <Name xml:lang = "en">CHARTER COMM. OPERATING LLC</Name>
+                    <PostalAddress>
+                        <Street>12405 POWERSCOURT DRIVE</Street>
+                        <City>ST LOUIS</City>
+                        <State>MO</State>
+                        <PostalCode>63131</PostalCode>
+                        <Country isoCountryCode = "US">UNITED STATES</Country>
+                    </PostalAddress>
+                </Contact>
+                <Contact role = "shipTo">
+                    <Name xml:lang = "en">CHARTER</Name>
+                    <PostalAddress>
+                        <Street>1234 street</Street>
+                        <City>ONALASKA</City>
+                        <State>WI</State>
+                        <PostalCode>54650</PostalCode>
+                        <Country isoCountryCode = "US">UNITED STATES</Country>
+                    </PostalAddress>
+                </Contact>
+            </ConfirmationHeader>
+            <OrderReference orderID = "PO123456" orderDate = "2015-01-05T13:09:36-08:00">
+                <DocumentReference payloadID = "32432432432"></DocumentReference>
+            </OrderReference>
+            <ConfirmationItem quantity = "4" lineNumber = "1">
+                <UnitOfMeasure>EA</UnitOfMeasure>
+                <ConfirmationStatus quantity = "4" type = "accept" shipmentDate = "2015-01-05T00:00:00-06:00" deliveryDate = "2015-01-05T00:00:00-06:00">
+                    <UnitOfMeasure>EA</UnitOfMeasure>
+                </ConfirmationStatus>
+            </ConfirmationItem>
+        </ConfirmationRequest>
+    </Request>
+</cXML>
