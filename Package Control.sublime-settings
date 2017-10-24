@@ -1,0 +1,37 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"BracketHighlighter",
+		"Color Highlighter",
+		"Emmet",
+		"Git",
+		"Git Conflict Resolver",
+		"GitGutter",
+		"Grails",
+		"Groovy Snippets",
+		"HTML-CSS-JS Prettify",
+		"JavaScript & NodeJS Snippets",
+		"JSHint",
+		"JSONLint",
+		"LESS",
+		"LiveReload",
+		"LiveReloadMake",
+		"Markdown Preview",
+		"Nodejs",
+		"Package Control",
+		"Pretty JSON",
+		"SideBarEnhancements",
+		"SublimeCodeIntel",
+		"SublimeLinter",
+		"Theme - Broceanic",
+		"Theme - Brogrammer",
+		"Theme - Darkmatter",
+		"Theme - Midnight",
+		"Theme - Spacegray",
+		"Themr"
+	]
+}

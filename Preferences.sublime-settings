@@ -1,0 +1,12 @@
+{
+	"color_scheme": "Packages/User/SublimeLinter/Monokai (SL).tmTheme",
+	"draw_white_space": "all",
+	"font_size": 11,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"theme": "Broceanic.sublime-theme",
+	"translate_tabs_to_spaces": true,
+	"word_separators": "./\\()\"':,.;<>~!@#$%^&*|+=[]{}`~?"
+}   
