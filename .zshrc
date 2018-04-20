@@ -90,3 +90,14 @@ export NVM_DIR="/Users/gassertm/.nvm"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/Users/gassertm/.sdkman"
 [[ -s "/Users/gassertm/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/gassertm/.sdkman/bin/sdkman-init.sh"
+
+##Terminal Commands
+alias cdcou="cd ~/projects/customer-ordering-ui"
+alias cdcoa="cd ~/projects/customer-ordering-api"
+
+##Git commands
+alias gai="git add --interactive"
+alias grh="git reset --hard"
+alias grim="git rebase -i master"
+alias gbda="git for-each-ref --format '%(refname:short)' refs/heads | grep -v master | xargs git branch -D"
+alias ggpushf="ggpush --force"

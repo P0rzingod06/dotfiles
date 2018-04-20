@@ -5,6 +5,7 @@
 .Trash/
 .account
 .anyconnect
+.atom/
 .babel.json
 .bash_history
 .bash_sessions/
@@ -32,8 +33,11 @@
 .ports.json
 .sdkman/
 .sqldeveloper/
+.tsd-cache/
 .vim/
 .viminfo
+.vscode/
+.vue-templates/
 .yarnrc
 .zcompdump-*
 .zsh-update
@@ -53,6 +57,9 @@ Public/
 Projects/
 Shared/
 Solutions/
+SQL/
 git/
 src/
 workspace97/
+datamodeler.log
+
