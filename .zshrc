@@ -94,6 +94,8 @@ export SDKMAN_DIR="/Users/gassertm/.sdkman"
 ##Terminal Commands
 alias cdcou="cd ~/projects/customer-ordering-ui"
 alias cdcoa="cd ~/projects/customer-ordering-api"
+alias cdlc="cd ~/projects/leetcode"
+alias cdce="cd ~/projects/customer-experience"
 
 ##Git commands
 alias gai="git add --interactive"
@@ -101,3 +103,7 @@ alias grh="git reset --hard"
 alias grim="git rebase -i master"
 alias gbda="git for-each-ref --format '%(refname:short)' refs/heads | grep -v master | xargs git branch -D"
 alias ggpushf="ggpush --force"
+alias gapan="git add --intent-to-add . && git add --patch"
+
+#Fun commands
+alias weather="curl wttr.in"
