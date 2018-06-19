@@ -91,19 +91,30 @@ export NVM_DIR="/Users/gassertm/.nvm"
 export SDKMAN_DIR="/Users/gassertm/.sdkman"
 [[ -s "/Users/gassertm/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/gassertm/.sdkman/bin/sdkman-init.sh"
 
-##Terminal Commands
+##Aliases##
+###########
+
+##Navigation
+alias cdce="cd ~/projects/customer-experience"
 alias cdcou="cd ~/projects/customer-ordering-ui"
 alias cdcoa="cd ~/projects/customer-ordering-api"
+alias cdcsau="cd ~/projects/customer-store-admin-ui"
+alias cdcsa="cd ~/projects/customer-store-api"
 alias cdlc="cd ~/projects/leetcode"
-alias cdce="cd ~/projects/customer-experience"
 
-##Git commands
+##Git
 alias gai="git add --interactive"
 alias grh="git reset --hard"
 alias grim="git rebase -i master"
 alias gbda="git for-each-ref --format '%(refname:short)' refs/heads | grep -v master | xargs git branch -D"
 alias ggpushf="ggpush --force"
 alias gapan="git add --intent-to-add . && git add --patch"
+alias gca="git commit --amend"
+alias gan="git add -N ."
+alias gstall="git stash --all"
 
-#Fun commands
+##Editor
+alias code="code ."
+
+#Fun
 alias weather="curl wttr.in"
