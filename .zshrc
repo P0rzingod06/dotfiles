@@ -113,8 +113,20 @@ alias gca="git commit --amend"
 alias gan="git add -N ."
 alias gstall="git stash --all"
 
+##UI
+alias gs="grunt serve"
+
+##Grails
+alias gra="grails run-app"
+
 ##Editor
 alias code="code ."
 
 #Fun
 alias weather="curl wttr.in"
+
+###-tns-completion-start-###
+if [ -f /Users/gassertm/.tnsrc ]; then 
+    source /Users/gassertm/.tnsrc 
+fi
+###-tns-completion-end-###
