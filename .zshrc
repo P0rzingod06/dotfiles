@@ -101,6 +101,7 @@ alias cdcoa="cd ~/projects/customer-ordering-api"
 alias cdcsau="cd ~/projects/customer-store-admin-ui"
 alias cdcsa="cd ~/projects/customer-store-api"
 alias cdlc="cd ~/projects/leetcode"
+alias cdref="cd ~/PersonalProjects//real-estate-fun"
 
 ##Git
 alias gai="git add --interactive"
