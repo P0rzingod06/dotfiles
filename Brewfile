@@ -32,3 +32,7 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | 
 curl -s "https://get.sdkman.io" | bash
 source "$HOME/.sdkman/bin/sdkman-init.sh"
 
+# CatchMouse
+git clone https://github.com/round/CatchMouse.git
+cp -rf CatchMouse/CatchMouse.app /Applications
+

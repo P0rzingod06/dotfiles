@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/gassertm/.oh-my-zsh
+export ZSH=/Users/michael.gassert/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -84,38 +84,58 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export NVM_DIR="/Users/gassertm/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/gassertm/.sdkman"
-[[ -s "/Users/gassertm/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/gassertm/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="/Users/michael.gassert/.sdkman"
+[[ -s "/Users/michael.gassert/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/michael.gassert/.sdkman/bin/sdkman-init.sh"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+### Android
+export ANDROID_SDK_ROOT="/Users/michael.gassert/Library/Android/sdk/"
+export ANDROID_HOME="/Users/michael.gassert/Library/Android/sdk"
+export JAVA_HOME="/Users/michael.gassert/.sdkman/candidates/java/current"
+export PATH=/Users/michael.gassert/Library/Android/sdk/platform-tools/:$PATH
+export PATH=$ANDROID_SDK_ROOT/emulator:$ANDROID_SDK_ROOT/tools:$PATH
+export PATH=$PATH:~/$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
 ##Aliases##
 ###########
 
 ##Navigation
-alias cdce="cd ~/projects/customer-experience"
-alias cdcou="cd ~/projects/customer-ordering-ui"
-alias cdcoa="cd ~/projects/customer-ordering-api"
-alias cdcsau="cd ~/projects/customer-store-admin-ui"
-alias cdcsa="cd ~/projects/customer-store-api"
-alias cdlc="cd ~/projects/leetcode"
-alias cdref="cd ~/PersonalProjects//real-estate-fun"
+alias cda="cd ~/Projects/albums"
+alias cdts="cd ~/Projects/target-spray"
+
+##Easy Open
+alias Android="open /Applications/Android\ Studio.app/"
+alias Xcode="open /Applications/Xcode.app/"
+alias Macdown="open /Applications/Macdown.app/"
+alias PostMan="open /Applications/Postman.app/"
+alias Insomnia="open /Applications/Insomnia.app/"
+alias LiceCap="open /Applications/LICEcap.app/"
 
 ##Git
 alias gai="git add --interactive"
 alias grh="git reset --hard"
 alias grim="git rebase -i master"
+alias grid="git rebase -i dev"
 alias gbda="git for-each-ref --format '%(refname:short)' refs/heads | grep -v master | xargs git branch -D"
 alias ggpushf="ggpush --force"
 alias gapan="git add --intent-to-add . && git add --patch"
 alias gca="git commit --amend"
 alias gan="git add -N ."
 alias gstall="git stash --all"
+alias gcd="git checkout dev"
 
 ##UI
 alias gs="grunt serve"
+alias rios="react-native run-ios"
+alias rand="react-native run-android"
+alias srand="sudo react-native run-android"
+alias rdt="react-devtools"
+alias ni="npm install"
+alias rnmni="rm -rf node_modules && npm install"
 
 ##Grails
 alias gra="grails run-app"
@@ -124,10 +144,11 @@ alias gra="grails run-app"
 alias code="code ."
 
 #Fun
+alias rnm="rm -rf ./node_modules"
 alias weather="curl wttr.in"
 
 ###-tns-completion-start-###
-if [ -f /Users/gassertm/.tnsrc ]; then 
-    source /Users/gassertm/.tnsrc 
+if [ -f /Users/michael.gassert/.tnsrc ]; then 
+    source /Users/michael.gassert/.tnsrc 
 fi
 ###-tns-completion-end-###
