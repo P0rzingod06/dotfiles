@@ -25,5 +25,10 @@ endif
 
 call plug#begin()
 Plug 'ternjs/tern_for_vim', {'do' : 'npm install' }
-PlugIn 'Plug vim-scripts/delimitMate.vim'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
 call plug#end()
+
+map ; :Files<CR>
+
