@@ -28,7 +28,16 @@ Plug 'ternjs/tern_for_vim', {'do' : 'npm install' }
 Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'mattn/emmet-vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'scrooloose/nerdcommenter'
+Plug 'altercation/vim-colors-solarized'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 map ; :Files<CR>
+map <C-t> :NERDTreeToggle<CR>
 
