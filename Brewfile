@@ -36,3 +36,9 @@ source "$HOME/.sdkman/bin/sdkman-init.sh"
 git clone https://github.com/round/CatchMouse.git
 cp -rf CatchMouse/CatchMouse.app /Applications
 
+# GIT #
+########
+#
+git config --global core.excludesfile ~/.gitignore_global
+git config --get core.excludesfile
+
