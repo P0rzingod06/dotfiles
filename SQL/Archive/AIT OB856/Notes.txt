@@ -1,5 +1,0 @@
-NVL (wnd.attribute2, wnd.ship_method_code) freight_carrier_code,
-DECODE (UPPER (wnd.waybill),
-'MULTI', NVL (wdd.attribute11, wdd.tracking_number),
-NVL (wdd.attribute11, wdd.tracking_number))
-tracking_num

@@ -1,3 +1,0 @@
-EHI INC
-
---File that arent getting moved have nothing in them --> can't move a file with no contents.

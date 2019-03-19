@@ -1,4 +1,0 @@
-HY783	WWT_NASH	NFC-NV3-NVW	dell_broker_domain	dell_procurement	grp1	PPFF	Material_Requests_from_Factory_Line	568123+30541027-PO+71160|71160-VID	9	20150420120000
-KWC4W	WWT_NASH	NFC-NV3-NVW	dell_broker_domain	dell_procurement	grp1	PPFF	Material_Requests_from_Factory_Line	568122+30540916-PO+71160|71161-VID	1	20150420120000
-K591N	WWT_NASH	NFC-NV3-NVW	dell_broker_domain	dell_procurement	grp1	PPFF	Material_Requests_from_Factory_Line	568121+30647371-PO+71160|71161-VID	4	20150420120000
-HT3M5	WWT_NASH	NFC-NV3-NVW	dell_broker_domain	dell_procurement	grp1	PPFF	Material_Requests_from_Factory_Line	568120+30579633-PO+71160|71161-VID	3	20150420120000

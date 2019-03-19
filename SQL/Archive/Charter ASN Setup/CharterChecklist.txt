@@ -1,9 +1,0 @@
-Charter checklist-
-
-1)PO Ack lookup
-2)ASN Outound Extract Lookup
-3)buildUpCXMLDoc - webmethods  (x)
-4)lokup WWT_CXML_PARTNER_ENVIRONMENT
-5) OTOS rule (v) -> check into cvs and make sure previous version is good with new one - matt derhake
-6) partner profile (x)
-7)db constants for both confReq and shipReq (X)

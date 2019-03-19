@@ -1,2 +1,0 @@
-F1WXP	WWT_NASH	3EG3-CFS-EG3WIP	dell_broker_domain	dell_procurement	grp1	PPFF	Material_Requests_from_Factory_Line	564959+30602331-PO+71160|71161-VID	4	2.01503E+13
-G963H	WWT_NASH	3EG3-CFS-EG3WIP	dell_broker_domain	dell_procurement	grp1	PPFF	Material_Requests_from_Factory_Line	564960+30264012-PO+71160|71161-VID	6	2.01503E+13

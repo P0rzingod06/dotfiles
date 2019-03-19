@@ -1,5 +1,0 @@
-cXML checklist
-
-1.WebMethods
-	a.cxml confirmRequest -- processPOAck,cXMLConfirmationRequest,charterCustomMappings,mapCXMLDoc,initialize cxml header -- made header an array
-	b.dbConstants - cXML_ConfirmationRequestOutbound - make sure to copy into each env

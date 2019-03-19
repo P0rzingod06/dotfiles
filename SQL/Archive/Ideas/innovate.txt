@@ -1,3 +1,0 @@
-Idea stuff
-
--migrate old ftp unix stuff to new age frolic shiz..
