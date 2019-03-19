@@ -1,0 +1,7 @@
+# Sys Link Files #
+##################
+
+ln -sv ~/Projects/dotfiles/.vimrc ~
+ln -sv ~/Projects/dotfiles/.zshrc  ~
+ln -sv ~/Projects/dotfiles/.bashrc  ~
+ln -sv ~/Projects/dotfiles/.gitignore_global  ~

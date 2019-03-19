@@ -45,11 +45,8 @@ cp -rf CatchMouse/CatchMouse.app /Applications
 git config --global core.excludesfile ~/.gitignore_global
 git config --get core.excludesfile
 
-# Sys Link Files #
-##################
+# Source Files #
+################
 
-ln -sv ~/Projects/.vimrc ~
-ln -sv ~/Projects/.zshrc  ~
-ln -sv ~/Projects/.bashrc  ~
-ln -sv ~/Projects/.gitignore_global  ~
-
+source ~/Projects/dotfiles/.aliases
+source ~/Projects/dotfiles/.syslinks

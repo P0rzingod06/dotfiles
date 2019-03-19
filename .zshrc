@@ -100,53 +100,6 @@ export PATH=/Users/michael.gassert/Library/Android/sdk/platform-tools/:$PATH
 export PATH=$ANDROID_SDK_ROOT/emulator:$ANDROID_SDK_ROOT/tools:$PATH
 export PATH=$PATH:~/$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
-##Aliases##
-###########
-
-##Navigation
-alias cda="cd ~/Projects/albums"
-alias cdts="cd ~/Projects/target-spray"
-
-##Easy Open
-alias Android="open /Applications/Android\ Studio.app/"
-alias Xcode="open /Applications/Xcode.app/"
-alias Macdown="open /Applications/Macdown.app/"
-alias PostMan="open /Applications/Postman.app/"
-alias Insomnia="open /Applications/Insomnia.app/"
-alias LiceCap="open /Applications/LICEcap.app/"
-
-##Git
-alias gai="git add --interactive"
-alias grh="git reset --hard"
-alias grim="git rebase -i master"
-alias grid="git rebase -i dev"
-alias gbda="git for-each-ref --format '%(refname:short)' refs/heads | grep -v master | xargs git branch -D"
-alias ggpushf="ggpush --force"
-alias gapan="git add --intent-to-add . && git add --patch"
-alias gca="git commit --amend"
-alias gan="git add -N ."
-alias gstall="git stash --all"
-alias gcd="git checkout dev"
-
-##UI
-alias gs="grunt serve"
-alias rios="react-native run-ios"
-alias rand="react-native run-android"
-alias srand="sudo react-native run-android"
-alias rdt="react-devtools"
-alias ni="npm install"
-alias rnmni="rm -rf node_modules && npm install"
-
-##Grails
-alias gra="grails run-app"
-
-##Editor
-alias code="code ."
-
-#Fun
-alias rnm="rm -rf ./node_modules"
-alias weather="curl wttr.in"
-
 ###-tns-completion-start-###
 if [ -f /Users/michael.gassert/.tnsrc ]; then 
     source /Users/michael.gassert/.tnsrc 
