@@ -35,13 +35,8 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | 
 curl -s "https://get.sdkman.io" | bash
 source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-# CatchMouse
-git clone https://github.com/round/CatchMouse.git
-cp -rf CatchMouse/CatchMouse.app /Applications
-
 # GIT #
 ########
-#
 git config --global core.excludesfile ~/.gitignore_global
 git config --get core.excludesfile
 
@@ -50,6 +45,16 @@ git config --get core.excludesfile
 
 mkdir -p "~/Playground"
 mkdir -p "~/Projects"
+
+# Git Installs #
+################
+
+cd ~/Playground
+git clone https://github.com/P0rzingod06/dotfiles.git
+
+# CatchMouse
+git clone https://github.com/round/CatchMouse.git
+cp -rf CatchMouse/CatchMouse.app /Applications
 
 # Source Files #
 ################
