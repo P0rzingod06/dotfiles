@@ -1,3 +1,6 @@
+# Install HomeBrew
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
 tap 'caskroom/cask'
 
 # Install zsh and related
@@ -41,4 +44,12 @@ cp -rf CatchMouse/CatchMouse.app /Applications
 #
 git config --global core.excludesfile ~/.gitignore_global
 git config --get core.excludesfile
+
+# Sys Link Files #
+##################
+
+ln -sv ~/Projects/.vimrc ~
+ln -sv ~/Projects/.zshrc  ~
+ln -sv ~/Projects/.bashrc  ~
+ln -sv ~/Projects/.gitignore_global  ~
 

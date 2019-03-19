@@ -3,3 +3,7 @@
 *.swp
 *.swo
 *.swn
+
+# Mac Files
+.Trash
+.DS_Store
