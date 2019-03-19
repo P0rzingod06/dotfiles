@@ -45,6 +45,12 @@ cp -rf CatchMouse/CatchMouse.app /Applications
 git config --global core.excludesfile ~/.gitignore_global
 git config --get core.excludesfile
 
+# Directories #
+###############
+
+mkdir -p "~/Playground"
+mkdir -p "~/Projects"
+
 # Source Files #
 ################
 
